@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
+
+    <servlet>
+        <servlet-name>ru.alepar.gwt.tdt.Tdt TdtService</servlet-name>
+        <servlet-class>ru.alepar.gwt.tdt.server.TdtServiceImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ru.alepar.gwt.tdt.Tdt TdtService</servlet-name>
+        <url-pattern>/Tdt/TdtService</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>Tdt.html</welcome-file>
+    </welcome-file-list>
+</web-app>

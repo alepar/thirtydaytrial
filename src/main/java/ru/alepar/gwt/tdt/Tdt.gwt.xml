@@ -1,0 +1,13 @@
+<module rename-to="Tdt">
+
+    <!-- Inherit the core Web Toolkit stuff.                  -->
+    <inherits name='com.google.gwt.user.User'/>
+
+    <!-- Specify the app entry point class.                   -->
+    <entry-point class='ru.alepar.gwt.tdt.client.Tdt'/>
+
+
+    <!-- Specify the app servlets.                   -->
+    <servlet path='/TdtService' class='ru.alepar.gwt.tdt.server.TdtServiceImpl'/>
+
+</module>
