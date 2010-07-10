@@ -355,7 +355,7 @@
         <gae.application.version>0</gae.application.version>
 
         <!-- port defaults to 8080 -->
-        <gae.port>8080</gae.port>
+        <gae.port>80</gae.port>
 
         <!--
             Produce detailed JS during GWT compilation for development
