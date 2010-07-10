@@ -343,7 +343,7 @@
             SDK version pointed to by ${gae.home} property (Typically,
             one used by your Eclipse plug-in)
         -->
-        <gae.version>1.3.4</gae.version>
+        <gae.version>1.3.5</gae.version>
 
         <!-- GWT version -->
         <gwt.version>2.0.0</gwt.version>
@@ -462,23 +462,21 @@
 
     <pluginRepositories>
         <pluginRepository>
-            <id>DataNucleus_2</id>
-            <url>http://www.datanucleus.org/downloads/maven2/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>maven-gae-plugin-repo</id>
-            <name>maven-gae-plugin repository</name>
-            <url>
-                http://maven-gae-plugin.googlecode.com/svn/repository
-            </url>
-        </pluginRepository>
-        <pluginRepository>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
           <name>plugins-releases</name>
           <url>http://artifactory.alepar.ru/plugins-releases</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>DataNucleus_2</id>
+            <url>http://www.datanucleus.org/downloads/maven2/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>maven-gae-plugin-repo</id>
+            <name>maven-gae-plugin repository</name>
+            <url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
         </pluginRepository>
         <pluginRepository>
           <snapshots />
