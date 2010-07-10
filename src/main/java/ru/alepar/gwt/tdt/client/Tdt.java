@@ -1,6 +1,7 @@
 package ru.alepar.gwt.tdt.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.DOM;
@@ -36,6 +37,8 @@ public class Tdt implements EntryPoint {
         //
         RootPanel.get("slot1").add(button);
         RootPanel.get("slot2").add(label);
+
+        AuthService.App.getInstance().getAuth(new AuthAsyncCallBack(RootPanel.get("signin").getElement()));
     }
 
     private static class MyAsyncCallback implements AsyncCallback<String> {
@@ -51,6 +54,33 @@ public class Tdt implements EntryPoint {
 
         public void onFailure(Throwable throwable) {
             label.setText("Failed to receive answer from server!");
+        }
+    }
+
+    private static class AuthAsyncCallBack implements AsyncCallback<AuthService.AuthResponse> {
+
+        private Element element;
+
+        private AuthAsyncCallBack(Element element) {
+            this.element = element;
+        }
+
+        @Override
+        public void onFailure(Throwable throwable) {
+            setText("oops");
+        }
+
+        private void setText(String text) {
+            DOM.setInnerHTML(element, text);
+        }
+
+        @Override
+        public void onSuccess(AuthService.AuthResponse authResponse) {
+            if(authResponse.principalName == null) {
+                setText("<a href=\"" + authResponse.logInUrl + "\">sign in</a>");                
+            } else {
+                setText("<a href=\"" + authResponse.logOutUrl + "\">" + authResponse.principalName + "</a>");
+            }
         }
     }
 }

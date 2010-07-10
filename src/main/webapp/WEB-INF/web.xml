@@ -9,10 +9,18 @@
         <servlet-name>ru.alepar.gwt.tdt.Tdt TdtService</servlet-name>
         <servlet-class>ru.alepar.gwt.tdt.server.TdtServiceImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ru.alepar.gwt.tdt.Tdt AuthService</servlet-name>
+        <servlet-class>ru.alepar.gwt.tdt.server.AuthServiceImpl</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>ru.alepar.gwt.tdt.Tdt TdtService</servlet-name>
         <url-pattern>/Tdt/TdtService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ru.alepar.gwt.tdt.Tdt AuthService</servlet-name>
+        <url-pattern>/Tdt/AuthService</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
