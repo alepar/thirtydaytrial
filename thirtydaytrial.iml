@@ -11,6 +11,11 @@
         </webroots>
         <context-artifact name="thirtydaytrial:war exploded" />
       </configuration>
+      <facet type="google-app-engine" name="Google App Engine">
+        <configuration>
+          <sdk-home-path>D:/dev/appengine-java-sdk-1.3.4</sdk-home-path>
+        </configuration>
+      </facet>
     </facet>
     <facet type="gwt" name="GWT">
       <configuration>
@@ -41,6 +46,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="Maven: com.google.gwt:gwt-servlet:2.0.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-user:2.0.4" level="project" />
     <orderEntry type="library" exported="" name="Maven: javax.jdo:jdo2-api:2.3-eb" level="project" />
     <orderEntry type="library" exported="" name="Maven: javax.transaction:jta:1.1" level="project" />
     <orderEntry type="library" exported="" name="Maven: com.google.appengine.orm:datanucleus-appengine:1.0.4.1" level="project" />
