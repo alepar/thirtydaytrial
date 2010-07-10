@@ -24,7 +24,7 @@
         <setting name="compilerMaxHeapSize" value="128" />
         <setting name="gwtScriptOutputStyle" value="DETAILED" />
         <setting name="gwtSdkType" value="maven" />
-        <setting name="gwtSdkUrl" value="file://$MAVEN_REPOSITORY$/com/google/gwt/gwt-dev/2.0.0/" />
+        <setting name="gwtSdkUrl" value="file://$MAVEN_REPOSITORY$/com/google/gwt/gwt-dev/2.0.3/" />
         <setting name="webFacet" value="Web" />
       </configuration>
     </facet>
@@ -58,8 +58,8 @@
     <orderEntry type="library" exported="" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.1.1" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: com.google.appengine:datanucleus-jpa:1.1.5" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: com.google.appengine:geronimo-jpa_3.0_spec:1.1.1" level="project" />
-    <orderEntry type="library" exported="" name="Maven: com.google.gwt:gwt-servlet:2.0.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-user:2.0.0" level="project" />
+    <orderEntry type="library" exported="" name="Maven: com.google.gwt:gwt-servlet:2.0.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-user:2.0.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.geronimo.specs:geronimo-servlet_2.5_spec:1.2" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: taglibs:standard:1.1.2" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.slf4j:slf4j-api:1.5.6" level="project" />
