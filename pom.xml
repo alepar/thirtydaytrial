@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.alepar</groupId>
@@ -126,9 +126,9 @@
         </dependency>
 
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>0.9.15</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.5.6</version>
         </dependency>
 
         <!-- Test scope -->
@@ -416,12 +416,12 @@
 
     <repositories>
         <!-- We go to mvnsearch.org after latest GAE SDK artifacts -->
-	    <repository>
-	        <id>mvnsearch.org</id>
-	        <name>MVN Search</name>
-	        <url>
-	            http://www.mvnsearch.org/maven2
-	        </url>
+        <repository>
+            <id>mvnsearch.org</id>
+            <name>MVN Search</name>
+            <url>
+                http://www.mvnsearch.org/maven2
+            </url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
@@ -430,7 +430,7 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-	    </repository>
+        </repository>
         <repository>
             <id>DataNucleus_Repos2</id>
             <name>DataNucleus Repository</name>
@@ -444,30 +444,30 @@
             </url>
         </repository>
         <repository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>libs-releases</name>
-          <url>http://artifactory.alepar.ru/libs-releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>libs-releases</name>
+            <url>http://artifactory.alepar.ru/libs-releases</url>
         </repository>
-        
+
         <repository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshots</name>
-          <url>http://artifactory.alepar.ru/libs-snapshots</url>
-        </repository>        
+            <snapshots/>
+            <id>snapshots</id>
+            <name>libs-snapshots</name>
+            <url>http://artifactory.alepar.ru/libs-snapshots</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>plugins-releases</name>
-          <url>http://artifactory.alepar.ru/plugins-releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>plugins-releases</name>
+            <url>http://artifactory.alepar.ru/plugins-releases</url>
         </pluginRepository>
         <pluginRepository>
             <id>DataNucleus_2</id>
@@ -479,10 +479,10 @@
             <url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
         </pluginRepository>
         <pluginRepository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>plugins-snapshots</name>
-          <url>http://artifactory.alepar.ru/plugins-snapshots</url>
-        </pluginRepository>        
+            <snapshots/>
+            <id>snapshots</id>
+            <name>plugins-snapshots</name>
+            <url>http://artifactory.alepar.ru/plugins-snapshots</url>
+        </pluginRepository>
     </pluginRepositories>
 </project>
