@@ -18,7 +18,6 @@
           <element id="library" level="project" name="Maven: com.google.appengine:datanucleus-jpa:1.1.5" />
           <element id="library" level="project" name="Maven: com.google.appengine:geronimo-jpa_3.0_spec:1.1.1" />
           <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.0.3" />
-          <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.6" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-jdk14:1.5.6" />
         </element>

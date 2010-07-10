@@ -114,17 +114,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--
-            Make use of JSP tags. Remove, if you don't use JSPs
-        -->
-        <dependency>
-            <artifactId>standard</artifactId>
-            <groupId>taglibs</groupId>
-            <version>1.1.2</version>
-            <type>jar</type>
-            <scope>runtime</scope>
-        </dependency>
-
         <!-- These dependencies are here just for enabling logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -281,8 +270,7 @@
                         released, see
                         http://jira.codehaus.org/browse/MGWT-112)
                     -->
-                    <server>com.google.appengine.tools.development.gwt.AppEngineLauncher
-                    </server>
+                    <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
 
                     <runTarget>/index.html</runTarget>
                     <style>DETAILED</style>
@@ -437,9 +425,7 @@
         <repository>
             <id>mvnsearch.org</id>
             <name>MVN Search</name>
-            <url>
-                http://www.mvnsearch.org/maven2
-            </url>
+            <url>http://www.mvnsearch.org/maven2</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
@@ -478,14 +464,6 @@
 
     <pluginRepositories>
         <pluginRepository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>central</id>
-            <name>plugins-releases</name>
-            <url>http://artifactory.alepar.ru/plugins-releases</url>
-        </pluginRepository>
-        <pluginRepository>
             <id>DataNucleus_2</id>
             <url>http://www.datanucleus.org/downloads/maven2/</url>
         </pluginRepository>
@@ -493,6 +471,14 @@
             <id>maven-gae-plugin-repo</id>
             <name>maven-gae-plugin repository</name>
             <url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
+        </pluginRepository>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>plugins-releases</name>
+            <url>http://artifactory.alepar.ru/plugins-releases</url>
         </pluginRepository>
         <pluginRepository>
             <snapshots/>

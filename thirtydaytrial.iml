@@ -65,7 +65,6 @@
     <orderEntry type="library" exported="" name="Maven: com.google.gwt:gwt-servlet:2.0.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-user:2.0.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.geronimo.specs:geronimo-servlet_2.5_spec:1.2" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: taglibs:standard:1.1.2" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.slf4j:slf4j-api:1.5.6" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.slf4j:slf4j-jdk14:1.5.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.8.1" level="project" />
