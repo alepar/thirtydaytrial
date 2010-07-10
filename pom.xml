@@ -7,8 +7,8 @@
     <artifactId>thirtydaytrial</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>maven-gae-example</name>
-    <description>Google AppEngine project example</description>
+    <name>level-up-u</name>
+    <description>LUU web-application</description>
     <packaging>war</packaging>
 
     <dependencies>
