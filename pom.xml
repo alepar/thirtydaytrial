@@ -303,7 +303,7 @@
             <plugin>
                 <groupId>net.kindleit</groupId>
                 <artifactId>maven-gae-plugin</artifactId>
-                <version>0.5.0</version>
+                <version>0.5.9</version>
             </plugin>
 
             <!--
@@ -439,9 +439,7 @@
         <repository>
             <id>maven-gae-plugin-repo</id>
             <name>maven-gae-plugin repository</name>
-            <url>
-                http://maven-gae-plugin.googlecode.com/svn/repository
-            </url>
+            <url>http://maven-gae-plugin.googlecode.com/svn/repository</url>
         </repository>
         <repository>
             <snapshots>
