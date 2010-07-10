@@ -20,6 +20,11 @@
           <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.6" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-jdk14:1.5.6" />
+          <element id="library" level="project" name="Maven: org.jmock:jmock:2.5.1" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-library:1.1" />
+          <element id="library" level="project" name="Maven: org.jmock:jmock-junit4:2.5.1" />
+          <element id="library" level="project" name="Maven: junit:junit-dep:4.4" />
         </element>
       </element>
       <element id="gwt-compiler-output" facet="thirtydaytrial/gwt/GWT" />
