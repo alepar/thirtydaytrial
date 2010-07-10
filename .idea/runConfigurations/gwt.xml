@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="gwt" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+    <module name="thirtydaytrial" />
+    <option name="RUN_PAGE" value="Tdt.html" />
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method>
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="thirtydaytrial:war exploded" />
+      </option>
+    </method>
+  </configuration>
+</component>
