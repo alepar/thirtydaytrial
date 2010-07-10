@@ -13,6 +13,13 @@
 
     <dependencies>
 
+        <!-- luu dependencies -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>1.6</version>
+        </dependency>
+
         <!--
             jars from GAE's "lib/user" must be added as compile-time
             dependencies, as described here in "Copying JARs" section:
@@ -142,11 +149,13 @@
             <groupId>org.jmock</groupId>
             <artifactId>jmock</artifactId>
             <version>2.5.1</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jmock</groupId>
             <artifactId>jmock-junit4</artifactId>
             <version>2.5.1</version>
+            <scope>test</scope>
         </dependency>
         <!--
             GAE libraries for local testing as described here:

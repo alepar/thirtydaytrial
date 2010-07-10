@@ -8,6 +8,7 @@
           <element id="module-output" name="thirtydaytrial" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: joda-time:joda-time:1.6" />
           <element id="library" level="project" name="Maven: javax.jdo:jdo2-api:2.3-eb" />
           <element id="library" level="project" name="Maven: javax.transaction:jta:1.1" />
           <element id="library" level="project" name="Maven: com.google.appengine.orm:datanucleus-appengine:1.0.4.1" />
@@ -20,11 +21,6 @@
           <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.6" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-jdk14:1.5.6" />
-          <element id="library" level="project" name="Maven: org.jmock:jmock:2.5.1" />
-          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
-          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-library:1.1" />
-          <element id="library" level="project" name="Maven: org.jmock:jmock-junit4:2.5.1" />
-          <element id="library" level="project" name="Maven: junit:junit-dep:4.4" />
         </element>
       </element>
       <element id="gwt-compiler-output" facet="thirtydaytrial/gwt/GWT" />
