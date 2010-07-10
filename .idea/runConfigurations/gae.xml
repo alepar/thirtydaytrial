@@ -20,6 +20,11 @@
         <option name="PROGRAM_PARAMETERS" value="" />
       </SHUTDOWN>
     </ConfigurationWrapper>
-    <method />
+    <method>
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="thirtydaytrial:war exploded" />
+      </option>
+      <option name="Maven.BeforeRunTask" enabled="false" file="$PROJECT_DIR$/pom.xml" goal="package" />
+    </method>
   </configuration>
 </component>
