@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-incubator/2.0.1/gwt-incubator-2.0.1-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-incubator/2.0.1/gwt-incubator-2.0.1.jar!/" />
     </SOURCES>
   </library>
 </component>
