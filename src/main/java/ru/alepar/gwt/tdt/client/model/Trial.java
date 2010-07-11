@@ -16,4 +16,10 @@ public class Trial {
     public void setName(String name) {
         this.name = name;
     }
+
+    public static Trial from(Trial that) {
+        Trial result = new Trial();
+        result.name = that.name;
+        return result;
+    }
 }
