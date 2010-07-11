@@ -1,6 +1,8 @@
 package ru.alepar.tdt.backend.jdo.dao;
 
 import ru.alepar.tdt.backend.jdo.PMF;
+import ru.alepar.tdt.backend.jdo.dao.db.JdoSession;
+import ru.alepar.tdt.backend.jdo.dao.memcached.MemcachedSession;
 
 /**
  * User: looser
@@ -10,6 +12,7 @@ public final class DaoSessionFactory {
     private DaoSessionFactory() {}
 
     public static DaoSession session() {
-        return new JdoSession(PMF.get());
+        JdoSession baseSession = new JdoSession(PMF.get());
+        return new MemcachedSession(baseSession);
     }
 }

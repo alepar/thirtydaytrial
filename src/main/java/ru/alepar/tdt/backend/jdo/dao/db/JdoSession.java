@@ -1,4 +1,9 @@
-package ru.alepar.tdt.backend.jdo.dao;
+package ru.alepar.tdt.backend.jdo.dao.db;
+
+import ru.alepar.tdt.backend.jdo.dao.DaoSession;
+import ru.alepar.tdt.backend.jdo.dao.UserAccountDao;
+import ru.alepar.tdt.backend.jdo.dao.db.UserAccountJdoDao;
+import ru.alepar.tdt.backend.jdo.dao.db.UserTrialJdoDao;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -32,13 +37,13 @@ public class JdoSession implements DaoSession {
     }
 
     @Override
-    public UserTrialDao userTrial() {
-        return new UserTrialDao(this);
+    public UserTrialJdoDao userTrial() {
+        return new UserTrialJdoDao(this);
     }
 
     @Override
     public UserAccountDao userAccount() {
-        return new UserAccountDao(this);
+        return new UserAccountJdoDao(this);
     }
 
     private void assertPmIsOpen() {

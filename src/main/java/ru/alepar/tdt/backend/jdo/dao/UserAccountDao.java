@@ -4,19 +4,8 @@ import ru.alepar.tdt.backend.jdo.model.UserAccount;
 
 /**
  * User: looser
- * Date: 10.07.2010
+ * Date: 11.07.2010
  */
-public class UserAccountDao extends BaseDao {
-    public UserAccountDao(JdoSession session) {
-        super(session);
-    }
-
-    public void insert(UserAccount userAccount) {
-        pm().makePersistent(userAccount);
-    }
-
-    public UserAccount find(String id) {
-        return pm().getObjectById(UserAccount.class, id);
-    }
+public interface UserAccountDao extends BaseDao<UserAccount> {
 
 }
