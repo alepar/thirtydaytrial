@@ -31,7 +31,7 @@ public class UserAccountDaoSystemTest {
         helper.tearDown();
     }
 
-    @Test @Ignore("make maven run these tests at a good time") 
+    @Test 
     public void canFindUserAfterInserting() {
         UserAccount original = new UserAccount(ID, "login", "email");
 
