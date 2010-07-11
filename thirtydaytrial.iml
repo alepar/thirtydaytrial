@@ -13,9 +13,12 @@
       </configuration>
       <facet type="google-app-engine" name="Google App Engine">
         <configuration>
-          <password>df92df93dfc4dfd0dfd9dfd0dfc7dfce</password>
+          <files-to-enhance>
+            <file path="$MODULE_DIR$/src/main/java" />
+            <file path="$MODULE_DIR$/src/main/resources" />
+          </files-to-enhance>
+          <run-enhancer-on-make>true</run-enhancer-on-make>
           <sdk-home-path>$MAVEN_REPOSITORY$/com/google/appengine/appengine-java-sdk/1.3.5/appengine-java-sdk-1.3.5</sdk-home-path>
-          <email>alepar@gmail.com</email>
         </configuration>
       </facet>
     </facet>
@@ -31,24 +34,16 @@
         </packaging>
       </configuration>
     </facet>
-    <facet type="jpa" name="JPA">
-      <configuration>
-        <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="" />
-        <datasource-mapping>
-          <factory-entry name="transactions-optional" />
-        </datasource-mapping>
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/webapp/META-INF/persistence.xml" />
-      </configuration>
-    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test-system/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/WEB-INF" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -64,6 +59,7 @@
     <orderEntry type="library" exported="" scope="RUNTIME" name="Maven: com.google.appengine:geronimo-jpa_3.0_spec:1.1.1" level="project" />
     <orderEntry type="library" exported="" name="Maven: com.google.gwt:gwt-servlet:2.0.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-user:2.0.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-incubator:2.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.geronimo.specs:geronimo-servlet_2.5_spec:1.2" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.slf4j:slf4j-api:1.5.6" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.slf4j:slf4j-jdk14:1.5.6" level="project" />

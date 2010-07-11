@@ -1,60 +1,33 @@
 package ru.alepar.gwt.tdt.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
+import ru.alepar.gwt.tdt.client.model.Trial;
+import ru.alepar.gwt.tdt.client.presenter.TrialEditor;
+import ru.alepar.gwt.tdt.client.view.TrialEditorDisplay;
 
-/**
- * Entry point classes define <code>onModuleLoad()</code>
- */
 public class Tdt implements EntryPoint {
 
     /**
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        final Button button = new Button("Click me");
-        final Label label = new Label();
+        final HandlerManager handlerManager = new HandlerManager(null);
 
-        button.addClickHandler(new ClickHandler() {
-            public void onClick(ClickEvent event) {
-                if (label.getText().equals("")) {
-                    TdtService.App.getInstance().getMessage("Hello, World!", new MyAsyncCallback(label));
-                } else {
-                    label.setText("");
-                }
-            }
-        });
-
-        // Assume that the host HTML has elements defined whose
-        // IDs are "slot1", "slot2".  In a real app, you probably would not want
-        // to hard-code IDs.  Instead, you could, for example, search for all
-        // elements with a particular CSS class and replace them with widgets.
-        //
-        RootPanel.get("slot1").add(button);
-        RootPanel.get("slot2").add(label);
+        final TrialEditorDisplay trialEditorDisplay = new TrialEditorDisplay();
+        final TrialEditor trialEditor = new TrialEditor(trialEditorDisplay);
+        trialEditor.editTrial(new Trial());
+        RootPanel.get("editor_trial").add(trialEditorDisplay);
 
         AuthService.App.getInstance().getAuth(new AuthAsyncCallBack(RootPanel.get("signin").getElement()));
-    }
-
-    private static class MyAsyncCallback implements AsyncCallback<String> {
-        private Label label;
-
-        public MyAsyncCallback(Label label) {
-            this.label = label;
-        }
-
-        public void onSuccess(String result) {
-            DOM.setInnerHTML(label.getElement(), result);
-        }
-
-        public void onFailure(Throwable throwable) {
-            label.setText("Failed to receive answer from server!");
-        }
     }
 
     private static class AuthAsyncCallBack implements AsyncCallback<AuthService.AuthResponse> {

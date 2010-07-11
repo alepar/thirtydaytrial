@@ -1,0 +1,21 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+    xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <g:HTMLPanel>
+        <table width="100%">
+            <tr>
+                <td>Trial name:</td>
+                <td><g:TextBox ui:field="nameField"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <g:Button ui:field="saveButton" text="Save"/>
+                    <g:Button ui:field="cancelButton" text="Cancel"/>
+                </td>
+            </tr>
+        </table>
+    </g:HTMLPanel>
+
+</ui:UiBinder>

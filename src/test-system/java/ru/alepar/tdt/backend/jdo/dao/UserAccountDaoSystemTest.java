@@ -4,6 +4,7 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.alepar.tdt.backend.jdo.model.UserAccount;
 
@@ -30,20 +31,19 @@ public class UserAccountDaoSystemTest {
         helper.tearDown();
     }
 
-    @Test
+    @Test @Ignore("make maven run these tests at a good time") 
     public void canFindUserAfterInserting() {
-        DaoSession firstSession = session();
         UserAccount original = new UserAccount(ID, "login", "email");
 
+        DaoSession firstSession = session();
         try {
             firstSession.userAccount().insert(original);
-            firstSession.commit();
         } finally {
             firstSession.close();
         }
 
-        DaoSession secondSession = session();
         UserAccount newOne;
+        DaoSession secondSession = session();
         try {
             newOne = secondSession.userAccount().find(ID);
         } finally {
@@ -52,4 +52,5 @@ public class UserAccountDaoSystemTest {
 
         assertThat(newOne, equalTo(original));
     }
+
 }

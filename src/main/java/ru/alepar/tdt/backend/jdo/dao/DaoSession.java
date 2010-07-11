@@ -9,6 +9,8 @@ import javax.jdo.PersistenceManager;
 public interface DaoSession {
     PersistenceManager pm();
 
+    void close();
+
     UserTrialDao userTrial();
 
     UserAccountDao userAccount();

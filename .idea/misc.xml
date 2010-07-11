@@ -43,7 +43,6 @@
     </option>
     <option name="activeProfiles">
       <list>
-        <option value="alepar" />
         <option value="integration-build" />
         <option value="release-build" />
       </list>

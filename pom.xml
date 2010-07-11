@@ -102,6 +102,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-incubator</artifactId>
+            <version>2.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!--
             J2EE Servlet API. We need it to compile IndexServlet class.
             You can probably remove it, if you don't explicitly use

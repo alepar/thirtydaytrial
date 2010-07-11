@@ -13,13 +13,13 @@ import java.io.Serializable;
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class UserAccount implements Serializable {
     @PrimaryKey
-    String id;
+    private String id;
 
     @Persistent
-    String login;
+    private String login;
 
     @Persistent
-    String email;
+    private String email;
 
     public UserAccount(String id, String login, String email) {
         this.id = id;
