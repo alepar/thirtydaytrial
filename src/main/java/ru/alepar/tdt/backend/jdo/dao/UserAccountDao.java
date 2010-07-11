@@ -7,7 +7,7 @@ import ru.alepar.tdt.backend.jdo.model.UserAccount;
  * Date: 10.07.2010
  */
 public class UserAccountDao extends BaseDao {
-    public UserAccountDao(DaoSession session) {
+    public UserAccountDao(JdoSession session) {
         super(session);
     }
 

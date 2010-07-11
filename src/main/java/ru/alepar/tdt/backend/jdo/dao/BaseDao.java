@@ -7,9 +7,9 @@ import javax.jdo.PersistenceManager;
  * Date: 11.07.2010
  */
 public class BaseDao {
-    private final DaoSession session;
+    private final JdoSession session;
 
-    public BaseDao(DaoSession session) {
+    public BaseDao(JdoSession session) {
         this.session = session;
     }
 

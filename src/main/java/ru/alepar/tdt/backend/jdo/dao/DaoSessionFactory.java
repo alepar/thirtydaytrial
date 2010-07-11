@@ -10,6 +10,6 @@ public final class DaoSessionFactory {
     private DaoSessionFactory() {}
 
     public static DaoSession session() {
-        return new JdoSession(PMF.get().getPersistenceManager());
+        return new JdoSession(PMF.get());
     }
 }

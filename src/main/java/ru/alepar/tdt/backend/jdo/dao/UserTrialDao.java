@@ -9,7 +9,7 @@ import javax.jdo.PersistenceManager;
  * Date: 11.07.2010
  */
 public class UserTrialDao extends BaseDao {
-    public UserTrialDao(DaoSession session) {
+    public UserTrialDao(JdoSession session) {
         super(session);
     }
 
