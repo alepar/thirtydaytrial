@@ -2,6 +2,8 @@
 
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
+    <!-- Inherit GWT incubator table -->
+    <inherits name='com.google.gwt.gen2.table.Table'/>
 
     <!-- Specify the app entry point class.                   -->
     <entry-point class='ru.alepar.gwt.tdt.client.Tdt'/>

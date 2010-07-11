@@ -6,4 +6,8 @@ package ru.alepar.gwt.tdt.client.presenter;
  * Time: 4:39:26 PM
  */
 public class TrialsTable {
+
+    public interface Display {
+        
+    }
 }
