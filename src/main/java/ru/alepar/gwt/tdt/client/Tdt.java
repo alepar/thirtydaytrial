@@ -10,6 +10,8 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
+import ru.alepar.gwt.tdt.client.model.Trial;
+import ru.alepar.gwt.tdt.client.presenter.TrialEditor;
 import ru.alepar.gwt.tdt.client.view.TrialEditorDisplay;
 
 public class Tdt implements EntryPoint {
@@ -20,7 +22,10 @@ public class Tdt implements EntryPoint {
     public void onModuleLoad() {
         final HandlerManager handlerManager = new HandlerManager(null);
 
-        RootPanel.get("trialeditor").add(new TrialEditorDisplay());
+        final TrialEditorDisplay trialEditorDisplay = new TrialEditorDisplay();
+        final TrialEditor trialEditor = new TrialEditor(trialEditorDisplay);
+        trialEditor.editTrial(new Trial());
+        RootPanel.get("editor_trial").add(trialEditorDisplay);
 
         AuthService.App.getInstance().getAuth(new AuthAsyncCallBack(RootPanel.get("signin").getElement()));
     }

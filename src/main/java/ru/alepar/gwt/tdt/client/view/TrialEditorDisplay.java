@@ -1,12 +1,10 @@
 package ru.alepar.gwt.tdt.client.view;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.*;
 import ru.alepar.gwt.tdt.client.presenter.TrialEditor;
 
 /**
@@ -22,6 +20,12 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     @UiField
     TextBox nameField;
 
+    @UiField
+    Button saveButton;
+
+    @UiField
+    Button cancelButton;
+
     public TrialEditorDisplay() {
         initWidget(uiBinder.createAndBindUi(this));
     }
@@ -29,5 +33,15 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     @Override
     public HasText getNameField() {
         return nameField;
+    }
+
+    @Override
+    public HasClickHandlers getSaveButton() {
+       return saveButton;
+    }
+
+    @Override
+    public HasClickHandlers getCancelButton() {
+        return cancelButton;
     }
 }
