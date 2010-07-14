@@ -1,4 +1,4 @@
-package ru.alepar.tdt.backend.jdo.model;
+package ru.alepar.tdt.backend.model;
 
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;

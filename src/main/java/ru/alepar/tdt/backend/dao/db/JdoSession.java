@@ -1,9 +1,7 @@
-package ru.alepar.tdt.backend.jdo.dao.db;
+package ru.alepar.tdt.backend.dao.db;
 
-import ru.alepar.tdt.backend.jdo.dao.DaoSession;
-import ru.alepar.tdt.backend.jdo.dao.UserAccountDao;
-import ru.alepar.tdt.backend.jdo.dao.db.UserAccountJdoDao;
-import ru.alepar.tdt.backend.jdo.dao.db.UserTrialJdoDao;
+import ru.alepar.tdt.backend.dao.DaoSession;
+import ru.alepar.tdt.backend.dao.UserAccountDao;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;

@@ -1,7 +1,7 @@
-package ru.alepar.tdt.backend.jdo.dao.memcached;
+package ru.alepar.tdt.backend.dao.memcached;
 
-import ru.alepar.tdt.backend.jdo.dao.UserAccountDao;
-import ru.alepar.tdt.backend.jdo.model.UserAccount;
+import ru.alepar.tdt.backend.dao.UserAccountDao;
+import ru.alepar.tdt.backend.model.UserAccount;
 
 /**
  * User: looser

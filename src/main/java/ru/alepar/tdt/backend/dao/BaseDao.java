@@ -1,4 +1,4 @@
-package ru.alepar.tdt.backend.jdo.dao;
+package ru.alepar.tdt.backend.dao;
 
 /**
  * User: looser

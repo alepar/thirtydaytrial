@@ -1,7 +1,7 @@
-package ru.alepar.tdt.backend.jdo.dao.db;
+package ru.alepar.tdt.backend.dao.db;
 
-import ru.alepar.tdt.backend.jdo.dao.UserTrialDao;
-import ru.alepar.tdt.backend.jdo.model.UserTrial;
+import ru.alepar.tdt.backend.dao.UserTrialDao;
+import ru.alepar.tdt.backend.model.UserTrial;
 
 import javax.jdo.PersistenceManager;
 

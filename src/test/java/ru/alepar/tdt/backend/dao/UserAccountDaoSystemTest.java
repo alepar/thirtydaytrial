@@ -1,16 +1,15 @@
-package ru.alepar.tdt.backend.jdo.dao;
+package ru.alepar.tdt.backend.dao;
 
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import ru.alepar.tdt.backend.jdo.model.UserAccount;
+import ru.alepar.tdt.backend.model.UserAccount;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-import static ru.alepar.tdt.backend.jdo.dao.DaoSessionFactory.*;
+import static ru.alepar.tdt.backend.dao.DaoSessionFactory.*;
 
 /**
  * User: looser
@@ -37,6 +36,7 @@ public class UserAccountDaoSystemTest {
 
         DaoSession firstSession = session();
         try {
+            firstSession.open();
             firstSession.userAccount().insert(original);
         } finally {
             firstSession.close();
@@ -45,6 +45,7 @@ public class UserAccountDaoSystemTest {
         UserAccount newOne;
         DaoSession secondSession = session();
         try {
+            secondSession.open();
             newOne = secondSession.userAccount().find(ID);
         } finally {
             secondSession.close();

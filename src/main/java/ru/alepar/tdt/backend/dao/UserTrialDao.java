@@ -1,6 +1,6 @@
-package ru.alepar.tdt.backend.jdo.dao;
+package ru.alepar.tdt.backend.dao;
 
-import ru.alepar.tdt.backend.jdo.model.UserTrial;
+import ru.alepar.tdt.backend.model.UserTrial;
 
 /**
  * User: looser

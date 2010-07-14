@@ -1,4 +1,4 @@
-package ru.alepar.tdt.backend.jdo.dao.db;
+package ru.alepar.tdt.backend.dao.db;
 
 import javax.jdo.PersistenceManager;
 

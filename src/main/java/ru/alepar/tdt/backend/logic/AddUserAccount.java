@@ -1,7 +1,7 @@
 package ru.alepar.tdt.backend.logic;
 
-import ru.alepar.tdt.backend.jdo.dao.DaoSession;
-import ru.alepar.tdt.backend.jdo.model.UserAccount;
+import ru.alepar.tdt.backend.dao.DaoSession;
+import ru.alepar.tdt.backend.model.UserAccount;
 
 /**
  * User: looser
