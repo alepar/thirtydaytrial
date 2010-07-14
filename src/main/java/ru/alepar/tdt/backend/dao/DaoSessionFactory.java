@@ -1,7 +1,7 @@
 package ru.alepar.tdt.backend.dao;
 
-import ru.alepar.tdt.backend.dao.db.PMF;
-import ru.alepar.tdt.backend.dao.db.JdoSession;
+import ru.alepar.tdt.backend.dao.jdo.PMF;
+import ru.alepar.tdt.backend.dao.jdo.JdoSession;
 import ru.alepar.tdt.backend.dao.memcached.MemcachedSession;
 
 /**

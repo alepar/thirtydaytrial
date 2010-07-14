@@ -1,4 +1,4 @@
-package ru.alepar.tdt.backend.dao.db;
+package ru.alepar.tdt.backend.dao.jdo;
 
 import ru.alepar.tdt.backend.dao.UserTrialDao;
 import ru.alepar.tdt.backend.model.UserTrial;
