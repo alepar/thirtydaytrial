@@ -31,7 +31,7 @@ public class UserAccountDaoSystemTest {
         helper.tearDown();
     }
 
-    @Test 
+    @Test @Ignore("test integration build") 
     public void canFindUserAfterInserting() {
         UserAccount original = new UserAccount(ID, "login", "email");
 
