@@ -14,7 +14,7 @@ import ru.alepar.gwt.tdt.client.model.Trial;
  */
 public class TrialEditor {
 
-    private Display display;
+    private final Display display;
     private Trial trial;
 
     public interface Display {
