@@ -1,7 +1,6 @@
 package ru.alepar.gwt.tdt.client.history;
 
 import com.google.gwt.event.shared.EventHandler;
-import com.google.gwt.event.shared.GwtEvent;
 import ru.alepar.tdt.backend.model.Trial;
 
 /**

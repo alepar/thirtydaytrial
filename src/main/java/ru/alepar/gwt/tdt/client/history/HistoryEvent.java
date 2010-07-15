@@ -5,7 +5,6 @@ import com.google.gwt.event.shared.GwtEvent;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * User: alepar
