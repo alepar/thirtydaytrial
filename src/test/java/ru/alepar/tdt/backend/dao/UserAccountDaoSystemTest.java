@@ -7,7 +7,7 @@ import ru.alepar.tdt.testsupport.rules.Datastore;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static ru.alepar.tdt.backend.dao.DaoSessionFactory.session;
+import static ru.alepar.tdt.backend.dao.StaticDaoSessionFactory.session;
 
 /**
  * User: looser
