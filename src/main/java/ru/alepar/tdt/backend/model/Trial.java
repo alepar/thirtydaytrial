@@ -1,13 +1,14 @@
 package ru.alepar.tdt.backend.model;
 
 import javax.persistence.Id;
+import java.io.Serializable;
 
 
 /**
  * User: looser
  * Date: 11.07.2010
  */
-public class Trial {
+public class Trial  implements Serializable {
     @Id Long id;
 
     String title;

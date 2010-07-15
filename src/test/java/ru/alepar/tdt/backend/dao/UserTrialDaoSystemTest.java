@@ -3,11 +3,8 @@ package ru.alepar.tdt.backend.dao;
 import com.googlecode.objectify.Key;
 import org.junit.Rule;
 import org.junit.Test;
-import ru.alepar.tdt.backend.model.Trial;
-import ru.alepar.tdt.backend.model.TrialWhen;
-import ru.alepar.tdt.backend.model.UserAccount;
-import ru.alepar.tdt.backend.model.UserTrial;
-import ru.alepar.tdt.testsupport.rules.Datastore;
+import ru.alepar.tdt.backend.model.*;
+import ru.alepar.tdt.testsupport.rules.TestingDatastore;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -18,7 +15,7 @@ import static ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl.sessionInstance;
  * Date: Jul 15, 2010
  */
 public class UserTrialDaoSystemTest {
-    @Rule public Datastore datastore = new Datastore();
+    @Rule public TestingDatastore datastore = new TestingDatastore();
 
     @Test
     public void canFindUserTrialAfterInserting() {
@@ -28,7 +25,9 @@ public class UserTrialDaoSystemTest {
         Key<UserTrial> userTrialKey;
         try {
             firstSession.open();
-            Key<UserAccount> userKey = firstSession.userAccount().insert(new UserAccount("id", "login", "email"));
+            Key<UserAccount> userKey = firstSession.userAccount().insert(
+                    new UserAccount(new UserId("id"), new UserLogin("login"), new UserEmail("email"))
+            );
             Key<Trial> trialKey = firstSession.trial().insert(new Trial("trial title", "trial content"));
             orig = new UserTrial(userKey, trialKey, new TrialWhen("some data"));
             userTrialKey = firstSession.userTrial().insert(orig);

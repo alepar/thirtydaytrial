@@ -3,7 +3,10 @@ package ru.alepar.tdt.backend.dao;
 import org.junit.Rule;
 import org.junit.Test;
 import ru.alepar.tdt.backend.model.UserAccount;
-import ru.alepar.tdt.testsupport.rules.Datastore;
+import ru.alepar.tdt.backend.model.UserEmail;
+import ru.alepar.tdt.backend.model.UserId;
+import ru.alepar.tdt.backend.model.UserLogin;
+import ru.alepar.tdt.testsupport.rules.TestingDatastore;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -14,13 +17,13 @@ import static ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl.sessionInstance;
  * Date: 10.07.2010
  */
 public class UserAccountDaoSystemTest {
-    @Rule public Datastore datastore = new Datastore();
+    @Rule public TestingDatastore datastore = new TestingDatastore();
 
-    private static final String ID = "id";
+    private static final UserId ID = new UserId("id");
 
     @Test
     public void canFindUserAfterInserting() {
-        UserAccount original = new UserAccount(ID, "login", "email");
+        UserAccount original = new UserAccount(ID, new UserLogin("login"), new UserEmail("email"));
 
         DaoSession firstSession = sessionInstance();
         try {
@@ -34,7 +37,7 @@ public class UserAccountDaoSystemTest {
         DaoSession secondSession = sessionInstance();
         try {
             secondSession.open();
-            newOne = secondSession.userAccount().find(ID);
+            newOne = secondSession.userAccount().find(ID.value);
         } finally {
             secondSession.close();
         }

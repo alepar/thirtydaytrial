@@ -24,28 +24,34 @@ public class UserAccount implements Serializable {
         this.email = email;
     }
 
-    public String getId() {
-        return id;
+    public UserAccount(UserId id, UserLogin login, UserEmail email) {
+        this.id = id.value;
+        this.login = login.value;
+        this.email = email.value;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public UserId getId() {
+        return new UserId(id);
     }
 
-    public String getLogin() {
-        return login;
+    public void setId(UserId id) {
+        this.id = id.value;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public UserLogin getLogin() {
+        return new UserLogin(login);
     }
 
-    public String getEmail() {
-        return email;
+    public void setLogin(UserLogin login) {
+        this.login = login.value;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public UserEmail getEmail() {
+        return new UserEmail(email);
+    }
+
+    public void setEmail(UserEmail email) {
+        this.email = email.value;
     }
 
     @Override

@@ -8,7 +8,7 @@ import org.junit.rules.ExternalResource;
  * User: looser
  * Date: Jul 15, 2010
  */
-public class Datastore extends ExternalResource {
+public class TestingDatastore extends ExternalResource {
     private final LocalServiceTestHelper helper =
             new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
 

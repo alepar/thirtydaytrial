@@ -5,6 +5,8 @@
     <!-- Inherit GWT incubator table -->
     <inherits name='com.google.gwt.gen2.table.Table'/>
 
+    <inherits name='ru.alepar.tdt.backend.TdtModel'/>
+
     <!-- Specify the app entry point class.                   -->
     <entry-point class='ru.alepar.gwt.tdt.client.Tdt'/>
 

@@ -5,13 +5,14 @@ import com.googlecode.objectify.annotation.Parent;
 
 import javax.persistence.Embedded;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 
 /**
  * User: looser
  * Date: 11.07.2010
  */
-public class UserTrial {
+public class UserTrial implements Serializable {
     @Id Long id;
 
     @Parent Key<UserAccount> user;

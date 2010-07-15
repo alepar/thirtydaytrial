@@ -1,0 +1,7 @@
+<module>
+
+    <inherits name='com.googlecode.objectify.Objectify'/>
+
+    <source path="model" />
+
+</module>
