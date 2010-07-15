@@ -4,7 +4,6 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 import ru.alepar.gwt.tdt.client.action.user.AddUserAction;
@@ -14,6 +13,7 @@ import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserLogin;
 import ru.alepar.tdt.testsupport.rules.LocalGae;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -32,15 +32,19 @@ public class TdtServiceSystemTest {
     @Test
     public void commandsAreConvertedAndResultIsStoredInTheDatabase() {
         User user = UserServiceFactory.getUserService().getCurrentUser();
-        assertThat(user.getUserId(), Matchers.equalTo(LocalGae.MY_USER_ID));
+        assertThat(user.getUserId(), equalTo(LocalGae.MY_USER_ID));
 
         new TdtServiceImpl().execute(new AddUserAction(LOGIN));
 
+        assertUserExistsInDb(LocalGae.MY_USER_ID, LOGIN);
+    }
+
+    private void assertUserExistsInDb(String userId, UserLogin login) {
         DaoSession session = DaoSessionFactoryImpl.sessionInstance();
         session.open();
         try {
-            UserAccount userAccount = session.userAccount().find(LocalGae.MY_USER_ID);
-            assertThat(userAccount.getLogin(), Matchers.equalTo(LOGIN));
+            UserAccount userAccount = session.userAccount().find(userId);
+            assertThat(userAccount.getLogin(), equalTo(login));
         } finally {
             session.close();
         }
