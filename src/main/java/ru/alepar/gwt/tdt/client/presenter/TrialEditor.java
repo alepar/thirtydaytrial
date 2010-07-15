@@ -3,27 +3,31 @@ package ru.alepar.gwt.tdt.client.presenter;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
-import ru.alepar.gwt.tdt.client.model.Trial;
+import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
+import ru.alepar.gwt.tdt.client.history.EditTrialHistoryEvent;
+import ru.alepar.tdt.backend.model.Trial;
 
 /**
  * User: alepar
  * Date: Jul 11, 2010
  * Time: 1:07:35 PM
  */
-public class TrialEditor {
+public class TrialEditor implements EditTrialHistoryEvent.Handler {
 
-    private Display display;
+    private final HandlerManager handlerManager;
+    private final Display display;
     private Trial trial;
 
     public interface Display {
-        HasText getNameField();
+        HasText getTitleField();
         HasClickHandlers getSaveButton();
         HasClickHandlers getCancelButton();
     }
 
-    public TrialEditor(Display display) {
+    public TrialEditor(HandlerManager handlerManager, Display display) {
+        this.handlerManager = handlerManager;
         this.display = display;
         bindDisplay();
     }
@@ -43,9 +47,14 @@ public class TrialEditor {
         });
     }
 
+    @Override
+    public void onTrialEdit(EditTrialHistoryEvent p) {
+        editTrial(p.trial);
+    }
+
     private void doSave() {
-        this.trial.setName(display.getNameField().getText());
-        Window.alert("saved trial, name="+this.trial.getName());
+        trial.setTitle(display.getTitleField().getText());
+        handlerManager.fireEvent(new TrialChangedEvent(Trial.from(trial)));
     }
 
     private void doCancel() {
@@ -58,6 +67,6 @@ public class TrialEditor {
     }
 
     private void updateDisplay() {
-        display.getNameField().setText(this.trial.getName());
+        display.getTitleField().setText(this.trial.getTitle());
     }
 }

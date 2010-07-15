@@ -15,10 +15,10 @@ import ru.alepar.gwt.tdt.client.presenter.TrialEditor;
 public class TrialEditorDisplay extends Composite implements TrialEditor.Display {
 
     interface TrialEditorUiBinder extends UiBinder<Widget, TrialEditorDisplay> {}
-    private static TrialEditorUiBinder uiBinder = GWT.create(TrialEditorUiBinder.class);
+    private static final TrialEditorUiBinder uiBinder = GWT.create(TrialEditorUiBinder.class);
 
     @UiField
-    TextBox nameField;
+    TextBox titleField;
 
     @UiField
     Button saveButton;
@@ -31,8 +31,8 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     }
 
     @Override
-    public HasText getNameField() {
-        return nameField;
+    public HasText getTitleField() {
+        return titleField;
     }
 
     @Override
