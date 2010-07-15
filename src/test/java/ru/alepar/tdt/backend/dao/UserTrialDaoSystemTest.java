@@ -11,7 +11,7 @@ import ru.alepar.tdt.testsupport.rules.Datastore;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static ru.alepar.tdt.backend.dao.StaticDaoSessionFactory.session;
+import static ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl.sessionInstance;
 
 /**
  * User: looser
@@ -24,7 +24,7 @@ public class UserTrialDaoSystemTest {
     public void canFindUserTrialAfterInserting() {
         UserTrial orig;
 
-        DaoSession firstSession = session();
+        DaoSession firstSession = sessionInstance();
         Key<UserTrial> userTrialKey;
         try {
             firstSession.open();
@@ -37,7 +37,7 @@ public class UserTrialDaoSystemTest {
         }
 
         UserTrial newOne;
-        DaoSession secondSession = session();
+        DaoSession secondSession = sessionInstance();
         try {
             secondSession.open();
             newOne = secondSession.userTrial().find(userTrialKey);

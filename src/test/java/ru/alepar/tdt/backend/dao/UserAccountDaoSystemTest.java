@@ -7,7 +7,7 @@ import ru.alepar.tdt.testsupport.rules.Datastore;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-import static ru.alepar.tdt.backend.dao.StaticDaoSessionFactory.session;
+import static ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl.sessionInstance;
 
 /**
  * User: looser
@@ -22,7 +22,7 @@ public class UserAccountDaoSystemTest {
     public void canFindUserAfterInserting() {
         UserAccount original = new UserAccount(ID, "login", "email");
 
-        DaoSession firstSession = session();
+        DaoSession firstSession = sessionInstance();
         try {
             firstSession.open();
             firstSession.userAccount().insert(original);
@@ -31,7 +31,7 @@ public class UserAccountDaoSystemTest {
         }
 
         UserAccount newOne;
-        DaoSession secondSession = session();
+        DaoSession secondSession = sessionInstance();
         try {
             secondSession.open();
             newOne = secondSession.userAccount().find(ID);
