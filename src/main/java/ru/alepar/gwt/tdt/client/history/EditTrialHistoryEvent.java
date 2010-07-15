@@ -1,4 +1,4 @@
-package ru.alepar.gwt.tdt.client.event;
+package ru.alepar.gwt.tdt.client.history;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
@@ -6,13 +6,18 @@ import ru.alepar.tdt.backend.model.Trial;
 
 /**
  * User: alepar
- * Date: Jul 10, 2010
- * Time: 10:58:52 PM
+ * Date: Jul 15, 2010
+ * Time: 9:45:55 PM
  */
-public class EditTrialHistoryEvent extends GwtEvent<EditTrialHistoryEvent.Handler> {
+public class EditTrialHistoryEvent extends HistoryEvent<EditTrialHistoryEvent.Handler> {
 
     public interface Handler extends EventHandler {
         public void onTrialEdit(EditTrialHistoryEvent p);
+    }
+
+    @Override
+    public String label() {
+        return "edit_trial";
     }
 
     @Override
