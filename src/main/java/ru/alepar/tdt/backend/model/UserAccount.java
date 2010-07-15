@@ -1,25 +1,22 @@
 package ru.alepar.tdt.backend.model;
 
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * User: looser
  * Date: 10.07.2010
  */
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class UserAccount implements Serializable {
-    @PrimaryKey
-    private String id;
+    @Id String id;
 
-    @Persistent
-    private String login;
+    String login;
 
-    @Persistent
-    private String email;
+    String email;
+
+    @SuppressWarnings({"UnusedDeclaration"}) // used by objectify
+    public UserAccount() {
+    }
 
     public UserAccount(String id, String login, String email) {
         this.id = id;

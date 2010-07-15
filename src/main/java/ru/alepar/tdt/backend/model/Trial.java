@@ -1,23 +1,17 @@
 package ru.alepar.tdt.backend.model;
 
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
+import javax.persistence.Id;
+
 
 /**
  * User: looser
  * Date: 11.07.2010
  */
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class Trial {
-    @PrimaryKey
-    String id;
+    @Id String id;
 
-    @Persistent
     String title;
 
-    @Persistent
     String content;
 
     public String getId() {
