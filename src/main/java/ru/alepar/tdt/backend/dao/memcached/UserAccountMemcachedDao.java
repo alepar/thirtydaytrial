@@ -1,5 +1,6 @@
 package ru.alepar.tdt.backend.dao.memcached;
 
+import com.googlecode.objectify.Key;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
 import ru.alepar.tdt.backend.model.UserAccount;
 
@@ -15,9 +16,14 @@ public class UserAccountMemcachedDao implements UserAccountDao {
     }
 
     @Override
-    public void insert(UserAccount userAccount) {
+    public Key<UserAccount> insert(UserAccount userAccount) {
         // invalidate cache
-        delegate.insert(userAccount);
+        return delegate.insert(userAccount);
+    }
+
+    @Override
+    public UserAccount find(Key<UserAccount> id) {
+        return delegate.find(id);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package ru.alepar.tdt.backend.dao.memcached;
 
 import ru.alepar.tdt.backend.dao.DaoSession;
+import ru.alepar.tdt.backend.dao.TrialDao;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
 import ru.alepar.tdt.backend.dao.UserTrialDao;
 
@@ -21,6 +22,11 @@ public class MemcachedSession implements DaoSession {
 
     public void close() {
         delegate.close();
+    }
+
+    @Override
+    public TrialDao trial() {
+        return delegate.trial();
     }
 
     public UserTrialDao userTrial() {

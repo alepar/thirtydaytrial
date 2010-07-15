@@ -9,6 +9,8 @@ public interface DaoSession {
 
     void close();
 
+    TrialDao trial();
+
     UserTrialDao userTrial();
 
     UserAccountDao userAccount();

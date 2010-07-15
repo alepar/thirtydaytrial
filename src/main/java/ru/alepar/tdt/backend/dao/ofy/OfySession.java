@@ -3,6 +3,7 @@ package ru.alepar.tdt.backend.dao.ofy;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import ru.alepar.tdt.backend.dao.DaoSession;
+import ru.alepar.tdt.backend.dao.TrialDao;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
 import ru.alepar.tdt.backend.dao.UserTrialDao;
 
@@ -20,6 +21,7 @@ public class OfySession implements DaoSession {
 
     @Override
     public void open() {
+        assertOfyIsClosed();
         ofy = factory.begin();
     }
 
@@ -29,10 +31,10 @@ public class OfySession implements DaoSession {
         ofy = null;
     }
 
-    private void assertOfyIsOpen() {
-        if (ofy == null) {
-            throw new IllegalStateException("Session is not open");
-        }
+    @Override
+    public TrialDao trial() {
+        assertOfyIsOpen();
+        return new TrialOfyDao(ofy);
     }
 
     @Override
@@ -45,5 +47,17 @@ public class OfySession implements DaoSession {
     public UserAccountDao userAccount() {
         assertOfyIsOpen();
         return new UserAccountOfyDao(ofy);
+    }
+
+    private void assertOfyIsOpen() {
+        if (ofy == null) {
+            throw new IllegalStateException("Session is not opened");
+        }
+    }
+
+    private void assertOfyIsClosed() {
+        if (ofy != null) {
+            throw new IllegalStateException("Session is already opened");
+        }
     }
 }

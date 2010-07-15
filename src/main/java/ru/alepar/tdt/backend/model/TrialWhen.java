@@ -1,39 +1,49 @@
 package ru.alepar.tdt.backend.model;
 
-import java.util.Date;
-
 /**
  * User: looser
  * Date: 11.07.2010
  */
 public class TrialWhen {
-    String id;
-    
-    Date startTime;
-    Date endTime;
-    String recurData;
+    String data;
 
-    public Date getStartTime() {
-        return startTime;
+    @SuppressWarnings({"UnusedDeclaration"}) // used by objectify
+    public TrialWhen() {
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public TrialWhen(String data) {
+        this.data = data;
     }
 
-    public Date getEndTime() {
-        return endTime;
+    public String getData() {
+        return data;
     }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public String getRecurData() {
-        return recurData;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TrialWhen trialWhen = (TrialWhen) o;
+
+        if (data != null ? !data.equals(trialWhen.data) : trialWhen.data != null) return false;
+
+        return true;
     }
 
-    public void setRecurData(String recurData) {
-        this.recurData = recurData;
+    @Override
+    public int hashCode() {
+        return data != null ? data.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "TrialWhen{" +
+                "data='" + data + '\'' +
+                '}';
     }
 }

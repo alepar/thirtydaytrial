@@ -8,17 +8,26 @@ import javax.persistence.Id;
  * Date: 11.07.2010
  */
 public class Trial {
-    @Id String id;
+    @Id Long id;
 
     String title;
 
     String content;
 
-    public String getId() {
+    @SuppressWarnings({"UnusedDeclaration"}) // used by objectify
+    public Trial() {
+    }
+
+    public Trial(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,7 +72,7 @@ public class Trial {
     @Override
     public String toString() {
         return "Trial{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';

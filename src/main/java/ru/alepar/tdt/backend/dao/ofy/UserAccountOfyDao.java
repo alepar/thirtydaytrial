@@ -8,15 +8,10 @@ import ru.alepar.tdt.backend.model.UserAccount;
  * User: looser
  * Date: Jul 15, 2010
  */
-public class UserAccountOfyDao extends BaseOfyDao<UserAccount> implements UserAccountDao {
+public class UserAccountOfyDao extends BaseOfyDao<UserAccount, String> implements UserAccountDao {
 
     public UserAccountOfyDao(Objectify ofy) {
         super(ofy);
-    }
-
-    @Override
-    public UserAccount find(String id) {
-        return ofy().get(UserAccount.class, id);
     }
 
 }

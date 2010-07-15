@@ -8,14 +8,10 @@ import ru.alepar.tdt.backend.model.UserTrial;
  * User: looser
  * Date: Jul 15, 2010
  */
-public class UserTrialOfyDao extends BaseOfyDao<UserTrial> implements UserTrialDao {
+public class UserTrialOfyDao extends BaseOfyDao<UserTrial, Long> implements UserTrialDao {
 
     public UserTrialOfyDao(Objectify ofy) {
         super(ofy);
     }
 
-    @Override
-    public UserTrial find(String id) {
-        return ofy().get(UserTrial.class, id);
-    }
 }
