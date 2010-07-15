@@ -1,7 +1,7 @@
 package ru.alepar.gwt.tdt.client.presenter;
 
 import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
-import ru.alepar.gwt.tdt.client.model.Trial;
+import ru.alepar.tdt.backend.model.Trial;
 
 /**
  * User: alepar

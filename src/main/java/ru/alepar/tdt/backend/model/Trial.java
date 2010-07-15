@@ -19,6 +19,10 @@ public class Trial  implements Serializable {
     public Trial() {
     }
 
+    public Trial(Long id) {
+        this.id = id;
+    }
+
     public Trial(String title, String content) {
         this.title = title;
         this.content = content;
@@ -77,5 +81,13 @@ public class Trial  implements Serializable {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';
+    }
+
+    public static Trial from(Trial that) {
+        Trial result = new Trial();
+        result.id = that.id;
+        result.title = that.title;
+        result.content = that.content;
+        return result;
     }
 }

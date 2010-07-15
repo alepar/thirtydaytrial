@@ -11,17 +11,17 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import ru.alepar.gwt.tdt.client.event.EditTrialHistoryEvent;
 import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
-import ru.alepar.gwt.tdt.client.model.Trial;
 import ru.alepar.gwt.tdt.client.presenter.TrialEditor;
 import ru.alepar.gwt.tdt.client.presenter.TrialsTable;
 import ru.alepar.gwt.tdt.client.view.TrialEditorDisplay;
 import ru.alepar.gwt.tdt.client.view.TrialsTableDisplay;
+import ru.alepar.tdt.backend.model.Trial;
 
 public class Tdt implements EntryPoint {
 
-    private static int trialId;
+    private static long trialId;
 
-    private static Integer nextId() {
+    private static Long nextId() {
         return ++trialId;
     }
 

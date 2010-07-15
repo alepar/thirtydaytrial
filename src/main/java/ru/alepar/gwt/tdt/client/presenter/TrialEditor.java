@@ -7,7 +7,7 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
 import ru.alepar.gwt.tdt.client.event.EditTrialHistoryEvent;
 import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
-import ru.alepar.gwt.tdt.client.model.Trial;
+import ru.alepar.tdt.backend.model.Trial;
 
 /**
  * User: alepar
@@ -21,7 +21,7 @@ public class TrialEditor implements EditTrialHistoryEvent.Handler {
     private Trial trial;
 
     public interface Display {
-        HasText getNameField();
+        HasText getTitleField();
         HasClickHandlers getSaveButton();
         HasClickHandlers getCancelButton();
     }
@@ -53,7 +53,7 @@ public class TrialEditor implements EditTrialHistoryEvent.Handler {
     }
 
     private void doSave() {
-        trial.setName(display.getNameField().getText());
+        trial.setTitle(display.getTitleField().getText());
         handlerManager.fireEvent(new TrialChangedEvent(Trial.from(trial)));
     }
 
@@ -67,6 +67,6 @@ public class TrialEditor implements EditTrialHistoryEvent.Handler {
     }
 
     private void updateDisplay() {
-        display.getNameField().setText(this.trial.getName());
+        display.getTitleField().setText(this.trial.getTitle());
     }
 }

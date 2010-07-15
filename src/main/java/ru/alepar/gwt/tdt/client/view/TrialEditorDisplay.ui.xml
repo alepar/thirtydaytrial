@@ -6,8 +6,8 @@
     <g:HTMLPanel>
         <table width="100%">
             <tr>
-                <td>Trial name:</td>
-                <td><g:TextBox ui:field="nameField"/></td>
+                <td>Trial title:</td>
+                <td><g:TextBox ui:field="titleField"/></td>
             </tr>
             <tr>
                 <td colspan="2">

@@ -2,7 +2,7 @@ package ru.alepar.gwt.tdt.client.event;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
-import ru.alepar.gwt.tdt.client.model.Trial;
+import ru.alepar.tdt.backend.model.Trial;
 
 /**
  * User: alepar

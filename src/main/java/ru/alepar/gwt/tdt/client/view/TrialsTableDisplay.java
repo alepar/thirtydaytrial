@@ -3,8 +3,8 @@ package ru.alepar.gwt.tdt.client.view;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Hyperlink;
-import ru.alepar.gwt.tdt.client.model.Trial;
 import ru.alepar.gwt.tdt.client.presenter.TrialsTable;
+import ru.alepar.tdt.backend.model.Trial;
 
 import java.util.LinkedList;
 
@@ -31,7 +31,7 @@ public class TrialsTableDisplay extends Composite implements TrialsTable.Display
             trials.addLast(trial);
         }
         trialsTable.setText(index, 0, trial.getId().toString());
-        trialsTable.setText(index, 1, trial.getName());
+        trialsTable.setText(index, 1, trial.getTitle());
         trialsTable.setWidget(index, 2, new Hyperlink("edit", "edit_trial"));
     }
 }
