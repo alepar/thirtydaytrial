@@ -38,15 +38,13 @@ public class UserTrialDaoSystemTest {
         UserTrial orig;
 
         DaoSession firstSession = session();
-        long userTrialId;
+        Key<UserTrial> userTrialKey;
         try {
             firstSession.open();
             Key<UserAccount> userKey = firstSession.userAccount().insert(new UserAccount("id", "login", "email"));
             Key<Trial> trialKey = firstSession.trial().insert(new Trial("trial title", "trial content"));
             orig = new UserTrial(userKey, trialKey, new TrialWhen("some data"));
-            firstSession.userTrial().insert(orig);
-
-            userTrialId = orig.getId();
+            userTrialKey = firstSession.userTrial().insert(orig);
         } finally {
             firstSession.close();
         }
@@ -55,7 +53,7 @@ public class UserTrialDaoSystemTest {
         DaoSession secondSession = session();
         try {
             secondSession.open();
-            newOne = secondSession.userTrial().find(userTrialId);
+            newOne = secondSession.userTrial().find(userTrialKey);
         } finally {
             secondSession.close();
         }

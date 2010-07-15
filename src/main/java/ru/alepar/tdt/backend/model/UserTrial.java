@@ -1,6 +1,7 @@
 package ru.alepar.tdt.backend.model;
 
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.annotation.Parent;
 
 import javax.persistence.Embedded;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ import javax.persistence.Id;
 public class UserTrial {
     @Id Long id;
 
-    Key<UserAccount> user;
+    @Parent Key<UserAccount> user;
 
     Key<Trial> trial;
 
