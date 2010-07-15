@@ -16,7 +16,7 @@ import java.util.LinkedList;
 public class TrialsTableDisplay extends Composite implements TrialsTable.Display {
 
     FlexTable trialsTable;
-    LinkedList<Trial> trials = new LinkedList<Trial>();
+    LinkedList<Long> trials = new LinkedList<Long>();
 
     public TrialsTableDisplay() {
         trialsTable = new FlexTable();
@@ -25,10 +25,10 @@ public class TrialsTableDisplay extends Composite implements TrialsTable.Display
 
     @Override
     public void updateTrial(Trial trial) {
-        int index = trials.indexOf(trial);
+        int index = trials.indexOf(trial.getId());
         if(index == -1) {
             index = trials.size();
-            trials.addLast(trial);
+            trials.addLast(trial.getId());
         }
         trialsTable.setText(index, 0, trial.getId().toString());
         trialsTable.setText(index, 1, trial.getTitle());
