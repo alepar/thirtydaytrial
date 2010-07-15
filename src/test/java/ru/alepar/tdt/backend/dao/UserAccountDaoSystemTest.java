@@ -1,36 +1,24 @@
 package ru.alepar.tdt.backend.dao;
 
-import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import ru.alepar.tdt.backend.model.UserAccount;
+import ru.alepar.tdt.testsupport.rules.Datastore;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
-import static ru.alepar.tdt.backend.dao.DaoSessionFactory.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+import static ru.alepar.tdt.backend.dao.DaoSessionFactory.session;
 
 /**
  * User: looser
  * Date: 10.07.2010
  */
 public class UserAccountDaoSystemTest {
-    private final LocalServiceTestHelper helper =
-            new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
+    @Rule public Datastore datastore = new Datastore();
+
     private static final String ID = "id";
 
-    @Before
-    public void setUp() {
-        helper.setUp();
-    }
-
-    @After
-    public void tearDown() {
-        helper.tearDown();
-    }
-
-    @Test 
+    @Test
     public void canFindUserAfterInserting() {
         UserAccount original = new UserAccount(ID, "login", "email");
 

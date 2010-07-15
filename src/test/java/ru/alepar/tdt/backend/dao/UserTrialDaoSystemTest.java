@@ -1,15 +1,13 @@
 package ru.alepar.tdt.backend.dao;
 
-import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.googlecode.objectify.Key;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.TrialWhen;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.testsupport.rules.Datastore;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -20,18 +18,7 @@ import static ru.alepar.tdt.backend.dao.DaoSessionFactory.session;
  * Date: Jul 15, 2010
  */
 public class UserTrialDaoSystemTest {
-    private final LocalServiceTestHelper helper =
-            new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
-
-    @Before
-    public void setUp() {
-        helper.setUp();
-    }
-
-    @After
-    public void tearDown() {
-        helper.tearDown();
-    }
+    @Rule public Datastore datastore = new Datastore();
 
     @Test
     public void canFindUserTrialAfterInserting() {
