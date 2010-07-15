@@ -412,7 +412,7 @@
             Upload to http://0.latest.<applicationName>.appspot.com by
             default
         -->
-        <gae.application.version>0</gae.application.version>
+        <gae.application.version>dev</gae.application.version>
 
         <!-- port defaults to 8080 -->
         <gae.port>80</gae.port>
@@ -435,7 +435,7 @@
         <profile>
             <id>integration-build</id>
             <properties>
-                <gae.application.version>1</gae.application.version>
+                <gae.application.version>ci</gae.application.version>
 
                 <!-- Produce pretty JS during GWT compilation for test environment -->
                 <gwt.style>PRETTY</gwt.style>
@@ -463,7 +463,7 @@
                     During release, set application version in
                     appengine-web.xml to 2
                 -->
-                <gae.application.version>2</gae.application.version>
+                <gae.application.version>rel</gae.application.version>
 
                 <!--
                     Produce compressed JS during GWT compilation for
