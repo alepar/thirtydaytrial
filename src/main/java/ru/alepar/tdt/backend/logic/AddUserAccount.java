@@ -5,8 +5,6 @@ import ru.alepar.gwt.tdt.client.action.TdtVoidResponse;
 import ru.alepar.gwt.tdt.client.action.user.AddUserAction;
 import ru.alepar.tdt.backend.dao.DaoSession;
 import ru.alepar.tdt.backend.dao.DaoSessionFactory;
-import ru.alepar.tdt.backend.logic.core.Goodies;
-import ru.alepar.tdt.backend.logic.core.Requires;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserEmail;
 import ru.alepar.tdt.backend.model.UserId;
@@ -15,7 +13,6 @@ import ru.alepar.tdt.backend.model.UserId;
  * User: looser
  * Date: 11.07.2010
  */
-@Requires({Goodies.USER_ID, Goodies.USER_EMAIL})
 public class AddUserAccount implements Command<TdtVoidResponse> {
     private final DaoSessionFactory sessionFactory;
     private final UserId id;
