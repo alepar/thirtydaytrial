@@ -2,7 +2,13 @@
   <configuration default="false" name="gwt" type="GWT.ConfigurationType" factoryName="GWT Configuration">
     <module name="thirtydaytrial" />
     <option name="RUN_PAGE" value="Tdt.html" />
+    <RunnerSettings RunnerId="Debug">
+      <option name="DEBUG_PORT" value="62986" />
+      <option name="TRANSPORT" value="0" />
+      <option name="LOCAL" value="true" />
+    </RunnerSettings>
     <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Debug" />
     <ConfigurationWrapper RunnerId="Run" />
     <method>
       <option name="BuildArtifacts" enabled="true">
