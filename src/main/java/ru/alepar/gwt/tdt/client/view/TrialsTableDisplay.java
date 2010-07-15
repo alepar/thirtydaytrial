@@ -1,12 +1,12 @@
 package ru.alepar.gwt.tdt.client.view;
 
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.Hyperlink;
 import ru.alepar.gwt.tdt.client.model.Trial;
 import ru.alepar.gwt.tdt.client.presenter.TrialsTable;
 
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 /**
  * User: alepar
