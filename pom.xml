@@ -20,64 +20,19 @@
             <version>1.6</version>
         </dependency>
 
-        <!--
-            jars from GAE's "lib/user" must be added as compile-time
-            dependencies, as described here in "Copying JARs" section:
-            http://code.google.com/appengine/docs/java/tools/ant.html
-        -->
+        <!-- instead of datanucleas jdo -->
         <dependency>
-            <groupId>javax.jdo</groupId>
-            <artifactId>jdo2-api</artifactId>
-            <version>2.3-eb</version>
-            <exclusions>
-                <!--
-                    exclude the legacy javax.transaction:transaction-api
-                    and replace it with javax.transaction:jta (it
-                    appears to be the same thing)
-                -->
-                <exclusion>
-                    <groupId>javax.transaction</groupId>
-                    <artifactId>transaction-api</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.googlecode.objectify</groupId>
+            <artifactId>objectify</artifactId>
+            <version>2.2.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>1.1</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.google.appengine.orm</groupId>
-            <artifactId>datanucleus-appengine</artifactId>
-            <version>1.0.4.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-core</artifactId>
-            <version>1.1.5</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.transaction</groupId>
-                    <artifactId>transaction-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>datanucleus-jpa</artifactId>
-            <version>1.1.5</version>
-            <scope>runtime</scope>
-        </dependency>
-
+        <!-- required by objectify -->
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>geronimo-jpa_3.0_spec</artifactId>
-            <version>1.1.1</version>
-            <scope>runtime</scope>
+            <version>1.1.1</version>            
         </dependency>
 
         <dependency>
@@ -226,56 +181,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <!--
-                This plug-in "enhances" your domain model objects (i.e.
-                makes them persistent for datanucleus)
-            -->
-            <plugin>
-                <groupId>org.datanucleus</groupId>
-                <artifactId>maven-datanucleus-plugin</artifactId>
-                <version>1.1.4</version>
-                <configuration>
-                    <!--
-                        Make sure this path contains your persistent
-                        classes!
-                    -->
-                    <mappingIncludes>**/model/*.class</mappingIncludes>
-                    <verbose>true</verbose>
-                    <enhancerName>ASM</enhancerName>
-                    <api>JDO</api>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.datanucleus</groupId>
-                        <artifactId>datanucleus-core</artifactId>
-                        <version>1.1.5</version>
-                        <exclusions>
-                            <exclusion>
-                                <groupId>javax.transaction</groupId>
-                                <artifactId>transaction-api</artifactId>
-                            </exclusion>
-                        </exclusions>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.datanucleus</groupId>
-                        <artifactId>datanucleus-rdbms</artifactId>
-                        <version>1.1.5</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.datanucleus</groupId>
-                        <artifactId>datanucleus-enhancer</artifactId>
-                        <version>1.1.4</version>
-                    </dependency>
-                </dependencies>
             </plugin>
 
             <plugin>
@@ -508,6 +413,10 @@
             <id>central</id>
             <name>libs-releases</name>
             <url>http://artifactory.alepar.ru/libs-releases</url>
+        </repository>
+        <repository>
+            <id>objectify-appengine</id>
+            <url>http://objectify-appengine.googlecode.com/svn/maven</url>
         </repository>
 
         <repository>

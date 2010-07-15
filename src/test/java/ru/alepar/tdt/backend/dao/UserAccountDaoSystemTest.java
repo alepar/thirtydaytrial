@@ -1,0 +1,48 @@
+package ru.alepar.tdt.backend.dao;
+
+import org.junit.Rule;
+import org.junit.Test;
+import ru.alepar.tdt.backend.model.UserAccount;
+import ru.alepar.tdt.backend.model.UserEmail;
+import ru.alepar.tdt.backend.model.UserId;
+import ru.alepar.tdt.backend.model.UserLogin;
+import ru.alepar.tdt.testsupport.rules.TestingDatastore;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+import static ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl.sessionInstance;
+
+/**
+ * User: looser
+ * Date: 10.07.2010
+ */
+public class UserAccountDaoSystemTest {
+    @Rule public TestingDatastore datastore = new TestingDatastore();
+
+    private static final UserId ID = new UserId("id");
+
+    @Test
+    public void canFindUserAfterInserting() {
+        UserAccount original = new UserAccount(ID, new UserLogin("login"), new UserEmail("email"));
+
+        DaoSession firstSession = sessionInstance();
+        try {
+            firstSession.open();
+            firstSession.userAccount().insert(original);
+        } finally {
+            firstSession.close();
+        }
+
+        UserAccount newOne;
+        DaoSession secondSession = sessionInstance();
+        try {
+            secondSession.open();
+            newOne = secondSession.userAccount().find(ID.value);
+        } finally {
+            secondSession.close();
+        }
+
+        assertThat(newOne, equalTo(original));
+    }
+
+}
