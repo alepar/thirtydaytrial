@@ -18,6 +18,9 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     private static final TrialEditorUiBinder uiBinder = GWT.create(TrialEditorUiBinder.class);
 
     @UiField
+    Label idLabel;
+
+    @UiField
     TextBox titleField;
 
     @UiField
@@ -28,6 +31,11 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
 
     public TrialEditorDisplay() {
         initWidget(uiBinder.createAndBindUi(this));
+    }
+
+    @Override
+    public HasText getIdLabel() {
+        return idLabel;
     }
 
     @Override

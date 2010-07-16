@@ -32,5 +32,4 @@ public class TrialChangedEvent extends GwtEvent<TrialChangedEvent.Handler> {
     public TrialChangedEvent(Trial trial) {
         this.trial = trial;
     }
-    
 }

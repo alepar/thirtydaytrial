@@ -6,6 +6,10 @@
     <g:HTMLPanel>
         <table width="100%">
             <tr>
+                <td>Id:</td>
+                <td><g:Label ui:field="idLabel"/></td>
+            </tr>
+            <tr>
                 <td>Trial title:</td>
                 <td><g:TextBox ui:field="titleField"/></td>
             </tr>

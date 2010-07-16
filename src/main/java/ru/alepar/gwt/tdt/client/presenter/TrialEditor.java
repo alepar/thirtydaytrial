@@ -5,8 +5,8 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
+import ru.alepar.gwt.tdt.client.event.EditTrialEvent;
 import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
-import ru.alepar.gwt.tdt.client.history.EditTrialHistoryEvent;
 import ru.alepar.tdt.backend.model.Trial;
 
 /**
@@ -14,20 +14,21 @@ import ru.alepar.tdt.backend.model.Trial;
  * Date: Jul 11, 2010
  * Time: 1:07:35 PM
  */
-public class TrialEditor implements EditTrialHistoryEvent.Handler {
+public class TrialEditor implements EditTrialEvent.Handler {
 
-    private final HandlerManager handlerManager;
+    private final HandlerManager eventBus;
     private final Display display;
     private Trial trial;
 
     public interface Display {
+        HasText getIdLabel();
         HasText getTitleField();
         HasClickHandlers getSaveButton();
         HasClickHandlers getCancelButton();
     }
 
-    public TrialEditor(HandlerManager handlerManager, Display display) {
-        this.handlerManager = handlerManager;
+    public TrialEditor(HandlerManager eventBus, Display display) {
+        this.eventBus = eventBus;
         this.display = display;
         bindDisplay();
     }
@@ -48,13 +49,13 @@ public class TrialEditor implements EditTrialHistoryEvent.Handler {
     }
 
     @Override
-    public void onTrialEdit(EditTrialHistoryEvent p) {
+    public void onTrialEdit(EditTrialEvent p) {
         editTrial(p.trial);
     }
 
     private void doSave() {
         trial.setTitle(display.getTitleField().getText());
-        handlerManager.fireEvent(new TrialChangedEvent(Trial.from(trial)));
+        eventBus.fireEvent(new TrialChangedEvent(Trial.from(trial)));
     }
 
     private void doCancel() {
@@ -67,6 +68,7 @@ public class TrialEditor implements EditTrialHistoryEvent.Handler {
     }
 
     private void updateDisplay() {
+        display.getIdLabel().setText(this.trial.getId().toString());
         display.getTitleField().setText(this.trial.getTitle());
     }
 }

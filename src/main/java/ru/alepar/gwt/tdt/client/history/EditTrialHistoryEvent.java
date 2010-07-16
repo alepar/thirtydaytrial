@@ -1,7 +1,6 @@
 package ru.alepar.gwt.tdt.client.history;
 
 import com.google.gwt.event.shared.EventHandler;
-import ru.alepar.tdt.backend.model.Trial;
 
 /**
  * User: alepar
@@ -10,8 +9,17 @@ import ru.alepar.tdt.backend.model.Trial;
  */
 public class EditTrialHistoryEvent extends HistoryEvent<EditTrialHistoryEvent.Handler> {
 
+    private static final String ID_KEY = "id";
+
     public interface Handler extends EventHandler {
         public void onTrialEdit(EditTrialHistoryEvent p);
+    }
+
+    public EditTrialHistoryEvent() {
+    }
+
+    public EditTrialHistoryEvent(String historyToken) {
+        super(historyToken);
     }
 
     @Override
@@ -31,10 +39,12 @@ public class EditTrialHistoryEvent extends HistoryEvent<EditTrialHistoryEvent.Ha
 
     public static final Type<EditTrialHistoryEvent.Handler> TYPE = new Type<EditTrialHistoryEvent.Handler>();
 
-    public final Trial trial;
-
-    public EditTrialHistoryEvent(Trial trial) {
-        this.trial = trial;
+    public Long getTrialId() {
+        String id = getValue(ID_KEY);
+        return id == null ? null : Long.valueOf(id); 
     }
 
+    public void setTrialId(Long trialId) {
+        setParam(ID_KEY, trialId.toString());    
+    }
 }
