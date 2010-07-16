@@ -13,6 +13,7 @@ import ru.alepar.gwt.tdt.client.presenter.TrialEditor;
  * Time: 1:16:55 PM
  */
 public class TrialEditorDisplay extends Composite implements TrialEditor.Display {
+    private final Panel container;
 
     interface TrialEditorUiBinder extends UiBinder<Widget, TrialEditorDisplay> {}
     private static final TrialEditorUiBinder uiBinder = GWT.create(TrialEditorUiBinder.class);
@@ -29,7 +30,8 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     @UiField
     Button cancelButton;
 
-    public TrialEditorDisplay() {
+    public TrialEditorDisplay(Panel container) {
+        this.container = container;
         initWidget(uiBinder.createAndBindUi(this));
     }
 
@@ -51,5 +53,15 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     @Override
     public HasClickHandlers getCancelButton() {
         return cancelButton;
+    }
+
+    @Override
+    public void show() {
+        container.add(this);
+    }
+
+    @Override
+    public void hide() {
+        container.clear();
     }
 }

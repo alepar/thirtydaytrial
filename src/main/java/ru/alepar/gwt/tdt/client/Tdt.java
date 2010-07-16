@@ -44,10 +44,9 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         });
         RootPanel.get("add_trial").add(button);
 
-        final TrialEditorDisplay trialEditorDisplay = new TrialEditorDisplay();
+        final TrialEditorDisplay trialEditorDisplay = new TrialEditorDisplay(RootPanel.get("editor_trial"));
         final TrialEditor trialEditor = new TrialEditor(eventBus, trialEditorDisplay);
         eventBus.addHandler(EditTrialEvent.TYPE, trialEditor);
-        RootPanel.get("editor_trial").add(trialEditorDisplay);
 
         final TrialsTableDisplay trialsTableDisplay = new TrialsTableDisplay();
         final TrialsTable trialsTable = new TrialsTable(eventBus, trialsTableDisplay);

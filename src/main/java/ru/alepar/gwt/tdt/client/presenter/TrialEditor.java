@@ -25,6 +25,8 @@ public class TrialEditor implements EditTrialEvent.Handler {
         HasText getTitleField();
         HasClickHandlers getSaveButton();
         HasClickHandlers getCancelButton();
+        void show();
+        void hide();
     }
 
     public TrialEditor(HandlerManager eventBus, Display display) {
@@ -56,15 +58,18 @@ public class TrialEditor implements EditTrialEvent.Handler {
     private void doSave() {
         trial.setTitle(display.getTitleField().getText());
         eventBus.fireEvent(new TrialChangedEvent(Trial.from(trial)));
+        display.hide();
     }
 
     private void doCancel() {
-        updateDisplay();    
+        updateDisplay();
+        display.hide();
     }
 
     public void editTrial(Trial trial) {
         this.trial = Trial.from(trial);
         updateDisplay();
+        display.show();
     }
 
     private void updateDisplay() {
