@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
  * User: looser
  * Date: Jul 15, 2010
  */
-public class BaseOfyDao<T, K> implements BaseDao<T, K> {
+public abstract class BaseOfyDao<T, K> implements BaseDao<T, K> {
     private final Objectify ofy;
     private final Class<T> typeOfT;
     private final Class<K> typeOfK;
