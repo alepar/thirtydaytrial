@@ -27,6 +27,6 @@ public class TrialsTableDisplay extends Composite implements TrialsTable.Display
         trialsTable.setText(row, 1, trial.getTitle());
         EditTrialHistoryEvent event = new EditTrialHistoryEvent();
         event.setTrialId(trial.getId());
-        trialsTable.setWidget(row, 2, new Hyperlink("edit", event.toString()));
+        trialsTable.setWidget(row, 2, new Hyperlink("edit", event.token()));
     }
 }

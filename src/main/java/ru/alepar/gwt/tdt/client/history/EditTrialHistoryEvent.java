@@ -15,12 +15,7 @@ public class EditTrialHistoryEvent extends HistoryEvent<EditTrialHistoryEvent.Ha
         public void onTrialEdit(EditTrialHistoryEvent p);
     }
 
-    public EditTrialHistoryEvent() {
-    }
-
-    public EditTrialHistoryEvent(String historyToken) {
-        super(historyToken);
-    }
+    public static final Type<EditTrialHistoryEvent.Handler> TYPE = new Type<EditTrialHistoryEvent.Handler>();
 
     @Override
     public String label() {
@@ -36,8 +31,6 @@ public class EditTrialHistoryEvent extends HistoryEvent<EditTrialHistoryEvent.Ha
     public Type<EditTrialHistoryEvent.Handler> getAssociatedType() {
         return TYPE;
     }
-
-    public static final Type<EditTrialHistoryEvent.Handler> TYPE = new Type<EditTrialHistoryEvent.Handler>();
 
     public Long getTrialId() {
         String id = getValue(ID_KEY);

@@ -64,4 +64,5 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     public void hide() {
         container.clear();
     }
+
 }

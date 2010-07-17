@@ -15,6 +15,9 @@ import com.google.gwt.user.client.ui.RootPanel;
 import ru.alepar.gwt.tdt.client.event.EditTrialEvent;
 import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
 import ru.alepar.gwt.tdt.client.history.EditTrialHistoryEvent;
+import ru.alepar.gwt.tdt.client.history.HistoryAwareHandlerManager;
+import ru.alepar.gwt.tdt.client.history.HistoryEventFactory;
+import ru.alepar.gwt.tdt.client.history.HomeHistoryEvent;
 import ru.alepar.gwt.tdt.client.presenter.TrialEditor;
 import ru.alepar.gwt.tdt.client.presenter.TrialsTable;
 import ru.alepar.gwt.tdt.client.view.TrialEditorDisplay;
@@ -25,7 +28,8 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
 
     private static long trialId;
 
-    private final HandlerManager eventBus = new HandlerManager(null);
+    private final HandlerManager eventBus = new HistoryAwareHandlerManager(null);
+    private HistoryEventFactory eventFactory;
 
     private static Long nextId() {
         return ++trialId;
@@ -35,11 +39,17 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
      * This is the entry point method.
      */
     public void onModuleLoad() {
+        eventFactory = new HistoryEventFactory();
+
         final Button button = new Button("add");
         button.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent clickEvent) {
-                eventBus.fireEvent(new EditTrialEvent(new Trial(nextId())));                
+                Trial trial = new Trial(nextId());
+                EditTrialHistoryEvent historyEvent = new EditTrialHistoryEvent();
+                historyEvent.setTrialId(trial.getId());
+                History.newItem(historyEvent.token());
+                eventBus.fireEvent(new EditTrialEvent(trial));
             }
         });
         RootPanel.get("add_trial").add(button);
@@ -47,6 +57,7 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         final TrialEditorDisplay trialEditorDisplay = new TrialEditorDisplay(RootPanel.get("editor_trial"));
         final TrialEditor trialEditor = new TrialEditor(eventBus, trialEditorDisplay);
         eventBus.addHandler(EditTrialEvent.TYPE, trialEditor);
+        eventBus.addHandler(HomeHistoryEvent.TYPE, trialEditor);
 
         final TrialsTableDisplay trialsTableDisplay = new TrialsTableDisplay();
         final TrialsTable trialsTable = new TrialsTable(eventBus, trialsTableDisplay);
@@ -55,13 +66,17 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         RootPanel.get("table_trial").add(trialsTableDisplay);
 
         History.addValueChangeHandler(this);
+        if("".equals(History.getToken())) {
+            History.newItem("home");
+        }
+        History.fireCurrentHistoryState();
 
         AuthService.App.getInstance().getAuth(new AuthAsyncCallBack(RootPanel.get("signin").getElement()));
     }
 
     @Override
     public void onValueChange(ValueChangeEvent<String> historyEvent) {
-        eventBus.fireEvent(new EditTrialHistoryEvent(historyEvent.getValue()));
+        eventBus.fireEvent(eventFactory.buildEvent(historyEvent.getValue()));
     }
 
     private static class AuthAsyncCallBack implements AsyncCallback<AuthService.AuthResponse> {

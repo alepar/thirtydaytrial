@@ -13,19 +13,19 @@ import java.util.LinkedHashMap;
  */
 public abstract class HistoryEvent<H extends EventHandler> extends GwtEvent<H> {
 
-    private static final String TOKEN_SEPARATOR = ";";
-    private static final String PAIR_SEPARATOR = ",";
-    private static final String KEYVALUE_SEPARATOR = "=";
+    public static final String TOKEN_SEPARATOR = ";";
+    public static final String PAIR_SEPARATOR = ",";
+    public static final String KEYVALUE_SEPARATOR = "=";
     
     protected LinkedHashMap<String, String> parameterMap = new LinkedHashMap<String, String>();
 
     public HistoryEvent() {
     }
 
-    public HistoryEvent(String historyToken) {
+    public void unmarshall(String historyToken) {
         String[] breakout = historyToken.split(TOKEN_SEPARATOR, 2);
         if(!breakout[0].equals(label())) {
-            throw new IllegalArgumentException("passed ivalid token " + breakout[0] + " to event type " + this.getClass().getName());
+            throw new IllegalArgumentException("passed invalid token " + breakout[0] + " to event type " + this.getClass().getName());
         }
         if(breakout.length == 2) {
             String paramString = breakout[1];
@@ -41,8 +41,7 @@ public abstract class HistoryEvent<H extends EventHandler> extends GwtEvent<H> {
         }
     }
 
-    @Override
-    public String toString() {
+    public String token() {
         String result = label();
         if (parameterMap.size() > 0) {
             result += TOKEN_SEPARATOR;

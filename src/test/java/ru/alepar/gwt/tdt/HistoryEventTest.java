@@ -18,7 +18,7 @@ public class HistoryEventTest {
 
     @Test
     public void testParameterlessTokenMarshall() {
-        assertThat(historyEvent.toString(), equalTo(historyEvent.label()));
+        assertThat(historyEvent.token(), equalTo(historyEvent.label()));
     }
 
     @Test
@@ -29,12 +29,13 @@ public class HistoryEventTest {
     @Test
     public void testValuelessParamMarshall() {
         historyEvent.setParam("key", null);
-        assertThat(historyEvent.toString(), equalTo("token;key"));
+        assertThat(historyEvent.token(), equalTo("token;key"));
     }
 
     @Test
     public void testValuelessParamUnmarshall() {
-        historyEvent = new TestHistoryEvent("token;key");
+        historyEvent = new TestHistoryEvent();
+        historyEvent.unmarshall("token;key");
         assertThat(historyEvent.getKeys().size(), equalTo(1));
         assertThat(historyEvent.getKeys(), hasItem("key"));
         assertThat(historyEvent.getValue("key"), equalTo(null));
@@ -44,25 +45,20 @@ public class HistoryEventTest {
     public void testTwoParamsMarshall() {
         historyEvent.setParam("key1", "val1");
         historyEvent.setParam("key2", "val2");
-        assertThat(historyEvent.toString(), equalTo("token;key1=val1,key2=val2"));
+        assertThat(historyEvent.token(), equalTo("token;key1=val1,key2=val2"));
     }
 
     @Test
     public void testTwoParamsUnmarshall() {
-        historyEvent = new TestHistoryEvent("token;key1=val1,key2=val2");
+        historyEvent = new TestHistoryEvent();
+        historyEvent.unmarshall("token;key1=val1,key2=val2");
         assertThat(historyEvent.getKeys().size(), equalTo(2));
         assertThat(historyEvent.getKeys(), allOf(hasItem("key1"), hasItem("key2")));
         assertThat(historyEvent.getValue("key1"), equalTo("val1"));
         assertThat(historyEvent.getValue("key2"), equalTo("val2"));
     }
 
-    private static class TestHistoryEvent extends HistoryEvent {
-        private TestHistoryEvent() {
-        }
-
-        private TestHistoryEvent(String historyToken) {
-            super(historyToken);
-        }
+    private static class TestHistoryEvent extends HistoryEvent<TestHistoryEvent.Handler> {
 
         @Override
         public String label() {
@@ -70,13 +66,16 @@ public class HistoryEventTest {
         }
 
         @Override
-        public Type getAssociatedType() {
+        public Type<Handler> getAssociatedType() {
             throw new RuntimeException("Not Implemented");
         }
 
         @Override
-        protected void dispatch(EventHandler eventHandler) {
+        protected void dispatch(Handler handler) {
             throw new RuntimeException("Not Implemented");
         }
+
+        interface Handler extends EventHandler { }
+
     }
 }

@@ -7,6 +7,7 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
 import ru.alepar.gwt.tdt.client.event.EditTrialEvent;
 import ru.alepar.gwt.tdt.client.event.TrialChangedEvent;
+import ru.alepar.gwt.tdt.client.history.HomeHistoryEvent;
 import ru.alepar.tdt.backend.model.Trial;
 
 /**
@@ -14,7 +15,7 @@ import ru.alepar.tdt.backend.model.Trial;
  * Date: Jul 11, 2010
  * Time: 1:07:35 PM
  */
-public class TrialEditor implements EditTrialEvent.Handler {
+public class TrialEditor implements EditTrialEvent.Handler, HomeHistoryEvent.Handler {
 
     private final HandlerManager eventBus;
     private final Display display;
@@ -55,15 +56,20 @@ public class TrialEditor implements EditTrialEvent.Handler {
         editTrial(p.trial);
     }
 
+    @Override
+    public void onHome(HomeHistoryEvent p) {
+        display.hide();
+    }
+
     private void doSave() {
         trial.setTitle(display.getTitleField().getText());
         eventBus.fireEvent(new TrialChangedEvent(Trial.from(trial)));
-        display.hide();
+        eventBus.fireEvent(new HomeHistoryEvent());
     }
 
     private void doCancel() {
         updateDisplay();
-        display.hide();
+        eventBus.fireEvent(new HomeHistoryEvent());
     }
 
     public void editTrial(Trial trial) {
