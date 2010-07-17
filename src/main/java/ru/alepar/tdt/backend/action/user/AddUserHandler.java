@@ -1,25 +1,25 @@
-package ru.alepar.tdt.backend.logic;
+package ru.alepar.tdt.backend.action.user;
 
 import com.google.appengine.api.users.User;
-import ru.alepar.tdt.gwt.client.action.TdtVoidResponse;
-import ru.alepar.tdt.gwt.client.action.user.AddUserAction;
 import ru.alepar.tdt.backend.dao.DaoSession;
 import ru.alepar.tdt.backend.dao.DaoSessionFactory;
+import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserEmail;
 import ru.alepar.tdt.backend.model.UserId;
+import ru.alepar.tdt.gwt.client.action.core.TdtVoidResponse;
 
 /**
  * User: looser
  * Date: 11.07.2010
  */
-public class AddUserAccount implements Command<TdtVoidResponse> {
+public class AddUserHandler implements ActionHandler<TdtVoidResponse> {
     private final DaoSessionFactory sessionFactory;
     private final UserId id;
     private final UserEmail email;
-    private final AddUserAction action;
+    private final ru.alepar.tdt.gwt.client.action.user.AddUser action;
 
-    public AddUserAccount(DaoSessionFactory sessionFactory, User user, AddUserAction action) {
+    public AddUserHandler(DaoSessionFactory sessionFactory, User user, ru.alepar.tdt.gwt.client.action.user.AddUser action) {
         this.sessionFactory = sessionFactory;
         id = new UserId(user.getUserId());
         email = new UserEmail(user.getEmail());

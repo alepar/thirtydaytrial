@@ -6,7 +6,7 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import org.junit.Rule;
 import org.junit.Test;
-import ru.alepar.tdt.gwt.client.action.user.AddUserAction;
+import ru.alepar.tdt.gwt.client.action.user.AddUser;
 import ru.alepar.tdt.backend.dao.DaoSession;
 import ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl;
 import ru.alepar.tdt.backend.model.UserAccount;
@@ -35,7 +35,7 @@ public class TdtServiceSystemTest {
         User user = UserServiceFactory.getUserService().getCurrentUser();
         assertThat(user.getUserId(), equalTo(LocalGae.MY_USER_ID));
 
-        new TdtServiceImpl().execute(new AddUserAction(LOGIN));
+        new TdtServiceImpl().execute(new AddUser(LOGIN));
 
         assertUserExistsInDb(LocalGae.MY_USER_ID, LOGIN);
     }

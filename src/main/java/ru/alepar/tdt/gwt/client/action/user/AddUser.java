@@ -1,22 +1,22 @@
 package ru.alepar.tdt.gwt.client.action.user;
 
-import ru.alepar.tdt.gwt.client.action.TdtAction;
-import ru.alepar.tdt.gwt.client.action.TdtVoidResponse;
-import ru.alepar.tdt.backend.logic.core.MapTo;
+import ru.alepar.tdt.backend.action.core.MapTo;
 import ru.alepar.tdt.backend.model.UserLogin;
+import ru.alepar.tdt.gwt.client.action.core.TdtAction;
+import ru.alepar.tdt.gwt.client.action.core.TdtVoidResponse;
 
 /**
  * User: looser
  * Date: Jul 15, 2010
  */
-@MapTo("ru.alepar.tdt.backend.logic.AddUserAccount")
-public class AddUserAction implements TdtAction<TdtVoidResponse> {
+@MapTo("ru.alepar.tdt.backend.action.user.AddUserHandler")
+public class AddUser implements TdtAction<TdtVoidResponse> {
     UserLogin login;
 
-    public AddUserAction() {
+    public AddUser() {
     }
 
-    public AddUserAction(UserLogin login) {
+    public AddUser(UserLogin login) {
         this.login = login;
     }
 

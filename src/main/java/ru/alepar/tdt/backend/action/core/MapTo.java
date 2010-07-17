@@ -1,4 +1,4 @@
-package ru.alepar.tdt.backend.logic.core;
+package ru.alepar.tdt.backend.action.core;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

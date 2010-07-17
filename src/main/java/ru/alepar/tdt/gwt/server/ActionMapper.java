@@ -2,11 +2,11 @@ package ru.alepar.tdt.gwt.server;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
-import ru.alepar.tdt.gwt.client.action.TdtAction;
-import ru.alepar.tdt.gwt.client.action.TdtResponse;
 import ru.alepar.tdt.backend.dao.DaoSessionFactory;
-import ru.alepar.tdt.backend.logic.Command;
-import ru.alepar.tdt.backend.logic.core.MapTo;
+import ru.alepar.tdt.backend.action.core.ActionHandler;
+import ru.alepar.tdt.backend.action.core.MapTo;
+import ru.alepar.tdt.gwt.client.action.core.TdtAction;
+import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -28,11 +28,11 @@ public class ActionMapper {
         this.userService = userService;
     }
 
-    public <T extends TdtResponse> Command<T> map(TdtAction<T> action) {
+    public <T extends TdtResponse> ActionHandler<T> map(TdtAction<T> action) {
         MapTo to = action.getClass().getAnnotation(MapTo.class);
         String commandClassName = to.value();
-        Class<Command<T>> clazz = resolveClass(commandClassName);
-        Constructor<Command<T>> ctor = resolveCtor(clazz, action);
+        Class<ActionHandler<T>> clazz = resolveClass(commandClassName);
+        Constructor<ActionHandler<T>> ctor = resolveCtor(clazz, action);
         List<Object> actualArguments = new ArrayList<Object>();
         try {
             for (Class<?> argType : ctor.getParameterTypes()) {
@@ -53,12 +53,12 @@ public class ActionMapper {
     }
 
     @SuppressWarnings({"unchecked"})
-    private <T extends TdtResponse> Constructor<Command<T>> resolveCtor(Class<Command<T>> clazz, TdtAction<T> action) {
+    private <T extends TdtResponse> Constructor<ActionHandler<T>> resolveCtor(Class<ActionHandler<T>> clazz, TdtAction<T> action) {
         Constructor<?>[] constructors = clazz.getConstructors();
         for (Constructor<?> constructor : constructors) {
             for (Class<?> aClass : constructor.getParameterTypes()) {
                 if (aClass.equals(action.getClass())) {
-                    return (Constructor<Command<T>>) constructor;
+                    return (Constructor<ActionHandler<T>>) constructor;
                 }
             }
         }
@@ -66,11 +66,11 @@ public class ActionMapper {
     }
 
     @SuppressWarnings({"unchecked"})
-    private synchronized <T extends TdtResponse> Class<Command<T>> resolveClass(String commandClassName) {
-        Class<Command<T>> result = (Class<Command<T>>) commandClassCache.get(commandClassName);
+    private synchronized <T extends TdtResponse> Class<ActionHandler<T>> resolveClass(String commandClassName) {
+        Class<ActionHandler<T>> result = (Class<ActionHandler<T>>) commandClassCache.get(commandClassName);
         if (result == null) {
             try {
-                result = (Class<Command<T>>) Class.forName(commandClassName);
+                result = (Class<ActionHandler<T>>) Class.forName(commandClassName);
                 commandClassCache.put(commandClassName, result);
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException("Couldn't load class for the name = " + commandClassName);

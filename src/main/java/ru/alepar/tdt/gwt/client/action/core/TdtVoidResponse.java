@@ -1,4 +1,4 @@
-package ru.alepar.tdt.gwt.client.action;
+package ru.alepar.tdt.gwt.client.action.core;
 
 /**
  * User: looser

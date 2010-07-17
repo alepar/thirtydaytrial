@@ -1,8 +1,8 @@
 package ru.alepar.tdt.gwt.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import ru.alepar.tdt.gwt.client.action.TdtAction;
-import ru.alepar.tdt.gwt.client.action.TdtResponse;
+import ru.alepar.tdt.gwt.client.action.core.TdtAction;
+import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 
 public interface TdtServiceAsync {
 

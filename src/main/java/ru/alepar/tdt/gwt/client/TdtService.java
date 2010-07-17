@@ -3,8 +3,8 @@ package ru.alepar.tdt.gwt.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import ru.alepar.tdt.gwt.client.action.TdtAction;
-import ru.alepar.tdt.gwt.client.action.TdtResponse;
+import ru.alepar.tdt.gwt.client.action.core.TdtAction;
+import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 
 @RemoteServiceRelativePath("TdtService")
 public interface TdtService extends RemoteService {

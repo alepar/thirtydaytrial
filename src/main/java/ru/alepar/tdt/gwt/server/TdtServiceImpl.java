@@ -5,11 +5,11 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.alepar.tdt.gwt.client.TdtService;
-import ru.alepar.tdt.gwt.client.action.TdtAction;
-import ru.alepar.tdt.gwt.client.action.TdtResponse;
 import ru.alepar.tdt.backend.dao.DaoSessionFactory;
 import ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl;
+import ru.alepar.tdt.gwt.client.TdtService;
+import ru.alepar.tdt.gwt.client.action.core.TdtAction;
+import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 
 public class TdtServiceImpl extends RemoteServiceServlet implements TdtService {
     private final UserService userService = UserServiceFactory.getUserService();
