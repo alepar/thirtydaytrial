@@ -2,7 +2,7 @@ package ru.alepar.gwt.tdt;
 
 import com.google.gwt.event.shared.EventHandler;
 import org.junit.Test;
-import ru.alepar.gwt.tdt.client.history.HistoryEvent;
+import ru.alepar.tdt.gwt.client.history.HistoryEvent;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;

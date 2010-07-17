@@ -1,8 +1,8 @@
 package ru.alepar.tdt.backend.logic;
 
 import com.google.appengine.api.users.User;
-import ru.alepar.gwt.tdt.client.action.TdtVoidResponse;
-import ru.alepar.gwt.tdt.client.action.user.AddUserAction;
+import ru.alepar.tdt.gwt.client.action.TdtVoidResponse;
+import ru.alepar.tdt.gwt.client.action.user.AddUserAction;
 import ru.alepar.tdt.backend.dao.DaoSession;
 import ru.alepar.tdt.backend.dao.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.UserAccount;

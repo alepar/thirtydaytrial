@@ -6,20 +6,20 @@
     version="2.5">
 
     <servlet>
-        <servlet-name>ru.alepar.gwt.tdt.Tdt TdtService</servlet-name>
-        <servlet-class>ru.alepar.gwt.tdt.server.TdtServiceImpl</servlet-class>
+        <servlet-name>ru.alepar.tdt.gwt.Tdt TdtService</servlet-name>
+        <servlet-class>ru.alepar.tdt.gwt.server.TdtServiceImpl</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ru.alepar.gwt.tdt.Tdt AuthService</servlet-name>
-        <servlet-class>ru.alepar.gwt.tdt.server.AuthServiceImpl</servlet-class>
+        <servlet-name>ru.alepar.tdt.gwt.Tdt AuthService</servlet-name>
+        <servlet-class>ru.alepar.tdt.gwt.server.AuthServiceImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ru.alepar.gwt.tdt.Tdt TdtService</servlet-name>
+        <servlet-name>ru.alepar.tdt.gwt.Tdt TdtService</servlet-name>
         <url-pattern>/Tdt/TdtService</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ru.alepar.gwt.tdt.Tdt AuthService</servlet-name>
+        <servlet-name>ru.alepar.tdt.gwt.Tdt AuthService</servlet-name>
         <url-pattern>/Tdt/AuthService</url-pattern>
     </servlet-mapping>
 

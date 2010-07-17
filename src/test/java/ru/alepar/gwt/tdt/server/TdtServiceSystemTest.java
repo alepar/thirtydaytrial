@@ -6,11 +6,12 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import org.junit.Rule;
 import org.junit.Test;
-import ru.alepar.gwt.tdt.client.action.user.AddUserAction;
+import ru.alepar.tdt.gwt.client.action.user.AddUserAction;
 import ru.alepar.tdt.backend.dao.DaoSession;
 import ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserLogin;
+import ru.alepar.tdt.gwt.server.TdtServiceImpl;
 import ru.alepar.tdt.testsupport.rules.LocalGae;
 
 import static org.hamcrest.Matchers.equalTo;
