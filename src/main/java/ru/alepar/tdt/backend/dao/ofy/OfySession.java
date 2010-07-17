@@ -14,6 +14,9 @@ import ru.alepar.tdt.backend.dao.UserTrialDao;
 public class OfySession implements DaoSession {
     private final ObjectifyFactory factory;
     private Objectify ofy;
+    private TrialOfyDao trialDao;
+    private UserTrialOfyDao userTrialDao;
+    private UserAccountOfyDao accountDao;
 
     public OfySession(ObjectifyFactory factory) {
         this.factory = factory;
@@ -34,30 +37,39 @@ public class OfySession implements DaoSession {
     @Override
     public TrialDao trial() {
         assertOfyIsOpen();
-        return new TrialOfyDao(ofy);
+        if (trialDao == null) {
+            trialDao = new TrialOfyDao(ofy);
+        }
+        return trialDao;
     }
 
     @Override
     public UserTrialDao userTrial() {
         assertOfyIsOpen();
-        return new UserTrialOfyDao(ofy);
+        if (userTrialDao == null) {
+            userTrialDao = new UserTrialOfyDao(ofy);
+        }
+        return userTrialDao;
     }
 
     @Override
     public UserAccountDao userAccount() {
         assertOfyIsOpen();
-        return new UserAccountOfyDao(ofy);
+        if (accountDao == null) {
+            accountDao = new UserAccountOfyDao(ofy);
+        }
+        return accountDao;
     }
 
     private void assertOfyIsOpen() {
         if (ofy == null) {
-            throw new IllegalStateException("Session is not opened");
+            throw new IllegalStateException("Ofy is not opened");
         }
     }
 
     private void assertOfyIsClosed() {
         if (ofy != null) {
-            throw new IllegalStateException("Session is already opened");
+            throw new IllegalStateException("Ofy is already opened");
         }
     }
 }
