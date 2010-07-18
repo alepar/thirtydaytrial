@@ -4,6 +4,8 @@ import com.googlecode.objectify.Key;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
 import ru.alepar.tdt.backend.model.UserAccount;
 
+import java.util.Map;
+
 /**
  * User: looser
  * Date: 11.07.2010
@@ -33,5 +35,10 @@ public class UserAccountMemcachedDao implements UserAccountDao {
         UserAccount obj = delegate.find(id);
         // put obj to cache
         return obj;
+    }
+
+    @Override
+    public Map<Key<UserAccount>, UserAccount> find(Iterable<Key<UserAccount>> keys) {
+        return delegate.find(keys);
     }
 }
