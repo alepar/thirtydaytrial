@@ -28,8 +28,4 @@ public class AddUser implements TdtAction<TdtVoidResponse> {
         this.login = login;
     }
 
-    @Override
-    public TdtVoidResponse execute() {
-        throw new RuntimeException("not implemented yet");
-    }
 }

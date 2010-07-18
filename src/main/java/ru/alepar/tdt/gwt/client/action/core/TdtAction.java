@@ -9,6 +9,4 @@ import java.io.Serializable;
  */
 public interface TdtAction<T extends TdtResponse> extends Serializable {
 
-    T execute();
-    
 }
