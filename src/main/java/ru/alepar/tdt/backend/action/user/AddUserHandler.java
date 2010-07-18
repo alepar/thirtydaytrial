@@ -1,9 +1,9 @@
 package ru.alepar.tdt.backend.action.user;
 
 import com.google.appengine.api.users.User;
-import ru.alepar.tdt.backend.dao.DaoSession;
-import ru.alepar.tdt.backend.dao.DaoSessionFactory;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
+import ru.alepar.tdt.backend.dao.core.DaoSession;
+import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserEmail;
 import ru.alepar.tdt.backend.model.UserId;

@@ -2,7 +2,7 @@ package ru.alepar.tdt.backend.dao.ofy;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Objectify;
-import ru.alepar.tdt.backend.dao.BaseDao;
+import ru.alepar.tdt.backend.dao.core.BaseDao;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

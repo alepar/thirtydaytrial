@@ -3,15 +3,16 @@ package ru.alepar.tdt.backend.dao;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import org.junit.Rule;
 import org.junit.Test;
+import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserEmail;
 import ru.alepar.tdt.backend.model.UserId;
 import ru.alepar.tdt.backend.model.UserLogin;
 import ru.alepar.tdt.testsupport.rules.LocalGae;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-import static ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl.sessionInstance;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+import static ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl.*;
 
 /**
  * User: looser

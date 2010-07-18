@@ -4,12 +4,13 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.googlecode.objectify.Key;
 import org.junit.Rule;
 import org.junit.Test;
+import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.model.*;
 import ru.alepar.tdt.testsupport.rules.LocalGae;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-import static ru.alepar.tdt.backend.dao.DaoSessionFactoryImpl.sessionInstance;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+import static ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl.*;
 
 /**
  * User: looser

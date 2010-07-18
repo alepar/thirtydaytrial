@@ -2,10 +2,10 @@ package ru.alepar.tdt.backend.dao.ofy;
 
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
-import ru.alepar.tdt.backend.dao.DaoSession;
 import ru.alepar.tdt.backend.dao.TrialDao;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
 import ru.alepar.tdt.backend.dao.UserTrialDao;
+import ru.alepar.tdt.backend.dao.core.DaoSession;
 
 /**
  * User: looser
