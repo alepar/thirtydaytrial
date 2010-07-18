@@ -48,4 +48,22 @@ public class UserTrialDaoSystemTest {
 
         assertThat(newOne, equalTo(orig));
     }
+
+    @Test
+    public void testKeyIsGeneratedAutomatically() throws Exception {
+        DaoSession session = sessionInstance();
+        session.open();
+        try {
+            Key<UserAccount> userKey = session.userAccount().insert(
+                    new UserAccount(new UserId("id"), new UserLogin("login"), new UserEmail("email"))
+            );
+
+            UserTrial userTrial = new UserTrial();
+            userTrial.setUser(userKey);
+            session.userTrial().insert(userTrial);
+            assertThat(userTrial.getId(), notNullValue());
+        } finally {
+            session.close();
+        }
+    }
 }
