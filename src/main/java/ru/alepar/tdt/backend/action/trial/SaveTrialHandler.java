@@ -38,9 +38,9 @@ public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialRespon
             action.getUserTrial().setTrial(trialKey);
             Key<UserTrial> userTrialKey = session.userTrial().insert(action.getUserTrial());
             action.getUserTrial().setId(userTrialKey.getId());
+            return new SaveTrial.SaveTrialResponse(action.getTrial(), action.getUserTrial());
         } finally {
             session.close();
         }
-        return new SaveTrial.SaveTrialResponse(action.getTrial(), action.getUserTrial()); 
     }
 }

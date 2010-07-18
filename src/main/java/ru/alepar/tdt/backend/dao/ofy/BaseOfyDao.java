@@ -6,6 +6,7 @@ import ru.alepar.tdt.backend.dao.core.BaseDao;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Map;
 
 /**
  * User: looser
@@ -31,6 +32,10 @@ public abstract class BaseOfyDao<T, K> implements BaseDao<T, K> {
         typeOfK = (Class<K>) actualTypeArguments[1];
     }
 
+    protected Objectify ofy() {
+        return ofy;
+    }
+
     @Override
     public Key<T> insert(T obj) {
         return ofy().put(obj);
@@ -50,7 +55,9 @@ public abstract class BaseOfyDao<T, K> implements BaseDao<T, K> {
         }
     }
 
-    public Objectify ofy() {
-        return ofy;
+    @Override
+    public Map<Key<T>, T> find(Iterable<Key<T>> keys) {
+        return ofy().get(keys);
     }
+
 }
