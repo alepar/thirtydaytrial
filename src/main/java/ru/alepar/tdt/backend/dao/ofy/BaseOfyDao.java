@@ -32,8 +32,8 @@ public abstract class BaseOfyDao<T, K> implements BaseDao<T, K> {
     }
 
     @Override
-    public Key<T> insert(T userAccount) {
-        return ofy().put(userAccount);
+    public Key<T> insert(T obj) {
+        return ofy().put(obj);
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.googlecode.objectify.Key;
  * Date: 11.07.2010
  */
 public interface BaseDao<T, K> {
-    Key<T> insert(T userAccount);
+    Key<T> insert(T obj);
 
     T find(Key<T> id);
 

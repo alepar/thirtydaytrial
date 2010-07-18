@@ -12,8 +12,10 @@ import ru.alepar.tdt.backend.dao.core.DaoSession;
  * Date: Jul 14, 2010
  */
 public class OfySession implements DaoSession {
+
     private final ObjectifyFactory factory;
     private Objectify ofy;
+
     private TrialOfyDao trialDao;
     private UserTrialOfyDao userTrialDao;
     private UserAccountOfyDao accountDao;

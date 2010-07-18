@@ -8,18 +8,19 @@ import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserEmail;
 import ru.alepar.tdt.backend.model.UserId;
 import ru.alepar.tdt.gwt.client.action.core.TdtVoidResponse;
+import ru.alepar.tdt.gwt.client.action.user.AddUser;
 
 /**
  * User: looser
  * Date: 11.07.2010
  */
-public class AddUserHandler implements ActionHandler<TdtVoidResponse> {
+public class  AddUserHandler implements ActionHandler<TdtVoidResponse> {
     private final DaoSessionFactory sessionFactory;
     private final UserId id;
     private final UserEmail email;
-    private final ru.alepar.tdt.gwt.client.action.user.AddUser action;
+    private final AddUser action;
 
-    public AddUserHandler(DaoSessionFactory sessionFactory, User user, ru.alepar.tdt.gwt.client.action.user.AddUser action) {
+    public AddUserHandler(DaoSessionFactory sessionFactory, User user, AddUser action) {
         this.sessionFactory = sessionFactory;
         id = new UserId(user.getUserId());
         email = new UserEmail(user.getEmail());
