@@ -12,7 +12,7 @@ import ru.alepar.tdt.testsupport.rules.LocalGae;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-import static ru.alepar.tdt.backend.dao.ofy.OfyDaoSessionFactoryImpl.*;
+import static ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl.*;
 
 /**
  * User: looser

@@ -12,7 +12,7 @@ import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
  * Time: 7:00:52 PM
  */
 
-@MapTo("ru.alepar.tdt.backend.action.trial.SaveTrialHandler")
+@MapTo(ru.alepar.tdt.backend.action.trial.SaveTrialHandler.class)
 public class SaveTrial implements TdtAction<SaveTrial.SaveTrialResponse> {
 
     Trial trial;

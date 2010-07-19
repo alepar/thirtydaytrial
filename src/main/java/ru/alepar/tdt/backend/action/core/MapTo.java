@@ -9,5 +9,5 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MapTo {
-    String value();
+    Class<?> value();
 }
