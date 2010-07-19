@@ -2,9 +2,15 @@ package ru.alepar.tdt.gwt.server;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
+import com.googlecode.objectify.NotFoundException;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.action.core.MapTo;
+import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
+import ru.alepar.tdt.backend.model.UserAccount;
+import ru.alepar.tdt.backend.model.UserEmail;
+import ru.alepar.tdt.backend.model.UserId;
+import ru.alepar.tdt.backend.model.UserLogin;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
 import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 
@@ -42,6 +48,8 @@ public class ActionMapper {
                     actualArguments.add(userService.getCurrentUser());
                 } else if (argType.equals(action.getClass())) {
                     actualArguments.add(action);
+                } else if(argType.equals(UserAccount.class)) {
+                    actualArguments.add(fetchAccount(userService.getCurrentUser()));
                 } else {
                     throw new RuntimeException("unknown arg type " + argType);
                 }
@@ -50,6 +58,26 @@ public class ActionMapper {
         } catch (Exception e) {
             throw new RuntimeException("Wasn't able to invoke ctor " + ctor + " in " + clazz + " for " + action, e);
         } 
+    }
+
+    private UserAccount fetchAccount(User user) {
+        final DaoSession session = factory.session();
+        session.open();
+        try {
+            UserAccount userAccount;
+            try {
+                userAccount = session.userAccount().find(user.getUserId());
+            } catch (NotFoundException e) {
+                userAccount = new UserAccount();
+                userAccount.setId(new UserId(user.getUserId()));
+                userAccount.setLogin(new UserLogin(user.getNickname()));
+                userAccount.setEmail(new UserEmail(user.getEmail()));
+                session.userAccount().insert(userAccount);
+            }
+            return userAccount;
+        } finally {
+            session.close();
+        }
     }
 
     @SuppressWarnings({"unchecked"})
