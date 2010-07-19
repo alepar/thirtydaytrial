@@ -10,6 +10,6 @@ import ru.alepar.tdt.gwt.client.action.core.TdtVoidRequest;
  * Time: 7:53:25 PM
  */
 
-@MapTo("ru.alepar.tdt.backend.action.trial.GetTrialsHandler")
+@MapTo(ru.alepar.tdt.backend.action.trial.GetTrialsHandler.class)
 public class GetTrials implements TdtAction<TdtVoidRequest> {
 }
