@@ -7,7 +7,7 @@ import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig
 import org.junit.Rule;
 import org.junit.Test;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
-import ru.alepar.tdt.backend.dao.ofy.OfyDaoSessionFactoryImpl;
+import ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserLogin;
 import ru.alepar.tdt.gwt.client.action.user.AddUser;
@@ -41,7 +41,7 @@ public class TdtServiceSystemTest {
     }
 
     private void assertUserExistsInDb(String userId, UserLogin login) {
-        DaoSession session = OfyDaoSessionFactoryImpl.sessionInstance();
+        DaoSession session = DaoSessionFactoryImpl.sessionInstance();
         session.open();
         try {
             UserAccount userAccount = session.userAccount().find(userId);
