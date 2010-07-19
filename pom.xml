@@ -297,6 +297,17 @@
         </plugins>
     </build>
 
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.3.1</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+
     <!-- Specify hard-coded project properties here -->
     <properties>
         <!--
@@ -395,11 +406,6 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </repository>
-        <repository>
-            <id>DataNucleus_Repos2</id>
-            <name>DataNucleus Repository</name>
-            <url>http://www.datanucleus.org/downloads/maven2</url>
         </repository>
         <repository>
             <id>maven-gae-plugin-repo</id>
