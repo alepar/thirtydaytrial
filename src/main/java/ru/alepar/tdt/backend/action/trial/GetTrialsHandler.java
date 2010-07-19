@@ -1,5 +1,6 @@
 package ru.alepar.tdt.backend.action.trial;
 
+import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
@@ -20,9 +21,9 @@ import java.util.List;
 public class GetTrialsHandler implements ActionHandler<GetTrialsHandler.GetTrialsResponse> {
 
     private final DaoSessionFactory sessionFactory;
-    private final UserAccount user;
+    private final User user;
 
-    public GetTrialsHandler(DaoSessionFactory sessionFactory, UserAccount user) {
+    public GetTrialsHandler(DaoSessionFactory sessionFactory, User user) {
         this.sessionFactory = sessionFactory;
         this.user = user;
     }
@@ -32,7 +33,7 @@ public class GetTrialsHandler implements ActionHandler<GetTrialsHandler.GetTrial
         final DaoSession session = sessionFactory.session();
         session.open();
         try {
-            UserAccount userAccount = session.userAccount().find(user.getId().value);
+            UserAccount userAccount = session.userAccount().find(user.getUserId());
             Iterable<UserTrial> userTrials = session.userTrial().listUserTrials(userAccount);
             HashMap<Key<UserTrial>, UserTrial> userTrialMap = new HashMap<Key<UserTrial>, UserTrial>();
             List<Key<Trial>> trialKeys = new LinkedList<Key<Trial>>();

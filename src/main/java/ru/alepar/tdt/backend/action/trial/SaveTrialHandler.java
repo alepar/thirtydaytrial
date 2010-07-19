@@ -1,5 +1,6 @@
 package ru.alepar.tdt.backend.action.trial;
 
+import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
@@ -18,9 +19,9 @@ public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialRespon
 
     private final DaoSessionFactory sessionFactory;
     private final SaveTrial action;
-    private final UserAccount user;
+    private final User user;
 
-    public SaveTrialHandler(DaoSessionFactory sessionFactory, SaveTrial action, UserAccount user) {
+    public SaveTrialHandler(DaoSessionFactory sessionFactory, SaveTrial action, User user) {
         this.sessionFactory = sessionFactory;
         this.action = action;
         this.user = user;
@@ -31,7 +32,7 @@ public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialRespon
         final DaoSession session = sessionFactory.session();
         session.open();
         try {
-            Key<UserAccount> userKey = new Key<UserAccount>(UserAccount.class, user.getId().value);
+            Key<UserAccount> userKey = new Key<UserAccount>(UserAccount.class, user.getUserId());
             Key<Trial> trialKey = session.trial().insert(action.getTrial());
             action.getUserTrial().setUser(userKey);
             action.getUserTrial().setTrial(trialKey);
