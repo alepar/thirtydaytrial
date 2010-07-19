@@ -16,10 +16,6 @@ public class OfySession implements DaoSession {
     private final ObjectifyFactory factory;
     private Objectify ofy;
 
-    private TrialOfyDao trialDao;
-    private UserTrialOfyDao userTrialDao;
-    private UserAccountOfyDao accountDao;
-
     public OfySession(ObjectifyFactory factory) {
         this.factory = factory;
     }
@@ -39,28 +35,19 @@ public class OfySession implements DaoSession {
     @Override
     public TrialDao trial() {
         assertOfyIsOpen();
-        if (trialDao == null) {
-            trialDao = new TrialOfyDao(ofy);
-        }
-        return trialDao;
+        return new TrialOfyDao(ofy);
     }
 
     @Override
     public UserTrialDao userTrial() {
         assertOfyIsOpen();
-        if (userTrialDao == null) {
-            userTrialDao = new UserTrialOfyDao(ofy);
-        }
-        return userTrialDao;
+        return new UserTrialOfyDao(ofy);
     }
 
     @Override
     public UserAccountDao userAccount() {
         assertOfyIsOpen();
-        if (accountDao == null) {
-            accountDao = new UserAccountOfyDao(ofy);
-        }
-        return accountDao;
+        return new UserAccountOfyDao(ofy);
     }
 
     private void assertOfyIsOpen() {
