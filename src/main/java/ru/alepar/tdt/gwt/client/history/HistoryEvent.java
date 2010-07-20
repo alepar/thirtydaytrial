@@ -42,20 +42,21 @@ public abstract class HistoryEvent<H extends EventHandler> extends GwtEvent<H> {
     }
 
     public String token() {
-        String result = label();
+        StringBuilder result = new StringBuilder().append(label());
         if (parameterMap.size() > 0) {
-            result += TOKEN_SEPARATOR;
+            result.append(TOKEN_SEPARATOR);
             for (String key : parameterMap.keySet()) {
                 String value = parameterMap.get(key);
-                result += key;
+                result.append(key);
                 if(value != null) {
-                    result += KEYVALUE_SEPARATOR + value;
+                    result.append(KEYVALUE_SEPARATOR);
+                    result.append(value);
                 }
-                result += PAIR_SEPARATOR;
+                result.append(PAIR_SEPARATOR);
             }
-            result = result.substring(0, result.length()-1);
+            return result.substring(0, result.length()-1);
         }
-        return result;
+        return result.toString();
     }
 
     public Collection<String> getKeys() {
