@@ -13,12 +13,12 @@ import java.util.Map;
  * Date: Jul 15, 2010
  */
 public abstract class BaseOfyDao<T, K> implements BaseDao<T, K> {
-    private final Objectify ofy;
+    private final OfySession session;
     private final Class<T> typeOfT;
     private final Class<K> typeOfK;
 
-    public BaseOfyDao(Objectify ofy) {
-        this.ofy = ofy;
+    public BaseOfyDao(OfySession session) {
+        this.session = session;
         Type type = this.getClass().getGenericSuperclass();
         if (!(type instanceof ParameterizedType)) {
             throw new IllegalStateException("Was expecting a parametrized type here! But got " + type);
@@ -33,7 +33,7 @@ public abstract class BaseOfyDao<T, K> implements BaseDao<T, K> {
     }
 
     protected Objectify ofy() {
-        return ofy;
+        return session.ofy();
     }
 
     @Override

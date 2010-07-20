@@ -34,20 +34,22 @@ public class OfySession implements DaoSession {
 
     @Override
     public TrialDao trial() {
-        assertOfyIsOpen();
-        return new TrialOfyDao(ofy);
+        return new TrialOfyDao(this);
     }
 
     @Override
     public UserTrialDao userTrial() {
-        assertOfyIsOpen();
-        return new UserTrialOfyDao(ofy);
+        return new UserTrialOfyDao(this);
     }
 
     @Override
     public UserAccountDao userAccount() {
+        return new UserAccountOfyDao(this);
+    }
+
+    Objectify ofy() {
         assertOfyIsOpen();
-        return new UserAccountOfyDao(ofy);
+        return ofy;
     }
 
     private void assertOfyIsOpen() {

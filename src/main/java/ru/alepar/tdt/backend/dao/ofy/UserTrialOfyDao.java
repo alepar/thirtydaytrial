@@ -1,7 +1,6 @@
 package ru.alepar.tdt.backend.dao.ofy;
 
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Objectify;
 import ru.alepar.tdt.backend.dao.UserTrialDao;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
@@ -12,8 +11,8 @@ import ru.alepar.tdt.backend.model.UserTrial;
  */
 public class UserTrialOfyDao extends BaseOfyDao<UserTrial, Long> implements UserTrialDao {
 
-    public UserTrialOfyDao(Objectify ofy) {
-        super(ofy);
+    public UserTrialOfyDao(OfySession session) {
+        super(session);
     }
 
     @Override

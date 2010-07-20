@@ -1,6 +1,5 @@
 package ru.alepar.tdt.backend.dao.ofy;
 
-import com.googlecode.objectify.Objectify;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
 import ru.alepar.tdt.backend.model.UserAccount;
 
@@ -10,8 +9,7 @@ import ru.alepar.tdt.backend.model.UserAccount;
  */
 public class UserAccountOfyDao extends BaseOfyDao<UserAccount, String> implements UserAccountDao {
 
-    public UserAccountOfyDao(Objectify ofy) {
-        super(ofy);
+    public UserAccountOfyDao(OfySession session) {
+        super(session);
     }
-
 }
