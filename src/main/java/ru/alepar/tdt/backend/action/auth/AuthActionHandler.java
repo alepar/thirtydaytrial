@@ -6,24 +6,27 @@ import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.gwt.client.action.auth.AuthAction;
+import ru.alepar.tdt.gwt.client.action.auth.AuthResponse;
 
 /**
  * User: alepar
  * Date: Jul 22, 2010
  * Time: 7:04:18 AM
  */
-public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse> {
+public class AuthActionHandler implements ActionHandler<AuthResponse> {
 
     private final DaoSessionFactory sessionFactory;
     private final AuthInfo authInfo;
+    private final AuthAction authAction;
 
-    public AuthActionHandler(DaoSessionFactory sessionFactory, AuthInfo authInfo) {
+    public AuthActionHandler(DaoSessionFactory sessionFactory, AuthInfo authInfo, AuthAction authAction) {
         this.sessionFactory = sessionFactory;
         this.authInfo = authInfo;
+        this.authAction = authAction;
     }
 
     @Override
-    public AuthAction.AuthResponse execute() {
+    public AuthResponse execute() {
         UserAccount userAccount = null;
         if(authInfo.isLoggedId()) {
             DaoSession session = sessionFactory.session();
@@ -41,7 +44,7 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
                 session.close();
             }
         }
-        return new AuthAction.AuthResponse(
+        return new AuthResponse(
                 authInfo.getLogInUrl(),
                 authInfo.getLogOutUrl(),
                 authInfo.isLoggedId(),

@@ -58,7 +58,7 @@ public class ActionMapper {
             userService.createLoginURL(getApplicationRootUrl()),
             userService.createLogoutURL(getApplicationRootUrl()),
             userService.isUserLoggedIn(),
-            userService.isUserAdmin(),
+            userService.isUserLoggedIn() && userService.isUserAdmin(),
             userService.getCurrentUser()    
         );
     }
