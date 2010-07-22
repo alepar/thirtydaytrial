@@ -35,6 +35,10 @@ public class SaveTrial implements TdtAction<SaveTrial.SaveTrialResponse> {
         Trial trial;
         UserTrial userTrial;
 
+        @SuppressWarnings({"UnusedDeclaration"}) //used by gwt
+        public SaveTrialResponse() {
+        }
+
         public SaveTrialResponse(Trial trial, UserTrial userTrial) {
             this.trial = trial;
             this.userTrial = userTrial;

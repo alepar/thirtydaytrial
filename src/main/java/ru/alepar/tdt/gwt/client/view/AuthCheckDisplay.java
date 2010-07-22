@@ -4,7 +4,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Panel;
-import ru.alepar.tdt.gwt.client.action.auth.AuthResponse;
+import ru.alepar.tdt.gwt.client.action.auth.AuthAction;
 import ru.alepar.tdt.gwt.client.presenter.AuthCheck;
 
 /**
@@ -28,13 +28,13 @@ public abstract class AuthCheckDisplay extends Composite implements AuthCheck.Di
     protected abstract void appEntryPoint();
 
     @Override
-    public void onSuccessAuth(AuthResponse authResponse) {
+    public void onSuccessAuth(AuthAction.AuthResponse authResponse) {
         html.setHTML("<a href=\"" + authResponse.getLogOutUrl() + "\">" + authResponse.getUserAccount().getLogin() + "</a>");
         appEntryPoint();
     }
 
     @Override
-    public void onNotLoggedIn(AuthResponse authResponse) {
+    public void onNotLoggedIn(AuthAction.AuthResponse authResponse) {
         Window.Location.replace(authResponse.getLogOutUrl());
     }
 

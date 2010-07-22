@@ -9,6 +9,7 @@ import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.gwt.client.action.trial.GetTrials;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -19,7 +20,7 @@ import java.util.List;
  * Date: Jul 18, 2010
  * Time: 7:55:53 PM
  */
-public class GetTrialsHandler implements ActionHandler<GetTrialsHandler.GetTrialsResponse> {
+public class GetTrialsHandler implements ActionHandler<GetTrials.GetTrialsResponse> {
 
     private final DaoSessionFactory sessionFactory;
     private final User user;
@@ -30,7 +31,7 @@ public class GetTrialsHandler implements ActionHandler<GetTrialsHandler.GetTrial
     }
 
     @Override
-    public GetTrialsResponse execute() {
+    public GetTrials.GetTrialsResponse execute() {
         final DaoSession session = sessionFactory.session();
         session.open();
         try {
@@ -43,28 +44,10 @@ public class GetTrialsHandler implements ActionHandler<GetTrialsHandler.GetTrial
                 userTrialMap.put(new Key<UserTrial>(UserTrial.class, userTrial.getId()), userTrial);
             }
             HashMap<Key<Trial>, Trial> trialMap = new HashMap<Key<Trial>, Trial>(session.trial().find(trialKeys));
-            return new GetTrialsResponse(userTrialMap, trialMap);
+            return new GetTrials.GetTrialsResponse(userTrialMap, trialMap);
         } finally {
             session.close();
         }
     }
 
-    public static class GetTrialsResponse {
-
-        private final HashMap<Key<UserTrial>, UserTrial> userTrials;
-        private final HashMap<Key<Trial>, Trial> trials;
-
-        public GetTrialsResponse(HashMap<Key<UserTrial>, UserTrial> userTrials, HashMap<Key<Trial>, Trial> trials) {
-            this.userTrials = userTrials;
-            this.trials = trials;
-        }
-
-        public HashMap<Key<UserTrial>, UserTrial> getUserTrials() {
-            return userTrials;
-        }
-
-        public HashMap<Key<Trial>, Trial> getTrials() {
-            return trials;
-        }
-    }
 }
