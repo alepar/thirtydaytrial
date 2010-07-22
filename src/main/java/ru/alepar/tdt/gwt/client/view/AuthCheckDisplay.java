@@ -35,7 +35,7 @@ public abstract class AuthCheckDisplay extends Composite implements AuthCheck.Di
 
     @Override
     public void onNotLoggedIn(AuthAction.AuthResponse authResponse) {
-        Window.Location.replace(authResponse.getLogOutUrl());
+        Window.Location.replace(authResponse.getLogInUrl());
     }
 
     @Override
