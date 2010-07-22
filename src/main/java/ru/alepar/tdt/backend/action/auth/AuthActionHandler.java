@@ -23,6 +23,9 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
         this.sessionFactory = sessionFactory;
         this.authInfo = authInfo;
         this.authAction = authAction;
+        if(sessionFactory == null || authInfo == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -43,8 +46,8 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
             } finally {
                 session.close();
             }
+            userAccount.setId(new UserId(null)); //google suggests not to disclose user ids to users itself
         }
-        userAccount.setId(new UserId(null)); //google suggests not to disclose user ids to users itself
         return new AuthAction.AuthResponse(
                 authInfo.getLogInUrl(),
                 authInfo.getLogOutUrl(),
