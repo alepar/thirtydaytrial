@@ -9,7 +9,7 @@ import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
-import ru.alepar.tdt.gwt.server.AuthInfo;
+import ru.alepar.tdt.backend.action.auth.AuthInfo;
 
 /**
  * User: alepar

@@ -6,7 +6,6 @@ import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.gwt.client.action.auth.AuthAction;
-import ru.alepar.tdt.gwt.server.AuthInfo;
 
 /**
  * User: alepar

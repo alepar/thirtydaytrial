@@ -1,7 +1,7 @@
 package ru.alepar.tdt.gwt.server;
 
-import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
+import ru.alepar.tdt.backend.action.auth.AuthInfo;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.action.core.MapTo;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;

@@ -1,4 +1,4 @@
-package ru.alepar.tdt.gwt.server;
+package ru.alepar.tdt.backend.action.auth;
 
 import com.google.appengine.api.users.User;
 
