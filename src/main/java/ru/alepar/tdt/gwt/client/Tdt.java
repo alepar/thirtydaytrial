@@ -1,6 +1,7 @@
 package ru.alepar.tdt.gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -39,14 +40,18 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        final AuthCheckDisplay authCheckDisplay = new AuthCheckDisplay(RootPanel.get("signin")) {
-            @Override
-            protected void appEntryPoint() {
-                entryPoint();
-            }
-        };
-        final AuthCheck authCheck = new AuthCheck(authCheckDisplay, tdtService);
-        authCheck.run();
+        if(GWT.isScript()) {
+            final AuthCheckDisplay authCheckDisplay = new AuthCheckDisplay(RootPanel.get("signin")) {
+                @Override
+                protected void appEntryPoint() {
+                    entryPoint();
+                }
+            };
+            final AuthCheck authCheck = new AuthCheck(authCheckDisplay, tdtService);
+            authCheck.run();
+        } else {
+            entryPoint();            
+        }
     }
 
     public void entryPoint() {
