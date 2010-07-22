@@ -11,6 +11,5 @@
 
     <!-- Specify the app servlets.                   -->
     <servlet path='/TdtService' class='ru.alepar.tdt.gwt.server.TdtServiceImpl'/>
-    <servlet path="/AuthService" class="ru.alepar.tdt.gwt.server.AuthServiceImpl"/>
 
 </module>

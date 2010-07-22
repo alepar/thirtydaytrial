@@ -9,6 +9,7 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -29,7 +30,8 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
     private static long trialId;
 
     private final HandlerManager eventBus = new HistoryAwareHandlerManager(null);
-    private HistoryEventFactory eventFactory;
+    private final HistoryEventFactory eventFactory = new HistoryEventFactory();
+    private final TdtServiceAsync tdtService = TdtService.App.getInstance();
 
     private static Long nextId() {
         return ++trialId;
@@ -39,8 +41,6 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        eventFactory = new HistoryEventFactory();
-
         final Button button = new Button("add");
         button.addClickHandler(new ClickHandler() {
             @Override
@@ -71,7 +71,7 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         }
         History.fireCurrentHistoryState();
 
-        AuthService.App.getInstance().getAuth(new AuthAsyncCallBack(RootPanel.get("signin").getElement()));
+//        AuthService.App.getInstance().getAuth(new AuthAsyncCallBack(RootPanel.get("signin").getElement()));
     }
 
     @Override
@@ -79,6 +79,7 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         eventBus.fireEvent(eventFactory.buildEvent(historyEvent.getValue()));
     }
 
+/*
     private static class AuthAsyncCallBack implements AsyncCallback<AuthService.AuthResponse> {
 
         private Element element;
@@ -99,10 +100,11 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         @Override
         public void onSuccess(AuthService.AuthResponse authResponse) {
             if(authResponse.principalName == null) {
-                setText("<a href=\"" + authResponse.logInUrl + "\">sign in</a>");                
+                setText("<a href=\"" + authResponse.logInUrl + "\">sign in</a>");
             } else {
                 setText("<a href=\"" + authResponse.logOutUrl + "\">" + authResponse.principalName + "</a>");
             }
         }
     }
+*/
 }
