@@ -43,6 +43,7 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
                 session.close();
             }
         }
+        userAccount.setId(null); //google suggests not to disclose user ids to users itself
         return new AuthAction.AuthResponse(
                 authInfo.getLogInUrl(),
                 authInfo.getLogOutUrl(),
