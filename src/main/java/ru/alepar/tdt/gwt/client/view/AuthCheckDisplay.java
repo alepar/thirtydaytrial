@@ -29,7 +29,7 @@ public abstract class AuthCheckDisplay extends Composite implements AuthCheck.Di
 
     @Override
     public void onSuccessAuth(AuthAction.AuthResponse authResponse) {
-        html.setHTML("<a href=\"" + authResponse.getLogOutUrl() + "\">" + authResponse.getUserAccount().getLogin() + "</a>");
+        html.setHTML("<a href=\"" + authResponse.getLogOutUrl() + "\">" + authResponse.getUserAccount().getLogin().value + "</a>");
         appEntryPoint();
     }
 
