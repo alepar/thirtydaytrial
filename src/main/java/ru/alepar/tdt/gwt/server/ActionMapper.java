@@ -17,6 +17,7 @@ import java.util.List;
  * Date: Jul 15, 2010
  */
 public class ActionMapper {
+
     private final DaoSessionFactory factory;
     private final UserService userService;
 
@@ -34,8 +35,8 @@ public class ActionMapper {
             for (Class<?> argType : ctor.getParameterTypes()) {
                 if (argType.equals(DaoSessionFactory.class)) {
                     actualArguments.add(factory);
-                } else if (argType.equals(User.class)) {
-                    actualArguments.add(userService.getCurrentUser());
+                } else if (argType.equals(AuthInfo.class)) {
+                    actualArguments.add(makeAuthInfo());
                 } else if (argType.equals(action.getClass())) {
                     actualArguments.add(action);
                 } else {
@@ -45,7 +46,21 @@ public class ActionMapper {
             return ctor.newInstance(actualArguments.toArray());
         } catch (Exception e) {
             throw new RuntimeException("Wasn't able to invoke ctor " + ctor + " in " + clazz + " for " + action, e);
-        } 
+        }
+    }
+
+    private String getApplicationRootUrl() {
+        return "/";
+    }
+
+    private AuthInfo makeAuthInfo() {
+        return new AuthInfo(
+            userService.createLoginURL(getApplicationRootUrl()),
+            userService.createLogoutURL(getApplicationRootUrl()),
+            userService.isUserLoggedIn(),
+            userService.isUserAdmin(),
+            userService.getCurrentUser()    
+        );
     }
 
     @SuppressWarnings({"unchecked"})

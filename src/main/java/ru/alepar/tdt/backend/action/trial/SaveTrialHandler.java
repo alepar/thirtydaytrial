@@ -9,6 +9,7 @@ import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
+import ru.alepar.tdt.gwt.server.AuthInfo;
 
 /**
  * User: alepar
@@ -21,10 +22,10 @@ public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialRespon
     private final SaveTrial action;
     private final User user;
 
-    public SaveTrialHandler(DaoSessionFactory sessionFactory, SaveTrial action, User user) {
+    public SaveTrialHandler(DaoSessionFactory sessionFactory, SaveTrial action, AuthInfo authInfo) {
         this.sessionFactory = sessionFactory;
         this.action = action;
-        this.user = user;
+        this.user = authInfo.getUser();
     }
 
     @Override

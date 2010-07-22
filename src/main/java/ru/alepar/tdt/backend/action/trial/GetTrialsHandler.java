@@ -8,6 +8,7 @@ import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.gwt.server.AuthInfo;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -23,9 +24,9 @@ public class GetTrialsHandler implements ActionHandler<GetTrialsHandler.GetTrial
     private final DaoSessionFactory sessionFactory;
     private final User user;
 
-    public GetTrialsHandler(DaoSessionFactory sessionFactory, User user) {
+    public GetTrialsHandler(DaoSessionFactory sessionFactory, AuthInfo authInfo) {
         this.sessionFactory = sessionFactory;
-        this.user = user;
+        this.user = authInfo.getUser();
     }
 
     @Override
