@@ -5,6 +5,7 @@ import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.UserAccount;
+import ru.alepar.tdt.backend.model.UserId;
 import ru.alepar.tdt.gwt.client.action.auth.AuthAction;
 
 /**
@@ -43,7 +44,7 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
                 session.close();
             }
         }
-        userAccount.setId(null); //google suggests not to disclose user ids to users itself
+        userAccount.setId(new UserId(null)); //google suggests not to disclose user ids to users itself
         return new AuthAction.AuthResponse(
                 authInfo.getLogInUrl(),
                 authInfo.getLogOutUrl(),
