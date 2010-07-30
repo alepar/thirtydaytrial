@@ -57,26 +57,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--
-                <dependency>
-                    <groupId>com.google.gwt</groupId>
-                    <artifactId>gwt-incubator</artifactId>
-                    <version>2.0.1</version>
-                </dependency>
-        -->
-
-        <!--
-            J2EE Servlet API. We need it to compile IndexServlet class.
-            You can probably remove it, if you don't explicitly use
-            Servlets
-        -->
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-servlet_2.5_spec</artifactId>
-            <version>1.2</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- These dependencies are here just for enabling logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
