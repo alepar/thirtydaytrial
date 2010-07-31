@@ -1,4 +1,4 @@
-package ru.alepar.gwt.tdt;
+package ru.alepar.tdt.gwt;
 
 import com.google.gwt.event.shared.EventHandler;
 import org.junit.Test;

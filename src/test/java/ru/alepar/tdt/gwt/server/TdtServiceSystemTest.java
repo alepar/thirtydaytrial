@@ -1,4 +1,4 @@
-package ru.alepar.gwt.tdt.server;
+package ru.alepar.tdt.gwt.server;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
