@@ -5,6 +5,8 @@ import ru.alepar.tdt.backend.action.auth.AuthInfo;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.action.core.MapTo;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
+import ru.alepar.tdt.backend.security.ActionGuard;
+import ru.alepar.tdt.backend.security.InsufficientSecurityLevelException;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
 import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 
@@ -20,16 +22,29 @@ public class ActionMapper {
 
     private final DaoSessionFactory factory;
     private final UserService userService;
+    private final ActionGuard guard;
 
-    public ActionMapper(DaoSessionFactory factory, UserService userService) {
+    public ActionMapper(DaoSessionFactory factory, UserService userService, ActionGuard guard) {
         this.factory = factory;
         this.userService = userService;
+        this.guard = guard;
     }
 
     public <T extends TdtResponse> ActionHandler<T> map(TdtAction<T> action) {
         MapTo to = action.getClass().getAnnotation(MapTo.class);
         Class<ActionHandler<T>> clazz = (Class<ActionHandler<T>>) to.value();
         Constructor<ActionHandler<T>> ctor = resolveCtor(clazz, action);
+        ActionHandler<T> actionHandler = invokeCtor(action, clazz, ctor);
+        try {
+            guard.check(actionHandler, makeAuthInfo());
+        } catch (InsufficientSecurityLevelException e) {
+            throw new RuntimeException("failed to handle action " + action.getClass().getCanonicalName(), e);
+        }
+        return actionHandler;
+    }
+
+    private <T extends TdtResponse> ActionHandler<T> invokeCtor(TdtAction<T> action, Class<ActionHandler<T>> clazz, Constructor<ActionHandler<T>> ctor) {
+        ActionHandler<T> actionHandler;
         List<Object> actualArguments = new ArrayList<Object>();
         try {
             for (Class<?> argType : ctor.getParameterTypes()) {
@@ -43,10 +58,11 @@ public class ActionMapper {
                     throw new RuntimeException("unknown arg type " + argType);
                 }
             }
-            return ctor.newInstance(actualArguments.toArray());
+            actionHandler = ctor.newInstance(actualArguments.toArray());
         } catch (Exception e) {
             throw new RuntimeException("Wasn't able to invoke ctor " + ctor + " in " + clazz + " for " + action, e);
         }
+        return actionHandler;
     }
 
     private String getApplicationRootUrl() {

@@ -2,6 +2,7 @@ package ru.alepar.tdt.backend.security;
 
 import ru.alepar.tdt.backend.action.auth.AuthInfo;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
+import ru.alepar.tdt.backend.action.core.MapTo;
 
 import java.lang.annotation.Annotation;
 
@@ -15,25 +16,21 @@ public class AnnotationDrivenActionGuard implements ActionGuard {
     @Override
     public void check(ActionHandler<?> action, AuthInfo authInfo) throws InsufficientSecurityLevelException {
         Class<? extends ActionHandler> actionClass = action.getClass();
-        Annotation[] annotations = actionClass.getDeclaredAnnotations();
-        for (Annotation a : annotations) {
-            if(a instanceof Allow) {
-                Allow allow = (Allow) a;
-                switch(allow.value()) {
-                    case EVERYONE:
-                        return;
-                    case AUTHENTICATED:
-                        if(!authInfo.isLoggedId()) {
-                            throw new InsufficientSecurityLevelException();
-                        }
-                        break;
-                    case ADMIN:
-                        if(!authInfo.isAdmin()) {
-                            throw new InsufficientSecurityLevelException();
-                        }
-                        break;
+
+        Allow allow = actionClass.getAnnotation(Allow.class);
+        switch (allow.value()) {
+            case EVERYONE:
+                return;
+            case AUTHENTICATED:
+                if (!authInfo.isLoggedId()) {
+                    throw new InsufficientSecurityLevelException("AUTHENTICATED level or higher required");
                 }
-            }
+                break;
+            case ADMIN:
+                if (!authInfo.isAdmin()) {
+                    throw new InsufficientSecurityLevelException("ADMIN level required");
+                }
+                break;
         }
     }
 
