@@ -3,9 +3,9 @@ package ru.alepar.tdt.gwt.client.view;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Hyperlink;
+import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.gwt.client.history.EditTrialHistoryEvent;
 import ru.alepar.tdt.gwt.client.presenter.TrialsTable;
-import ru.alepar.tdt.backend.model.Trial;
 
 /**
  * User: alepar

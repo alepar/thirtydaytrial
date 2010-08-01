@@ -5,10 +5,10 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
+import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.gwt.client.event.EditTrialEvent;
 import ru.alepar.tdt.gwt.client.event.TrialChangedEvent;
 import ru.alepar.tdt.gwt.client.history.HomeHistoryEvent;
-import ru.alepar.tdt.backend.model.Trial;
 
 /**
  * User: alepar

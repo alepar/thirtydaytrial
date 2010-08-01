@@ -13,12 +13,11 @@ import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.action.core.MapTo;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.security.ActionGuard;
-import ru.alepar.tdt.backend.security.Allow;
 import ru.alepar.tdt.backend.security.InsufficientSecurityLevelException;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
 import ru.alepar.tdt.gwt.client.action.core.TdtVoidResponse;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 /**
  * User: alepar

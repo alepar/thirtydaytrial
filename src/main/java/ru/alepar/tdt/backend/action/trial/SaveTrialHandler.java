@@ -2,6 +2,7 @@ package ru.alepar.tdt.backend.action.trial;
 
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.Key;
+import ru.alepar.tdt.backend.action.auth.AuthInfo;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
@@ -9,7 +10,6 @@ import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
-import ru.alepar.tdt.backend.action.auth.AuthInfo;
 
 /**
  * User: alepar

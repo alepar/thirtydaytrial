@@ -1,5 +1,6 @@
 package ru.alepar.tdt.backend.action.user;
 
+import ru.alepar.tdt.backend.action.auth.AuthInfo;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
@@ -8,7 +9,6 @@ import ru.alepar.tdt.backend.model.UserEmail;
 import ru.alepar.tdt.backend.model.UserId;
 import ru.alepar.tdt.gwt.client.action.core.TdtVoidResponse;
 import ru.alepar.tdt.gwt.client.action.user.AddUser;
-import ru.alepar.tdt.backend.action.auth.AuthInfo;
 
 /**
  * User: looser

@@ -2,9 +2,6 @@ package ru.alepar.tdt.backend.security;
 
 import ru.alepar.tdt.backend.action.auth.AuthInfo;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
-import ru.alepar.tdt.backend.action.core.MapTo;
-
-import java.lang.annotation.Annotation;
 
 /**
  * User: alepar

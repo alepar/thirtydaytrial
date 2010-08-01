@@ -1,10 +1,10 @@
 package ru.alepar.tdt.gwt.client.presenter;
 
 import com.google.gwt.event.shared.HandlerManager;
+import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.gwt.client.event.EditTrialEvent;
 import ru.alepar.tdt.gwt.client.event.TrialChangedEvent;
 import ru.alepar.tdt.gwt.client.history.EditTrialHistoryEvent;
-import ru.alepar.tdt.backend.model.Trial;
 
 import java.util.LinkedList;
 
