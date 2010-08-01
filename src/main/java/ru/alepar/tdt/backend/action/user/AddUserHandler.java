@@ -7,13 +7,18 @@ import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserEmail;
 import ru.alepar.tdt.backend.model.UserId;
+import ru.alepar.tdt.backend.security.Allow;
+import ru.alepar.tdt.backend.security.SecurityLevel;
 import ru.alepar.tdt.gwt.client.action.core.TdtVoidResponse;
 import ru.alepar.tdt.gwt.client.action.user.AddUser;
+
+import static ru.alepar.tdt.backend.security.SecurityLevel.*;
 
 /**
  * User: looser
  * Date: 11.07.2010
  */
+@Allow(ADMIN)
 public class AddUserHandler implements ActionHandler<TdtVoidResponse> {
     private final DaoSessionFactory sessionFactory;
     private final UserId id;

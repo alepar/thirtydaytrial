@@ -6,13 +6,18 @@ import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserId;
+import ru.alepar.tdt.backend.security.Allow;
+import ru.alepar.tdt.backend.security.SecurityLevel;
 import ru.alepar.tdt.gwt.client.action.auth.AuthAction;
+
+import static ru.alepar.tdt.backend.security.SecurityLevel.EVERYONE;
 
 /**
  * User: alepar
  * Date: Jul 22, 2010
  * Time: 7:04:18 AM
  */
+@Allow(EVERYONE)
 public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse> {
 
     private final DaoSessionFactory sessionFactory;

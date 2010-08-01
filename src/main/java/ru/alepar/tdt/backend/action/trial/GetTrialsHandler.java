@@ -9,17 +9,22 @@ import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.backend.security.Allow;
+import ru.alepar.tdt.backend.security.SecurityLevel;
 import ru.alepar.tdt.gwt.client.action.trial.GetTrials;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import static ru.alepar.tdt.backend.security.SecurityLevel.AUTHENTICATED;
+
 /**
  * User: alepar
  * Date: Jul 18, 2010
  * Time: 7:55:53 PM
  */
+@Allow(AUTHENTICATED)
 public class GetTrialsHandler implements ActionHandler<GetTrials.GetTrialsResponse> {
 
     private final DaoSessionFactory sessionFactory;

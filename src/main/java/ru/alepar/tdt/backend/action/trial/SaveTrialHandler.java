@@ -9,13 +9,18 @@ import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.backend.security.Allow;
+import ru.alepar.tdt.backend.security.SecurityLevel;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
+
+import static ru.alepar.tdt.backend.security.SecurityLevel.ADMIN;
 
 /**
  * User: alepar
  * Date: Jul 18, 2010
  * Time: 7:05:27 PM
  */
+@Allow(ADMIN)
 public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialResponse> {
 
     private final DaoSessionFactory sessionFactory;

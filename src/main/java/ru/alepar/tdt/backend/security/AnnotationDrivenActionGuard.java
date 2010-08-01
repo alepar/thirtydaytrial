@@ -15,6 +15,9 @@ public class AnnotationDrivenActionGuard implements ActionGuard {
         Class<? extends ActionHandler> actionClass = action.getClass();
 
         Allow allow = actionClass.getAnnotation(Allow.class);
+        if(allow == null) {
+            throw new InsufficientSecurityLevelException("no Allow annotation found");
+        }
         switch (allow.value()) {
             case EVERYONE:
                 return;
