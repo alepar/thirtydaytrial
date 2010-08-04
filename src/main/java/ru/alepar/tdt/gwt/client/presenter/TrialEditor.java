@@ -6,6 +6,7 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
 import ru.alepar.tdt.backend.model.Trial;
+import ru.alepar.tdt.gwt.client.TdtServiceAsync;
 import ru.alepar.tdt.gwt.client.event.EditTrialEvent;
 import ru.alepar.tdt.gwt.client.event.TrialChangedEvent;
 import ru.alepar.tdt.gwt.client.history.HomeHistoryEvent;
@@ -19,6 +20,8 @@ public class TrialEditor implements EditTrialEvent.Handler, HomeHistoryEvent.Han
 
     private final HandlerManager eventBus;
     private final Display display;
+    private final TdtServiceAsync service;
+
     private Trial trial;
 
     public interface Display {
@@ -30,9 +33,10 @@ public class TrialEditor implements EditTrialEvent.Handler, HomeHistoryEvent.Han
         void hide();
     }
 
-    public TrialEditor(HandlerManager eventBus, Display display) {
+    public TrialEditor(HandlerManager eventBus, Display display, TdtServiceAsync service) {
         this.eventBus = eventBus;
         this.display = display;
+        this.service = service;
         bindDisplay();
     }
 

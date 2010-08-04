@@ -31,7 +31,7 @@ public class TdtServiceSystemTest {
 
     @Test
     public void commandsAreConvertedAndResultIsStoredInTheDatabase() {
-        //AddUser action we're testing here needs admin rights
+        //you need admin rights to execute AddUser action
         localGae.helper.setEnvIsAdmin(true);
         
         User user = UserServiceFactory.getUserService().getCurrentUser();

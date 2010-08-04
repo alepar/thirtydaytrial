@@ -55,6 +55,9 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
     }
 
     public void entryPoint() {
+        final TdtServiceAsync service = TdtService.App.getInstance();
+
+        //add trial button
         final Button button = new Button("add");
         button.addClickHandler(new ClickHandler() {
             @Override
@@ -68,17 +71,20 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         });
         RootPanel.get("add_trial").add(button);
 
+        //trial editor
         final TrialEditorDisplay trialEditorDisplay = new TrialEditorDisplay(RootPanel.get("editor_trial"));
-        final TrialEditor trialEditor = new TrialEditor(eventBus, trialEditorDisplay);
+        final TrialEditor trialEditor = new TrialEditor(eventBus, trialEditorDisplay, service);
         eventBus.addHandler(EditTrialEvent.TYPE, trialEditor);
         eventBus.addHandler(HomeHistoryEvent.TYPE, trialEditor);
 
+        //trials list
         final TrialsTableDisplay trialsTableDisplay = new TrialsTableDisplay();
         final TrialsTable trialsTable = new TrialsTable(eventBus, trialsTableDisplay);
         eventBus.addHandler(TrialChangedEvent.TYPE, trialsTable);
         eventBus.addHandler(EditTrialHistoryEvent.TYPE, trialsTable);
         RootPanel.get("table_trial").add(trialsTableDisplay);
 
+        //history
         History.addValueChangeHandler(this);
         if("".equals(History.getToken())) {
             History.newItem("home");
