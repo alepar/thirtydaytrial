@@ -13,13 +13,16 @@ import java.io.Serializable;
  * Date: 11.07.2010
  */
 public class UserTrial implements Serializable {
-    @Id Long id;
+    @Id
+    Long id;
 
-    @Parent Key<UserAccount> user;
+    @Parent
+    Key<UserAccount> user;
 
     Key<Trial> trial;
 
-    @Embedded TrialWhen when;
+    @Embedded
+    TrialWhen when;
 
     @SuppressWarnings({"UnusedDeclaration"}) // used by objectify
     public UserTrial() {

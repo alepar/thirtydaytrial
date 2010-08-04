@@ -17,7 +17,8 @@ import static ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl.*;
  * Date: Jul 15, 2010
  */
 public class UserTrialDaoSystemTest {
-    @Rule public LocalGae localGae = new LocalGae(new LocalDatastoreServiceTestConfig());
+    @Rule
+    public LocalGae localGae = new LocalGae(new LocalDatastoreServiceTestConfig());
 
     @Test
     public void canFindUserTrialAfterInserting() {

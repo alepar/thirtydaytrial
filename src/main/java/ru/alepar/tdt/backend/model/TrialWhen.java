@@ -6,7 +6,7 @@ import java.io.Serializable;
  * User: looser
  * Date: 11.07.2010
  */
-public class TrialWhen  implements Serializable {
+public class TrialWhen implements Serializable {
     String data;
 
     @SuppressWarnings({"UnusedDeclaration"}) // used by objectify

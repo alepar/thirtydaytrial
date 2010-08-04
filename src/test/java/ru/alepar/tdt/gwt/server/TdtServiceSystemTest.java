@@ -33,7 +33,7 @@ public class TdtServiceSystemTest {
     public void commandsAreConvertedAndResultIsStoredInTheDatabase() {
         //you need admin rights to execute AddUser action
         localGae.helper.setEnvIsAdmin(true);
-        
+
         User user = UserServiceFactory.getUserService().getCurrentUser();
         assertThat(user.getUserId(), equalTo(LocalGae.MY_USER_ID));
 

@@ -19,7 +19,7 @@ class OfyDaoSessionFactoryImpl implements DaoSessionFactory {
         ObjectifyService.register(Trial.class);
         ObjectifyService.register(UserTrial.class);
         ObjectifyService.register(UserAccount.class);
-    }    
+    }
 
     @Override
     public DaoSession session() {

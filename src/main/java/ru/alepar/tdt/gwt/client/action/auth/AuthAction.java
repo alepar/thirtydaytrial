@@ -14,10 +14,10 @@ import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 public class AuthAction implements TdtAction<AuthAction.AuthResponse> {
 
     /**
-    * User: alepar
-    * Date: Jul 22, 2010
-    * Time: 9:22:08 AM
-    */
+     * User: alepar
+     * Date: Jul 22, 2010
+     * Time: 9:22:08 AM
+     */
     public static class AuthResponse implements TdtResponse {
         private String logInUrl;
         private String logOutUrl;

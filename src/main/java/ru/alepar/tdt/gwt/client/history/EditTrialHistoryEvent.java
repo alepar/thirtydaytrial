@@ -34,10 +34,10 @@ public class EditTrialHistoryEvent extends HistoryEvent<EditTrialHistoryEvent.Ha
 
     public Long getTrialId() {
         String id = getValue(ID_KEY);
-        return id == null ? null : Long.valueOf(id); 
+        return id == null ? null : Long.valueOf(id);
     }
 
     public void setTrialId(Long trialId) {
-        setParam(ID_KEY, trialId.toString());    
+        setParam(ID_KEY, trialId.toString());
     }
 }

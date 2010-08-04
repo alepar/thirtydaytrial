@@ -6,5 +6,5 @@ package ru.alepar.tdt.gwt.client.action.core;
  * Time: 7:54:40 PM
  */
 public class TdtVoidRequest implements TdtResponse {
-    
+
 }

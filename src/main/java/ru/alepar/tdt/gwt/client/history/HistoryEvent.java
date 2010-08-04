@@ -16,7 +16,7 @@ public abstract class HistoryEvent<H extends EventHandler> extends GwtEvent<H> {
     public static final String TOKEN_SEPARATOR = ";";
     public static final String PAIR_SEPARATOR = ",";
     public static final String KEYVALUE_SEPARATOR = "=";
-    
+
     protected LinkedHashMap<String, String> parameterMap = new LinkedHashMap<String, String>();
 
     public HistoryEvent() {
@@ -24,15 +24,15 @@ public abstract class HistoryEvent<H extends EventHandler> extends GwtEvent<H> {
 
     public void unmarshall(String historyToken) {
         String[] breakout = historyToken.split(TOKEN_SEPARATOR, 2);
-        if(!breakout[0].equals(label())) {
+        if (!breakout[0].equals(label())) {
             throw new IllegalArgumentException("passed invalid token " + breakout[0] + " to event type " + this.getClass().getName());
         }
-        if(breakout.length == 2) {
+        if (breakout.length == 2) {
             String paramString = breakout[1];
             String[] params = paramString.split(PAIR_SEPARATOR);
             for (String param : params) {
                 String[] paramBreakout = param.split(KEYVALUE_SEPARATOR, 2);
-                if(paramBreakout.length == 1) {
+                if (paramBreakout.length == 1) {
                     parameterMap.put(paramBreakout[0], null);
                 } else {
                     parameterMap.put(paramBreakout[0], paramBreakout[1]);
@@ -48,13 +48,13 @@ public abstract class HistoryEvent<H extends EventHandler> extends GwtEvent<H> {
             for (String key : parameterMap.keySet()) {
                 String value = parameterMap.get(key);
                 result.append(key);
-                if(value != null) {
+                if (value != null) {
                     result.append(KEYVALUE_SEPARATOR);
                     result.append(value);
                 }
                 result.append(PAIR_SEPARATOR);
             }
-            return result.substring(0, result.length()-1);
+            return result.substring(0, result.length() - 1);
         }
         return result.toString();
     }

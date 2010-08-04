@@ -37,7 +37,7 @@ public class AuthCheck {
 
         @Override
         public void onSuccess(AuthAction.AuthResponse authResponse) {
-            if(authResponse.isLoggedId()) {
+            if (authResponse.isLoggedId()) {
                 display.onSuccessAuth(authResponse);
             } else {
                 display.onNotLoggedIn(authResponse);

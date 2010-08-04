@@ -14,5 +14,5 @@ public abstract class GenericCallback<T> implements AsyncCallback<T> {
     public void onFailure(Throwable throwable) {
         GWT.log("async call thrown exception", throwable);
     }
-    
+
 }

@@ -10,10 +10,9 @@ import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.backend.security.Allow;
-import ru.alepar.tdt.backend.security.SecurityLevel;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
 
-import static ru.alepar.tdt.backend.security.SecurityLevel.ADMIN;
+import static ru.alepar.tdt.backend.security.SecurityLevel.*;
 
 /**
  * User: alepar

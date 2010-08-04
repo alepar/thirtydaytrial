@@ -35,7 +35,7 @@ public class HistoryEventFactory {
     public HistoryEvent<?> buildEvent(String token) {
         String label = token.split(HistoryEvent.TOKEN_SEPARATOR, 2)[0];
         HistoryEvent<?> event = eventMap.get(label);
-        if(event == null) {
+        if (event == null) {
             throw new RuntimeException("i don't know event type with label = " + label);
         }
         event.unmarshall(token);

@@ -19,7 +19,8 @@ import static ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl.*;
  * Date: 10.07.2010
  */
 public class UserAccountDaoSystemTest {
-    @Rule public LocalGae localGae = new LocalGae(new LocalDatastoreServiceTestConfig()); 
+    @Rule
+    public LocalGae localGae = new LocalGae(new LocalDatastoreServiceTestConfig());
 
     private static final UserId ID = new UserId("id");
 

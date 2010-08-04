@@ -8,7 +8,7 @@ import java.io.Serializable;
  * User: looser
  * Date: 11.07.2010
  */
-public class Trial  implements Serializable {
+public class Trial implements Serializable {
     @Id Long id;
 
     String title;

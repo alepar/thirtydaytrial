@@ -33,12 +33,12 @@ public class TrialsTable implements TrialChangedEvent.Handler, EditTrialHistoryE
     public void onTrialChanged(TrialChangedEvent p) {
         int index = 0;
         for (Trial trial : trials) {
-            if(trial.getId().equals(p.trial.getId())) {
+            if (trial.getId().equals(p.trial.getId())) {
                 break;
             }
             index++;
         }
-        if(index == trials.size()) {
+        if (index == trials.size()) {
             trials.addLast(p.trial);
         } else {
             trials.remove(index);
@@ -50,7 +50,7 @@ public class TrialsTable implements TrialChangedEvent.Handler, EditTrialHistoryE
     @Override
     public void onTrialEdit(EditTrialHistoryEvent p) {
         for (Trial trial : trials) {
-            if(trial.getId().equals(p.getTrialId())) {
+            if (trial.getId().equals(p.getTrialId())) {
                 eventBus.fireEvent(new EditTrialEvent(trial));
             }
         }

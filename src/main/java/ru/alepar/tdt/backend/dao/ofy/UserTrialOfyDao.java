@@ -19,5 +19,5 @@ public class UserTrialOfyDao extends BaseOfyDao<UserTrial, Long> implements User
     public Iterable<UserTrial> listUserTrials(UserAccount user) {
         return ofy().query(UserTrial.class).ancestor(new Key<UserAccount>(UserAccount.class, user.getId().value));
     }
-    
+
 }

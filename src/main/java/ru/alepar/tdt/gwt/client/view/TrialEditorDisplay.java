@@ -15,7 +15,8 @@ import ru.alepar.tdt.gwt.client.presenter.TrialEditor;
 public class TrialEditorDisplay extends Composite implements TrialEditor.Display {
     private final Panel container;
 
-    interface TrialEditorUiBinder extends UiBinder<Widget, TrialEditorDisplay> {}
+    interface TrialEditorUiBinder extends UiBinder<Widget, TrialEditorDisplay> { }
+
     private static final TrialEditorUiBinder uiBinder = GWT.create(TrialEditorUiBinder.class);
 
     @UiField
@@ -47,7 +48,7 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
 
     @Override
     public HasClickHandlers getSaveButton() {
-       return saveButton;
+        return saveButton;
     }
 
     @Override

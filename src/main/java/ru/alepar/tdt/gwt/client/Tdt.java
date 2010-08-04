@@ -40,7 +40,7 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        if(GWT.isScript()) {
+        if (GWT.isScript()) {
             final AuthCheckDisplay authCheckDisplay = new AuthCheckDisplay(RootPanel.get("signin")) {
                 @Override
                 protected void appEntryPoint() {
@@ -50,7 +50,7 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
             final AuthCheck authCheck = new AuthCheck(authCheckDisplay, tdtService);
             authCheck.run();
         } else {
-            entryPoint();            
+            entryPoint();
         }
     }
 
@@ -86,7 +86,7 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
 
         //history
         History.addValueChangeHandler(this);
-        if("".equals(History.getToken())) {
+        if ("".equals(History.getToken())) {
             History.newItem("home");
         }
         History.fireCurrentHistoryState();

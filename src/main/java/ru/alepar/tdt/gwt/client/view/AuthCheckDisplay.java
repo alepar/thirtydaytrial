@@ -19,8 +19,8 @@ public abstract class AuthCheckDisplay extends Composite implements AuthCheck.Di
 
     public AuthCheckDisplay(Panel panel) {
         this.panel = panel;
-        
-        this.html = new HTML(); 
+
+        this.html = new HTML();
         initWidget(this.html);
         panel.add(this);
     }

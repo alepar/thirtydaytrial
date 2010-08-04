@@ -7,10 +7,9 @@ import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.UserAccount;
 import ru.alepar.tdt.backend.model.UserId;
 import ru.alepar.tdt.backend.security.Allow;
-import ru.alepar.tdt.backend.security.SecurityLevel;
 import ru.alepar.tdt.gwt.client.action.auth.AuthAction;
 
-import static ru.alepar.tdt.backend.security.SecurityLevel.EVERYONE;
+import static ru.alepar.tdt.backend.security.SecurityLevel.*;
 
 /**
  * User: alepar
@@ -28,7 +27,7 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
         this.sessionFactory = sessionFactory;
         this.authInfo = authInfo;
         this.authAction = authAction;
-        if(sessionFactory == null || authInfo == null) {
+        if (sessionFactory == null || authInfo == null) {
             throw new IllegalArgumentException();
         }
     }
@@ -36,12 +35,12 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
     @Override
     public AuthAction.AuthResponse execute() {
         UserAccount userAccount = null;
-        if(authInfo.isLoggedId()) {
+        if (authInfo.isLoggedId()) {
             DaoSession session = sessionFactory.session();
             session.open();
             try {
-                userAccount = session.userAccount().find(authInfo.getUser().getUserId());    
-            } catch(NotFoundException e) {
+                userAccount = session.userAccount().find(authInfo.getUser().getUserId());
+            } catch (NotFoundException e) {
                 userAccount = new UserAccount(
                         authInfo.getUser().getUserId(),
                         authInfo.getUser().getNickname(),

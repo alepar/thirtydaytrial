@@ -5,7 +5,7 @@ package ru.alepar.tdt.backend.dao.core;
  * Date: 19.07.2010
  */
 public class DaoSessionFactoryImpl implements DaoSessionFactory {
-    
+
     @Override
     public DaoSession session() {
         return sessionInstance();

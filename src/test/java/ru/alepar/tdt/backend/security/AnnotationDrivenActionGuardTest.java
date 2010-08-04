@@ -23,7 +23,7 @@ public class AnnotationDrivenActionGuardTest {
     private final ActionHandler<?> userAction = new AuthenticatedAction();
     private final ActionHandler<?> adminAction = new AdminAction();
 
-    private final ActionGuard guard = new AnnotationDrivenActionGuard(); 
+    private final ActionGuard guard = new AnnotationDrivenActionGuard();
 
     @Test
     public void testAnonymousCanInvokeActionWithEveryoneAccess() {

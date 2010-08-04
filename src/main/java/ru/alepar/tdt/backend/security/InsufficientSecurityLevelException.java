@@ -21,5 +21,5 @@ public class InsufficientSecurityLevelException extends Exception {
     public InsufficientSecurityLevelException(Throwable cause) {
         super(cause);
     }
-    
+
 }

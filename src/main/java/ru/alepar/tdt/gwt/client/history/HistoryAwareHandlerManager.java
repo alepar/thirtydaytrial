@@ -21,7 +21,7 @@ public class HistoryAwareHandlerManager extends HandlerManager {
 
     @Override
     public void fireEvent(GwtEvent<?> event) {
-        if(event instanceof HistoryEvent) {
+        if (event instanceof HistoryEvent) {
             HistoryEvent<?> historyEvent = (HistoryEvent<?>) event;
             History.newItem(historyEvent.token());
         }

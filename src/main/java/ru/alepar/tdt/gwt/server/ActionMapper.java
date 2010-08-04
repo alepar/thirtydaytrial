@@ -71,11 +71,11 @@ public class ActionMapper {
 
     private AuthInfo makeAuthInfo() {
         return new AuthInfo(
-            userService.createLoginURL(getApplicationRootUrl()),
-            userService.createLogoutURL(getApplicationRootUrl()),
-            userService.isUserLoggedIn(),
-            userService.isUserLoggedIn() && userService.isUserAdmin(),
-            userService.getCurrentUser()    
+                userService.createLoginURL(getApplicationRootUrl()),
+                userService.createLogoutURL(getApplicationRootUrl()),
+                userService.isUserLoggedIn(),
+                userService.isUserLoggedIn() && userService.isUserAdmin(),
+                userService.getCurrentUser()
         );
     }
 
