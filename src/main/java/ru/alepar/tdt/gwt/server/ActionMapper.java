@@ -32,7 +32,10 @@ public class ActionMapper {
 
     public <T extends TdtResponse> ActionHandler<T> map(TdtAction<T> action) {
         MapTo to = action.getClass().getAnnotation(MapTo.class);
+
+        @SuppressWarnings({"unchecked"})
         Class<ActionHandler<T>> clazz = (Class<ActionHandler<T>>) to.value();
+
         Constructor<ActionHandler<T>> ctor = resolveCtor(clazz, action);
         ActionHandler<T> actionHandler = invokeCtor(action, clazz, ctor);
         try {

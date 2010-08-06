@@ -19,7 +19,7 @@ import static ru.alepar.tdt.backend.security.SecurityLevel.*;
  * Date: Jul 18, 2010
  * Time: 7:05:27 PM
  */
-@Allow(ADMIN)
+@Allow(AUTHENTICATED)
 public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialResponse> {
 
     private final DaoSessionFactory sessionFactory;
