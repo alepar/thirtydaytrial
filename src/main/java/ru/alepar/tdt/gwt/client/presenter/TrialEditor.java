@@ -5,11 +5,11 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
-import ru.alepar.tdt.backend.model.Trial;
+import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.TdtServiceAsync;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
-import ru.alepar.tdt.gwt.client.event.EditTrialEvent;
-import ru.alepar.tdt.gwt.client.event.TrialChangedEvent;
+import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
+import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;
 import ru.alepar.tdt.gwt.client.history.HomeHistoryEvent;
 
 /**
@@ -17,13 +17,13 @@ import ru.alepar.tdt.gwt.client.history.HomeHistoryEvent;
  * Date: Jul 11, 2010
  * Time: 1:07:35 PM
  */
-public class TrialEditor implements EditTrialEvent.Handler, HomeHistoryEvent.Handler {
+public class TrialEditor implements EditUserTrialEvent.Handler, HomeHistoryEvent.Handler {
 
     private final HandlerManager eventBus;
     private final Display display;
     private final TdtServiceAsync service;
 
-    private Trial trial;
+    private UserTrial userTrial;
 
     public interface Display {
         HasText getIdLabel();
@@ -57,8 +57,8 @@ public class TrialEditor implements EditTrialEvent.Handler, HomeHistoryEvent.Han
     }
 
     @Override
-    public void onTrialEdit(EditTrialEvent p) {
-        editTrial(p.trial);
+    public void onTrialEdit(EditUserTrialEvent p) {
+        editTrial(p.userTrial);
     }
 
     @Override
@@ -67,14 +67,16 @@ public class TrialEditor implements EditTrialEvent.Handler, HomeHistoryEvent.Han
     }
 
     private void doSave() {
-        trial.setTitle(display.getTitleField().getText());
+        userTrial.getTrial().setTitle(display.getTitleField().getText());
 
-        service.execute(new SaveTrial(Trial.from(trial), null), new SaveTrial.SavedTrial() {
+        service.execute(new SaveTrial(UserTrial.from(userTrial)), new SaveTrial.SavedTrial() {
+
             @Override
-            public void savedTrial(SaveTrial.SaveTrialResponse response) {
-                eventBus.fireEvent(new TrialChangedEvent(response.getTrial()));
+            public void savedTrial(UserTrial userTrial) {
+                eventBus.fireEvent(new UserTrialChangedEvent(userTrial));
                 eventBus.fireEvent(new HomeHistoryEvent());
             }
+
         });
     }
 
@@ -83,14 +85,14 @@ public class TrialEditor implements EditTrialEvent.Handler, HomeHistoryEvent.Han
         eventBus.fireEvent(new HomeHistoryEvent());
     }
 
-    public void editTrial(Trial trial) {
-        this.trial = Trial.from(trial);
+    public void editTrial(UserTrial userTrial) {
+        this.userTrial = UserTrial.from(userTrial);
         updateDisplay();
         display.show();
     }
 
     private void updateDisplay() {
-        display.getIdLabel().setText(this.trial.getId().toString());
-        display.getTitleField().setText(this.trial.getTitle());
+        display.getIdLabel().setText(this.userTrial.getId()==null ? "" : this.userTrial.getId().toString());
+        display.getTitleField().setText(this.userTrial.getTrial().getTitle());
     }
 }

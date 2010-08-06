@@ -15,7 +15,7 @@ public class HistoryEventFactory {
 
     public HistoryEventFactory() {
         eventTypesList = new ArrayList<HistoryEvent<?>>() {{
-            add(new EditTrialHistoryEvent());
+            add(new EditUserTrialHistoryEvent());
             add(new HomeHistoryEvent());
         }};
         prepareMap();

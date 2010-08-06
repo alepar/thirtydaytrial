@@ -1,13 +1,12 @@
 package ru.alepar.tdt.gwt.client.action.trial;
 
-import com.googlecode.objectify.Key;
 import ru.alepar.tdt.backend.action.core.MapTo;
-import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
-import ru.alepar.tdt.gwt.client.action.core.TdtVoidRequest;
+import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
+import ru.alepar.tdt.gwt.client.callback.GenericCallback;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * User: alepar
@@ -16,28 +15,41 @@ import java.util.HashMap;
  */
 
 @MapTo(ru.alepar.tdt.backend.action.trial.GetTrialsHandler.class)
-public class GetTrials implements TdtAction<TdtVoidRequest> {
-    public static class GetTrialsResponse {
+public class GetTrials implements TdtAction<GetTrials.GetTrialsResponse> {
 
-        private HashMap<Key<UserTrial>, UserTrial> userTrials;
-        private HashMap<Key<Trial>, Trial> trials;
+    public GetTrials() { //used by serialization
+    }
 
-        @SuppressWarnings({"UnusedDeclaration"}) //used by gwt
+    public static class GetTrialsResponse implements TdtResponse {
+
+        private HashSet<UserTrial> userTrials;
+
+        @SuppressWarnings({"UnusedDeclaration"}) //used by serialization
         public GetTrialsResponse() {
 
         }
 
-        public GetTrialsResponse(HashMap<Key<UserTrial>, UserTrial> userTrials, HashMap<Key<Trial>, Trial> trials) {
+        public GetTrialsResponse(HashSet<UserTrial> userTrials) {
             this.userTrials = userTrials;
-            this.trials = trials;
         }
 
-        public HashMap<Key<UserTrial>, UserTrial> getUserTrials() {
+        public HashSet<UserTrial> getUserTrials() {
             return userTrials;
         }
 
-        public HashMap<Key<Trial>, Trial> getTrials() {
-            return trials;
+        public void setUserTrials(HashSet<UserTrial> userTrials) {
+            this.userTrials = userTrials;
         }
+    }
+
+    public abstract static class GotTrials extends GenericCallback<GetTrialsResponse> {
+
+        @Override
+        public void onSuccess(GetTrialsResponse response) {
+            gotTrials(response.getUserTrials());
+        }
+
+        public abstract void gotTrials(HashSet<UserTrial> userTrials);
+
     }
 }

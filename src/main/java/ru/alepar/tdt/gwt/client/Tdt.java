@@ -11,9 +11,11 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import ru.alepar.tdt.backend.model.Trial;
-import ru.alepar.tdt.gwt.client.event.EditTrialEvent;
-import ru.alepar.tdt.gwt.client.event.TrialChangedEvent;
-import ru.alepar.tdt.gwt.client.history.EditTrialHistoryEvent;
+import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.gwt.client.action.trial.GetTrials;
+import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
+import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;
+import ru.alepar.tdt.gwt.client.history.EditUserTrialHistoryEvent;
 import ru.alepar.tdt.gwt.client.history.HistoryAwareHandlerManager;
 import ru.alepar.tdt.gwt.client.history.HistoryEventFactory;
 import ru.alepar.tdt.gwt.client.history.HomeHistoryEvent;
@@ -24,21 +26,14 @@ import ru.alepar.tdt.gwt.client.view.AuthCheckDisplay;
 import ru.alepar.tdt.gwt.client.view.TrialEditorDisplay;
 import ru.alepar.tdt.gwt.client.view.TrialsTableDisplay;
 
-public class Tdt implements EntryPoint, ValueChangeHandler<String> {
+import java.util.HashSet;
 
-    private static long trialId;
+public class Tdt implements EntryPoint, ValueChangeHandler<String> {
 
     private final HandlerManager eventBus = new HistoryAwareHandlerManager(null);
     private final HistoryEventFactory eventFactory = new HistoryEventFactory();
     private final TdtServiceAsync tdtService = TdtService.App.getInstance();
 
-    private static Long nextId() {
-        return ++trialId;
-    }
-
-    /**
-     * This is the entry point method.
-     */
     public void onModuleLoad() {
         if (GWT.isScript()) {
             final AuthCheckDisplay authCheckDisplay = new AuthCheckDisplay(RootPanel.get("signin")) {
@@ -62,11 +57,11 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         button.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent clickEvent) {
-                Trial trial = new Trial(nextId());
-                EditTrialHistoryEvent historyEvent = new EditTrialHistoryEvent();
-                historyEvent.setTrialId(trial.getId());
-                History.newItem(historyEvent.token());
-                eventBus.fireEvent(new EditTrialEvent(trial));
+                Trial trial = new Trial();
+                UserTrial userTrial = new UserTrial();
+                userTrial.setTrial(trial);
+                
+                eventBus.fireEvent(new EditUserTrialEvent(userTrial));
             }
         });
         RootPanel.get("add_trial").add(button);
@@ -74,15 +69,25 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         //trial editor
         final TrialEditorDisplay trialEditorDisplay = new TrialEditorDisplay(RootPanel.get("editor_trial"));
         final TrialEditor trialEditor = new TrialEditor(eventBus, trialEditorDisplay, service);
-        eventBus.addHandler(EditTrialEvent.TYPE, trialEditor);
+        eventBus.addHandler(EditUserTrialEvent.TYPE, trialEditor);
         eventBus.addHandler(HomeHistoryEvent.TYPE, trialEditor);
 
         //trials list
         final TrialsTableDisplay trialsTableDisplay = new TrialsTableDisplay();
         final TrialsTable trialsTable = new TrialsTable(eventBus, trialsTableDisplay);
-        eventBus.addHandler(TrialChangedEvent.TYPE, trialsTable);
-        eventBus.addHandler(EditTrialHistoryEvent.TYPE, trialsTable);
+        eventBus.addHandler(UserTrialChangedEvent.TYPE, trialsTable);
+        eventBus.addHandler(EditUserTrialHistoryEvent.TYPE, trialsTable);
         RootPanel.get("table_trial").add(trialsTableDisplay);
+
+        //populta user trials list
+        service.execute(new GetTrials(), new GetTrials.GotTrials() {
+            @Override
+            public void gotTrials(HashSet<UserTrial> userTrials) {
+                for (UserTrial trial : userTrials) {
+                    eventBus.fireEvent(new UserTrialChangedEvent(trial));
+                }
+            }
+        });
 
         //history
         History.addValueChangeHandler(this);

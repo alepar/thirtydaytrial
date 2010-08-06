@@ -8,7 +8,6 @@ import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserAccount;
-import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.backend.security.Allow;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
 
@@ -37,13 +36,14 @@ public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialRespon
         final DaoSession session = sessionFactory.session();
         session.open();
         try {
+            Key<Trial> trialKey = session.trial().insert(action.getUserTrial().getTrial());
+
             Key<UserAccount> userKey = new Key<UserAccount>(UserAccount.class, user.getUserId());
-            Key<Trial> trialKey = session.trial().insert(action.getTrial());
-            action.getUserTrial().setUser(userKey);
-            action.getUserTrial().setTrial(trialKey);
-            Key<UserTrial> userTrialKey = session.userTrial().insert(action.getUserTrial());
-            action.getUserTrial().setId(userTrialKey.getId());
-            return new SaveTrial.SaveTrialResponse(action.getTrial(), action.getUserTrial());
+            action.getUserTrial().setUserKey(userKey);
+            action.getUserTrial().setTrialKey(trialKey);
+            session.userTrial().insert(action.getUserTrial());
+
+            return new SaveTrial.SaveTrialResponse(action.getUserTrial());
         } finally {
             session.close();
         }

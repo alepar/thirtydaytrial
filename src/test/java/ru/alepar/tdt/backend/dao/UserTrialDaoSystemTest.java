@@ -60,7 +60,7 @@ public class UserTrialDaoSystemTest {
             );
 
             UserTrial userTrial = new UserTrial();
-            userTrial.setUser(userKey);
+            userTrial.setUserKey(userKey);
             session.userTrial().insert(userTrial);
             assertThat(userTrial.getId(), notNullValue());
         } finally {

@@ -5,6 +5,7 @@ import com.googlecode.objectify.annotation.Parent;
 
 import javax.persistence.Embedded;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 
@@ -14,23 +15,26 @@ import java.io.Serializable;
  */
 public class UserTrial implements Serializable {
     @Id
-    Long id;
+    private Long id;
 
     @Parent
-    Key<UserAccount> user;
+    private Key<UserAccount> userKey;
 
-    Key<Trial> trial;
+    private Key<Trial> trialKey;
+
+    @Transient
+    private Trial trial;
 
     @Embedded
-    TrialWhen when;
+    private TrialWhen when;
 
-    @SuppressWarnings({"UnusedDeclaration"}) // used by objectify
+    @SuppressWarnings({"UnusedDeclaration"}) // used by serialization
     public UserTrial() {
     }
 
-    public UserTrial(Key<UserAccount> user, Key<Trial> trial, TrialWhen when) {
-        this.user = user;
-        this.trial = trial;
+    public UserTrial(Key<UserAccount> user, Key<Trial> trialKey, TrialWhen when) {
+        this.userKey = user;
+        this.trialKey = trialKey;
         this.when = when;
     }
 
@@ -42,20 +46,20 @@ public class UserTrial implements Serializable {
         this.id = id;
     }
 
-    public Key<UserAccount> getUser() {
-        return user;
+    public Key<UserAccount> getUserKey() {
+        return userKey;
     }
 
-    public void setUser(Key<UserAccount> user) {
-        this.user = user;
+    public void setUserKey(Key<UserAccount> userKey) {
+        this.userKey = userKey;
     }
 
-    public Key<Trial> getTrial() {
-        return trial;
+    public Key<Trial> getTrialKey() {
+        return trialKey;
     }
 
-    public void setTrial(Key<Trial> trial) {
-        this.trial = trial;
+    public void setTrialKey(Key<Trial> trialKey) {
+        this.trialKey = trialKey;
     }
 
     public TrialWhen getWhen() {
@@ -66,6 +70,14 @@ public class UserTrial implements Serializable {
         this.when = when;
     }
 
+    public Trial getTrial() {
+        return trial;
+    }
+
+    public void setTrial(Trial trial) {
+        this.trial = trial;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,8 +86,8 @@ public class UserTrial implements Serializable {
         UserTrial userTrial = (UserTrial) o;
 
         if (id != null ? !id.equals(userTrial.id) : userTrial.id != null) return false;
-        if (trial != null ? !trial.equals(userTrial.trial) : userTrial.trial != null) return false;
-        if (user != null ? !user.equals(userTrial.user) : userTrial.user != null) return false;
+        if (trialKey != null ? !trialKey.equals(userTrial.trialKey) : userTrial.trialKey != null) return false;
+        if (userKey != null ? !userKey.equals(userTrial.userKey) : userTrial.userKey != null) return false;
         if (when != null ? !when.equals(userTrial.when) : userTrial.when != null) return false;
 
         return true;
@@ -84,8 +96,8 @@ public class UserTrial implements Serializable {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (user != null ? user.hashCode() : 0);
-        result = 31 * result + (trial != null ? trial.hashCode() : 0);
+        result = 31 * result + (userKey != null ? userKey.hashCode() : 0);
+        result = 31 * result + (trialKey != null ? trialKey.hashCode() : 0);
         result = 31 * result + (when != null ? when.hashCode() : 0);
         return result;
     }
@@ -94,9 +106,19 @@ public class UserTrial implements Serializable {
     public String toString() {
         return "UserTrial{" +
                 "id=" + id +
-                ", user=" + user +
-                ", trial=" + trial +
+                ", userKey=" + userKey +
+                ", trialKey=" + trialKey +
                 ", when=" + when +
                 '}';
+    }
+
+    public static UserTrial from(UserTrial src) {
+        UserTrial clone = new UserTrial();
+        clone.id = src.id;
+        clone.trial = src.trial;
+        clone.trialKey = src.trialKey;
+        clone.userKey = src.userKey;
+        clone.when = src.when;
+        return clone;
     }
 }

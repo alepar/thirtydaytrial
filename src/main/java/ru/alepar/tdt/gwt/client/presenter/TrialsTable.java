@@ -1,10 +1,10 @@
 package ru.alepar.tdt.gwt.client.presenter;
 
 import com.google.gwt.event.shared.HandlerManager;
-import ru.alepar.tdt.backend.model.Trial;
-import ru.alepar.tdt.gwt.client.event.EditTrialEvent;
-import ru.alepar.tdt.gwt.client.event.TrialChangedEvent;
-import ru.alepar.tdt.gwt.client.history.EditTrialHistoryEvent;
+import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
+import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;
+import ru.alepar.tdt.gwt.client.history.EditUserTrialHistoryEvent;
 
 import java.util.LinkedList;
 
@@ -13,15 +13,15 @@ import java.util.LinkedList;
  * Date: Jul 11, 2010
  * Time: 4:39:26 PM
  */
-public class TrialsTable implements TrialChangedEvent.Handler, EditTrialHistoryEvent.Handler {
+public class TrialsTable implements UserTrialChangedEvent.Handler, EditUserTrialHistoryEvent.Handler {
 
-    LinkedList<Trial> trials = new LinkedList<Trial>();
+    LinkedList<UserTrial> trials = new LinkedList<UserTrial>();
 
     private final HandlerManager eventBus;
     private final Display display;
 
     public interface Display {
-        void updateRow(Integer row, Trial trial);
+        void updateRow(Integer row, UserTrial trial);
     }
 
     public TrialsTable(HandlerManager eventBus, Display display) {
@@ -30,28 +30,28 @@ public class TrialsTable implements TrialChangedEvent.Handler, EditTrialHistoryE
     }
 
     @Override
-    public void onTrialChanged(TrialChangedEvent p) {
+    public void onTrialChanged(UserTrialChangedEvent p) {
         int index = 0;
-        for (Trial trial : trials) {
-            if (trial.getId().equals(p.trial.getId())) {
+        for (UserTrial trial : trials) {
+            if (trial.getId().equals(p.userTrial.getId())) {
                 break;
             }
             index++;
         }
         if (index == trials.size()) {
-            trials.addLast(p.trial);
+            trials.addLast(p.userTrial);
         } else {
             trials.remove(index);
-            trials.add(index, p.trial);
+            trials.add(index, p.userTrial);
         }
-        display.updateRow(index, p.trial);
+        display.updateRow(index, p.userTrial);
     }
 
     @Override
-    public void onTrialEdit(EditTrialHistoryEvent p) {
-        for (Trial trial : trials) {
+    public void onTrialEdit(EditUserTrialHistoryEvent p) {
+        for (UserTrial trial : trials) {
             if (trial.getId().equals(p.getTrialId())) {
-                eventBus.fireEvent(new EditTrialEvent(trial));
+                eventBus.fireEvent(new EditUserTrialEvent(trial));
             }
         }
     }

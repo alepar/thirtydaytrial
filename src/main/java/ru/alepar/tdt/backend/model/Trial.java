@@ -9,13 +9,13 @@ import java.io.Serializable;
  * Date: 11.07.2010
  */
 public class Trial implements Serializable {
-    @Id Long id;
 
-    String title;
+    @Id 
+    private Long id;
+    private String title;
+    private String content;
 
-    String content;
-
-    @SuppressWarnings({"UnusedDeclaration"}) // used by objectify
+    @SuppressWarnings({"UnusedDeclaration"}) // used by serialization
     public Trial() {
     }
 
