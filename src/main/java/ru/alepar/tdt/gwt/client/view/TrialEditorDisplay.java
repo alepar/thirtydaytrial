@@ -67,6 +67,7 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     @Override
     public void show() {
         container.add(this);
+        titleField.setFocus(true);
     }
 
     @Override
