@@ -7,9 +7,11 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
 import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.TdtServiceAsync;
+import ru.alepar.tdt.gwt.client.action.trial.DeleteTrial;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
 import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
 import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;
+import ru.alepar.tdt.gwt.client.event.UserTrialDeletedEvent;
 import ru.alepar.tdt.gwt.client.history.HomeHistoryEvent;
 
 /**
@@ -30,6 +32,7 @@ public class TrialEditor implements EditUserTrialEvent.Handler, HomeHistoryEvent
         HasText getTitleField();
         HasClickHandlers getSaveButton();
         HasClickHandlers getCancelButton();
+        HasClickHandlers getDeleteButton();
         void show();
         void hide();
     }
@@ -52,6 +55,12 @@ public class TrialEditor implements EditUserTrialEvent.Handler, HomeHistoryEvent
             @Override
             public void onClick(ClickEvent clickEvent) {
                 doCancel();
+            }
+        });
+        display.getDeleteButton().addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                doDelete();
             }
         });
     }
@@ -81,7 +90,16 @@ public class TrialEditor implements EditUserTrialEvent.Handler, HomeHistoryEvent
     }
 
     private void doCancel() {
-        updateDisplay();
+        eventBus.fireEvent(new HomeHistoryEvent());
+    }
+
+    private void doDelete() {
+        service.execute(new DeleteTrial(userTrial), new DeleteTrial.DeletedTrial() {
+            @Override
+            public void deletedTrial(UserTrial userTrial) {
+                eventBus.fireEvent(new UserTrialDeletedEvent(userTrial));
+            }
+        });
         eventBus.fireEvent(new HomeHistoryEvent());
     }
 

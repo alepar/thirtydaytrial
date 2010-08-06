@@ -11,6 +11,10 @@ import java.util.Map;
 public interface BaseDao<T, K> {
     Key<T> insert(T obj);
 
+    void delete(T obj);
+
+    void delete(Key<T> key);
+
     T find(Key<T> id);
 
     T find(K id);

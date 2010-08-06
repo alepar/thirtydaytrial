@@ -4,6 +4,7 @@ import com.google.gwt.event.shared.HandlerManager;
 import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
 import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;
+import ru.alepar.tdt.gwt.client.event.UserTrialDeletedEvent;
 import ru.alepar.tdt.gwt.client.history.EditUserTrialHistoryEvent;
 
 import java.util.LinkedList;
@@ -13,7 +14,7 @@ import java.util.LinkedList;
  * Date: Jul 11, 2010
  * Time: 4:39:26 PM
  */
-public class TrialsTable implements UserTrialChangedEvent.Handler, EditUserTrialHistoryEvent.Handler {
+public class TrialsTable implements UserTrialChangedEvent.Handler, UserTrialDeletedEvent.Handler, EditUserTrialHistoryEvent.Handler {
 
     LinkedList<UserTrial> trials = new LinkedList<UserTrial>();
 
@@ -22,6 +23,7 @@ public class TrialsTable implements UserTrialChangedEvent.Handler, EditUserTrial
 
     public interface Display {
         void updateRow(Integer row, UserTrial trial);
+        void deleteRow(int row);
     }
 
     public TrialsTable(HandlerManager eventBus, Display display) {
@@ -45,6 +47,21 @@ public class TrialsTable implements UserTrialChangedEvent.Handler, EditUserTrial
             trials.add(index, p.userTrial);
         }
         display.updateRow(index, p.userTrial);
+    }
+
+    @Override
+    public void onTrialDeleted(UserTrialDeletedEvent p) {
+        int index = 0;
+        for (UserTrial trial : trials) {
+            if (trial.getId().equals(p.userTrial.getId())) {
+                break;
+            }
+            index++;
+        }
+        if (index != trials.size()) {
+            trials.remove(index);
+            display.deleteRow(index);
+        }
     }
 
     @Override

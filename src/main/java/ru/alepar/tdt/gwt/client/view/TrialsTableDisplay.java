@@ -29,4 +29,9 @@ public class TrialsTableDisplay extends Composite implements TrialsTable.Display
         event.setTrialId(trial.getId());
         trialsTable.setWidget(row, 2, new Hyperlink("edit", event.token()));
     }
+
+    @Override
+    public void deleteRow(int row) {
+        trialsTable.removeRow(row);
+    }
 }

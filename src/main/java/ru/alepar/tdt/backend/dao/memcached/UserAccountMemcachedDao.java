@@ -24,6 +24,16 @@ public class UserAccountMemcachedDao implements UserAccountDao {
     }
 
     @Override
+    public void delete(UserAccount obj) {
+        delegate.delete(obj);
+    }
+
+    @Override
+    public void delete(Key<UserAccount> userAccountKey) {
+        delegate.delete(userAccountKey);
+    }
+
+    @Override
     public UserAccount find(Key<UserAccount> id) {
         return delegate.find(id);
     }

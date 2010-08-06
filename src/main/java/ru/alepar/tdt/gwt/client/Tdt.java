@@ -15,6 +15,7 @@ import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.action.trial.GetTrials;
 import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
 import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;
+import ru.alepar.tdt.gwt.client.event.UserTrialDeletedEvent;
 import ru.alepar.tdt.gwt.client.history.EditUserTrialHistoryEvent;
 import ru.alepar.tdt.gwt.client.history.HistoryAwareHandlerManager;
 import ru.alepar.tdt.gwt.client.history.HistoryEventFactory;
@@ -76,6 +77,7 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
         final TrialsTableDisplay trialsTableDisplay = new TrialsTableDisplay();
         final TrialsTable trialsTable = new TrialsTable(eventBus, trialsTableDisplay);
         eventBus.addHandler(UserTrialChangedEvent.TYPE, trialsTable);
+        eventBus.addHandler(UserTrialDeletedEvent.TYPE, trialsTable);
         eventBus.addHandler(EditUserTrialHistoryEvent.TYPE, trialsTable);
         RootPanel.get("table_trial").add(trialsTableDisplay);
 

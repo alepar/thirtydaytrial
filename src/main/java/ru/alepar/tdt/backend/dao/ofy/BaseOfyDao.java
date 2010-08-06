@@ -42,6 +42,16 @@ public abstract class BaseOfyDao<T, K> implements BaseDao<T, K> {
     }
 
     @Override
+    public void delete(T obj) {
+        ofy().delete(obj);
+    }
+
+    @Override
+    public void delete(Key<T> key) {
+        ofy().delete(key);
+    }
+
+    @Override
     public T find(Key<T> id) {
         return ofy().get(id);
     }

@@ -17,6 +17,7 @@
                 <td colspan="2">
                     <g:Button ui:field="saveButton" text="Save"/>
                     <g:Button ui:field="cancelButton" text="Cancel"/>
+                    <g:Button ui:field="deleteButton" text="Delete"/>
                 </td>
             </tr>
         </table>

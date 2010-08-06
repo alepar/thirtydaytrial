@@ -31,6 +31,9 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     @UiField
     Button cancelButton;
 
+    @UiField
+    Button deleteButton;
+
     public TrialEditorDisplay(Panel container) {
         this.container = container;
         initWidget(uiBinder.createAndBindUi(this));
@@ -54,6 +57,11 @@ public class TrialEditorDisplay extends Composite implements TrialEditor.Display
     @Override
     public HasClickHandlers getCancelButton() {
         return cancelButton;
+    }
+
+    @Override
+    public HasClickHandlers getDeleteButton() {
+        return deleteButton;
     }
 
     @Override
