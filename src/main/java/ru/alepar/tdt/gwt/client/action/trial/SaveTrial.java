@@ -5,6 +5,7 @@ import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.backend.model.UserTrial;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
 import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
+import ru.alepar.tdt.gwt.client.callback.GenericCallback;
 
 /**
  * User: alepar
@@ -52,4 +53,16 @@ public class SaveTrial implements TdtAction<SaveTrial.SaveTrialResponse> {
             return userTrial;
         }
     }
+
+    public static abstract class SavedTrial extends GenericCallback<SaveTrialResponse> {
+
+        @Override
+        public void onSuccess(SaveTrialResponse response) {
+            savedTrial(response);
+        }
+
+        public abstract void savedTrial(SaveTrialResponse response);
+
+    }
+    
 }

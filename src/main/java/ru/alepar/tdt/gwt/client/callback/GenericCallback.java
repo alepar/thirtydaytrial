@@ -13,8 +13,12 @@ public abstract class GenericCallback<T> implements AsyncCallback<T> {
 
     @Override
     public void onFailure(Throwable throwable) {
-        Window.alert(this.getClass().getSimpleName() + " thrown exception: "+ throwable.getMessage());
-        GWT.log("async call thrown exception", throwable);
+        String message = this.getClass().getName() + " thrown exception";
+        Window.alert(message + ": " + throwable.getMessage());
+        GWT.log(message, throwable);
     }
 
+    @Override
+    public abstract void onSuccess(T t);
+    
 }

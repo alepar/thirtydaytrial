@@ -7,6 +7,7 @@ import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
 import ru.alepar.tdt.backend.model.Trial;
 import ru.alepar.tdt.gwt.client.TdtServiceAsync;
+import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;
 import ru.alepar.tdt.gwt.client.event.EditTrialEvent;
 import ru.alepar.tdt.gwt.client.event.TrialChangedEvent;
 import ru.alepar.tdt.gwt.client.history.HomeHistoryEvent;
@@ -67,8 +68,14 @@ public class TrialEditor implements EditTrialEvent.Handler, HomeHistoryEvent.Han
 
     private void doSave() {
         trial.setTitle(display.getTitleField().getText());
-        eventBus.fireEvent(new TrialChangedEvent(Trial.from(trial)));
-        eventBus.fireEvent(new HomeHistoryEvent());
+
+        service.execute(new SaveTrial(Trial.from(trial), null), new SaveTrial.SavedTrial() {
+            @Override
+            public void savedTrial(SaveTrial.SaveTrialResponse response) {
+                eventBus.fireEvent(new TrialChangedEvent(response.getTrial()));
+                eventBus.fireEvent(new HomeHistoryEvent());
+            }
+        });
     }
 
     private void doCancel() {
