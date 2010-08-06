@@ -98,9 +98,9 @@ public class TrialEditor implements EditUserTrialEvent.Handler, HomeHistoryEvent
             @Override
             public void deletedTrial(UserTrial userTrial) {
                 eventBus.fireEvent(new UserTrialDeletedEvent(userTrial));
+                eventBus.fireEvent(new HomeHistoryEvent());
             }
         });
-        eventBus.fireEvent(new HomeHistoryEvent());
     }
 
     public void editTrial(UserTrial userTrial) {
