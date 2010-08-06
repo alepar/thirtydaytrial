@@ -5,6 +5,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl;
 import ru.alepar.tdt.backend.security.ActionGuard;
@@ -24,6 +25,13 @@ public class TdtServiceImpl extends RemoteServiceServlet implements TdtService {
 
     @Override
     public <T extends TdtResponse> T execute(TdtAction<T> action) {
-        return mapper.map(action).execute();
+        ActionHandler<T> actionHandler = mapper.map(action);
+        try {
+            return actionHandler.execute();
+        } catch (Exception e) {
+            String message = actionHandler.getClass().getSimpleName() + " thrown exception";
+            logger.info(message, e);
+            throw new RuntimeException(message, e);
+        }
     }
 }
