@@ -21,7 +21,7 @@ public class TdtServiceImpl extends RemoteServiceServlet implements TdtService {
     private final static ActionGuard guard = new AnnotationDrivenActionGuard();
     private final static ActionMapper mapper = new ActionMapper(factory, userService, guard);
 
-    private final static Logger logger = LoggerFactory.getLogger(TdtServiceImpl.class);
+    private static Logger log = LoggerFactory.getLogger(TdtServiceImpl.class);
 
     @Override
     public <T extends TdtResponse> T execute(TdtAction<T> action) {
@@ -30,7 +30,7 @@ public class TdtServiceImpl extends RemoteServiceServlet implements TdtService {
             return actionHandler.execute();
         } catch (Exception e) {
             String message = actionHandler.getClass().getSimpleName() + " thrown exception";
-            logger.info(message, e);
+            log.info(message, e);
             throw new RuntimeException(message, e);
         }
     }

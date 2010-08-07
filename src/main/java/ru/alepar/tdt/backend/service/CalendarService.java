@@ -23,34 +23,22 @@ import java.net.URL;
  * Time: 1:52:37 AM
  */
 public class CalendarService {
-    private Log log = LogFactory.getLog(CalendarService.class);
-    private DaoSession session;
 
-    public CalendarService(DaoSession session) {
-        this.session = session;
-    }
+    private Log log = LogFactory.getLog(CalendarService.class);
+    
 
     public void scheduleOneTimeEvent(UserAccount userAccount, UserTrial userTrial)
             throws IOException, ValidationException, URISyntaxException, ServiceException {
         java.util.Calendar calendar = java.util.Calendar.getInstance();
         calendar.setTime(new java.util.Date());
 
-        // initialise our trial event
-        Trial trial = null;
-        session.open();
-        try {
-            trial = session.trial().find(userTrial.getTrial());
-        } finally {
-            session.close();
-        }
-
         URL postUrl = new URL("https://www.google.com/calendar/feeds/"
                 + userAccount.getEmail().value
                 + "/private/full");
         CalendarEventEntry myEntry = new CalendarEventEntry();
 
-        myEntry.setTitle(new PlainTextConstruct(trial.getTitle()));
-        myEntry.setContent(new PlainTextConstruct(trial.getContent()));
+        myEntry.setTitle(new PlainTextConstruct(userTrial.getTrial().getTitle()));
+        myEntry.setContent(new PlainTextConstruct(userTrial.getTrial().getContent()));
 
         DateTime startTime = new DateTime(System.currentTimeMillis());
         DateTime endTime = new DateTime(System.currentTimeMillis() + 3600000);
