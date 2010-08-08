@@ -9,6 +9,10 @@
         <servlet-name>ru.alepar.tdt.gwt.Tdt TdtService</servlet-name>
         <servlet-class>ru.alepar.tdt.gwt.server.TdtServiceImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RetrieveTokenServlet</servlet-name>
+        <servlet-class>ru.alepar.tdt.backend.calendar.RetrieveTokenServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>ru.alepar.tdt.gwt.Tdt TdtService</servlet-name>
