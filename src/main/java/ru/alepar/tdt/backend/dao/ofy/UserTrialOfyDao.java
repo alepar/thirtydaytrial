@@ -2,8 +2,8 @@ package ru.alepar.tdt.backend.dao.ofy;
 
 import com.googlecode.objectify.Key;
 import ru.alepar.tdt.backend.dao.UserTrialDao;
+import ru.alepar.tdt.backend.model.trial.UserTrial;
 import ru.alepar.tdt.backend.model.user.UserAccount;
-import ru.alepar.tdt.backend.model.user.UserTrial;
 
 /**
  * User: looser

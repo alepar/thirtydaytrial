@@ -7,7 +7,11 @@ import org.junit.Test;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.model.trial.Trial;
 import ru.alepar.tdt.backend.model.trial.TrialWhen;
-import ru.alepar.tdt.backend.model.user.*;
+import ru.alepar.tdt.backend.model.trial.UserTrial;
+import ru.alepar.tdt.backend.model.user.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserEmail;
+import ru.alepar.tdt.backend.model.user.UserId;
+import ru.alepar.tdt.backend.model.user.UserLogin;
 import ru.alepar.tdt.testsupport.rules.LocalGae;
 
 import static org.hamcrest.Matchers.*;

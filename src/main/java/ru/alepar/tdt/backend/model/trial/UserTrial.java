@@ -1,9 +1,8 @@
-package ru.alepar.tdt.backend.model.user;
+package ru.alepar.tdt.backend.model.trial;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Parent;
-import ru.alepar.tdt.backend.model.trial.Trial;
-import ru.alepar.tdt.backend.model.trial.TrialWhen;
+import ru.alepar.tdt.backend.model.user.UserAccount;
 
 import javax.persistence.Embedded;
 import javax.persistence.Id;

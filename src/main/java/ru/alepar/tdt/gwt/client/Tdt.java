@@ -11,7 +11,7 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import ru.alepar.tdt.backend.model.trial.Trial;
-import ru.alepar.tdt.backend.model.user.UserTrial;
+import ru.alepar.tdt.backend.model.trial.UserTrial;
 import ru.alepar.tdt.gwt.client.action.trial.GetTrials;
 import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
 import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;

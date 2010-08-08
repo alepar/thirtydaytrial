@@ -2,7 +2,11 @@ package ru.alepar.tdt.backend.service;
 
 import org.junit.Test;
 import ru.alepar.tdt.backend.model.trial.Trial;
-import ru.alepar.tdt.backend.model.user.*;
+import ru.alepar.tdt.backend.model.trial.UserTrial;
+import ru.alepar.tdt.backend.model.user.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserEmail;
+import ru.alepar.tdt.backend.model.user.UserId;
+import ru.alepar.tdt.backend.model.user.UserLogin;
 
 /**
  * User: red

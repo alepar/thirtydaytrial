@@ -8,8 +8,8 @@ import com.google.gdata.util.ServiceException;
 import net.fortuna.ical4j.model.ValidationException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import ru.alepar.tdt.backend.model.trial.UserTrial;
 import ru.alepar.tdt.backend.model.user.UserAccount;
-import ru.alepar.tdt.backend.model.user.UserTrial;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

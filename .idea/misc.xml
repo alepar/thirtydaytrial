@@ -46,8 +46,8 @@
     </option>
     <option name="activeProfiles">
       <list>
-        <option value="integration-build" />
         <option value="release-build" />
+        <option value="integration-build" />
       </list>
     </option>
   </component>
