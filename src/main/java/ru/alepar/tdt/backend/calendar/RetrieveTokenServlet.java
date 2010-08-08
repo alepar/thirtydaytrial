@@ -54,7 +54,9 @@ public class RetrieveTokenServlet extends HttpServlet {
         final ActionMapper mapper = ActionMapperFactory.instance();
 
         try {
-            mapper.map(new SaveGoogleDataToken(sessionToken)).execute();
+            SaveGoogleDataToken action = new SaveGoogleDataToken();
+            action.setSessionToken(sessionToken);
+            mapper.map(action).execute();
         } catch (Exception e) {
             throw new RuntimeException("failed to save sessionToken", e);
         }

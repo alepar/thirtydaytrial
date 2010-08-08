@@ -14,11 +14,14 @@ public class SaveGoogleDataToken implements TdtAction<TdtVoidResponse> {
 
     private String sessionToken;
 
-    public SaveGoogleDataToken(String sessionToken) {
-        this.sessionToken = sessionToken;
+    public SaveGoogleDataToken() { //used by serialization
     }
 
     public String getSessionToken() {
         return sessionToken;
+    }
+
+    public void setSessionToken(String sessionToken) {
+        this.sessionToken = sessionToken;
     }
 }

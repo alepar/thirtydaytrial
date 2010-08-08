@@ -37,6 +37,7 @@ public class SaveGoogleDataTokenHandler implements ActionHandler<TdtVoidResponse
 
             userPreferences.setGoogleDataSessionToken(action.getSessionToken());
             userPreferences.setGoogleCalIntegrationEnabled(true);
+            session.userPreferences().insert(userPreferences);
 
             return new TdtVoidResponse();
         } finally {
