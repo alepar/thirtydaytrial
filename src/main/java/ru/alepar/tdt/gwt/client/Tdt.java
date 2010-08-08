@@ -21,9 +21,11 @@ import ru.alepar.tdt.gwt.client.history.HistoryAwareHandlerManager;
 import ru.alepar.tdt.gwt.client.history.HistoryEventFactory;
 import ru.alepar.tdt.gwt.client.history.HomeHistoryEvent;
 import ru.alepar.tdt.gwt.client.presenter.AuthCheck;
+import ru.alepar.tdt.gwt.client.presenter.GoogleDataIntegrator;
 import ru.alepar.tdt.gwt.client.presenter.TrialEditor;
 import ru.alepar.tdt.gwt.client.presenter.TrialsTable;
 import ru.alepar.tdt.gwt.client.view.AuthCheckDisplay;
+import ru.alepar.tdt.gwt.client.view.GoogleDataIntegratorDisplay;
 import ru.alepar.tdt.gwt.client.view.TrialEditorDisplay;
 import ru.alepar.tdt.gwt.client.view.TrialsTableDisplay;
 
@@ -53,9 +55,21 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
     public void entryPoint() {
         final TdtServiceAsync service = TdtService.App.getInstance();
 
+        //add google cal integration button
+        final GoogleDataIntegratorDisplay integratorDisplay = new GoogleDataIntegratorDisplay();
+        final GoogleDataIntegrator integrator = new GoogleDataIntegrator(integratorDisplay, service);
+        final Button gcalIntegrateButton = new Button("gcal");
+        gcalIntegrateButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                integrator.go();
+            }
+        });
+        RootPanel.get("gcal_integrate").add(gcalIntegrateButton);
+
         //add trial button
-        final Button button = new Button("add");
-        button.addClickHandler(new ClickHandler() {
+        final Button addTrialButton = new Button("add");
+        addTrialButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent clickEvent) {
                 Trial trial = new Trial();
@@ -65,7 +79,7 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
                 eventBus.fireEvent(new EditUserTrialEvent(userTrial));
             }
         });
-        RootPanel.get("add_trial").add(button);
+        RootPanel.get("add_trial").add(addTrialButton);
 
         //trial editor
         final TrialEditorDisplay trialEditorDisplay = new TrialEditorDisplay(RootPanel.get("editor_trial"));

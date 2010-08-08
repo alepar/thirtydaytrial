@@ -33,7 +33,7 @@ public class SaveGoogleDataTokenHandler implements ActionHandler<TdtVoidResponse
         session.open();
         try {
             UserAccount userAccount = session.userAccount().find(authInfo.getUser().getUserId());
-            UserPreferences userPreferences = session.userPreferences().find(userAccount.getUserPreferencesKey());;
+            UserPreferences userPreferences = session.userPreferences().find(userAccount.getUserPreferencesKey());
 
             userPreferences.setGoogleDataSessionToken(action.getSessionToken());
             userPreferences.setGoogleCalIntegrationEnabled(true);

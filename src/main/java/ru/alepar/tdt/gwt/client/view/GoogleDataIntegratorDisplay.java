@@ -1,5 +1,6 @@
 package ru.alepar.tdt.gwt.client.view;
 
+import com.google.gwt.user.client.Window;
 import ru.alepar.tdt.gwt.client.presenter.GoogleDataIntegrator;
 
 /**
@@ -10,8 +11,8 @@ import ru.alepar.tdt.gwt.client.presenter.GoogleDataIntegrator;
 public class GoogleDataIntegratorDisplay implements GoogleDataIntegrator.Display {
 
     @Override
-    public void goToGoogle() {
-        throw new RuntimeException("Not Implemented");
+    public void goToGoogle(String authUrl) {
+        Window.Location.replace(authUrl);
     }
     
 }

@@ -4,6 +4,7 @@ import ru.alepar.tdt.backend.action.core.MapTo;
 import ru.alepar.tdt.backend.action.gcal.GetGoogleCalAuthUrlHandler;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
 import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
+import ru.alepar.tdt.gwt.client.callback.GenericCallback;
 
 /**
  * User: alepar
@@ -12,6 +13,16 @@ import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
  */
 @MapTo(GetGoogleCalAuthUrlHandler.class)
 public class GetGoogleCalAuthUrl implements TdtAction<GetGoogleCalAuthUrl.Response> {
+
+    private String hostPageBaseUrl;
+
+    public String getHostPageBaseUrl() {
+        return hostPageBaseUrl;
+    }
+
+    public void setHostPageBaseUrl(String hostPageBaseUrl) {
+        this.hostPageBaseUrl = hostPageBaseUrl;
+    }
 
     public static class Response implements TdtResponse {
 
@@ -31,4 +42,15 @@ public class GetGoogleCalAuthUrl implements TdtAction<GetGoogleCalAuthUrl.Respon
 
     public GetGoogleCalAuthUrl() { //used by serialization
     }
+
+    public abstract static class Callback extends GenericCallback<Response> {
+        @Override
+        public void onSuccess(Response response) {
+            gotUrl(response.getAuthUrl());
+        }
+
+        public abstract void gotUrl(String authUrl);
+
+    }
+    
 }

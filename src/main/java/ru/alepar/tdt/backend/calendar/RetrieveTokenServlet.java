@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 /**
  * User: alepar
@@ -31,11 +33,17 @@ public class RetrieveTokenServlet extends HttpServlet {
     }
 
     private void handle(HttpServletRequest request, HttpServletResponse response) {
+        String oneTimeToken = AuthSubUtil.getTokenFromReply(request.getQueryString());
+        try {
+            oneTimeToken = URLDecoder.decode(oneTimeToken, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException("bet a quid this won't happen", e);
+        }
         //fetch session token
         String sessionToken;
         try {
             sessionToken = AuthSubUtil.exchangeForSessionToken(
-                    AuthSubUtil.getTokenFromReply(request.getQueryString()),
+                    oneTimeToken,
                     null
             );
         } catch (Exception e) {

@@ -20,7 +20,7 @@ public class AuthCheck {
     }
 
     public void run() {
-        service.execute(new AuthAction(), new GotAuth());
+        service.execute(new AuthAction(), new Callback());
     }
 
     public interface Display {
@@ -29,7 +29,7 @@ public class AuthCheck {
         void onFailure(Throwable throwable);
     }
 
-    private class GotAuth implements AsyncCallback<AuthAction.Response> {
+    private class Callback implements AsyncCallback<AuthAction.Response> {
         @Override
         public void onFailure(Throwable throwable) {
             display.onFailure(throwable);

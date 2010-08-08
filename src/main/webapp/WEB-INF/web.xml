@@ -18,6 +18,10 @@
         <servlet-name>ru.alepar.tdt.gwt.Tdt TdtService</servlet-name>
         <url-pattern>/Tdt/TdtService</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RetrieveTokenServlet</servlet-name>
+        <url-pattern>/RetrieveToken</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>Tdt.html</welcome-file>

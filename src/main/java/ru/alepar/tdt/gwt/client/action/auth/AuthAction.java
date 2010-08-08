@@ -13,6 +13,9 @@ import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 @MapTo(ru.alepar.tdt.backend.action.auth.AuthActionHandler.class)
 public class AuthAction implements TdtAction<AuthAction.Response> {
 
+    public AuthAction() { //used by serialization
+    }
+
     /**
      * User: alepar
      * Date: Jul 22, 2010
