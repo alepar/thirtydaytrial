@@ -1,7 +1,7 @@
 package ru.alepar.tdt.backend.dao;
 
 import ru.alepar.tdt.backend.dao.core.BaseDao;
-import ru.alepar.tdt.backend.model.Trial;
+import ru.alepar.tdt.backend.model.trial.Trial;
 
 /**
  * User: looser

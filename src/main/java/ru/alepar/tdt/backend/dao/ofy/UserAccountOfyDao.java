@@ -1,7 +1,7 @@
 package ru.alepar.tdt.backend.dao.ofy;
 
 import ru.alepar.tdt.backend.dao.UserAccountDao;
-import ru.alepar.tdt.backend.model.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserAccount;
 
 /**
  * User: looser

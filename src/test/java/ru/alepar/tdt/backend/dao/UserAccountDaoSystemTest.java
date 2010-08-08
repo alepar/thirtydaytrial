@@ -4,10 +4,10 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import org.junit.Rule;
 import org.junit.Test;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
-import ru.alepar.tdt.backend.model.UserAccount;
-import ru.alepar.tdt.backend.model.UserEmail;
-import ru.alepar.tdt.backend.model.UserId;
-import ru.alepar.tdt.backend.model.UserLogin;
+import ru.alepar.tdt.backend.model.user.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserEmail;
+import ru.alepar.tdt.backend.model.user.UserId;
+import ru.alepar.tdt.backend.model.user.UserLogin;
 import ru.alepar.tdt.testsupport.rules.LocalGae;
 
 import static org.hamcrest.Matchers.*;

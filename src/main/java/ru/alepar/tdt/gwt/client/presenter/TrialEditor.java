@@ -5,7 +5,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasText;
-import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.backend.model.user.UserTrial;
 import ru.alepar.tdt.gwt.client.TdtServiceAsync;
 import ru.alepar.tdt.gwt.client.action.trial.DeleteTrial;
 import ru.alepar.tdt.gwt.client.action.trial.SaveTrial;

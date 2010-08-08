@@ -1,7 +1,7 @@
 package ru.alepar.tdt.gwt.client.action.trial;
 
 import ru.alepar.tdt.backend.action.core.MapTo;
-import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.backend.model.user.UserTrial;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
 import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 import ru.alepar.tdt.gwt.client.callback.GenericCallback;

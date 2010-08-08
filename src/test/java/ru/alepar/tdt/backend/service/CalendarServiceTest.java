@@ -1,20 +1,8 @@
 package ru.alepar.tdt.backend.service;
 
-import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
-import com.google.gdata.util.ServiceException;
-import com.googlecode.objectify.Key;
-import net.fortuna.ical4j.model.ValidationException;
-import org.junit.Rule;
 import org.junit.Test;
-import ru.alepar.tdt.backend.dao.core.DaoSession;
-import ru.alepar.tdt.backend.model.*;
-import ru.alepar.tdt.testsupport.rules.LocalGae;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-import static org.junit.Assert.*;
-import static ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl.*;
+import ru.alepar.tdt.backend.model.trial.Trial;
+import ru.alepar.tdt.backend.model.user.*;
 
 /**
  * User: red

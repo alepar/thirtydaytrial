@@ -4,8 +4,8 @@ import com.googlecode.objectify.NotFoundException;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
-import ru.alepar.tdt.backend.model.UserAccount;
-import ru.alepar.tdt.backend.model.UserId;
+import ru.alepar.tdt.backend.model.user.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserId;
 import ru.alepar.tdt.backend.security.Allow;
 import ru.alepar.tdt.gwt.client.action.auth.AuthAction;
 

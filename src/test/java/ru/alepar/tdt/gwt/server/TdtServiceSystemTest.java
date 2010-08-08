@@ -8,8 +8,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactoryImpl;
-import ru.alepar.tdt.backend.model.UserAccount;
-import ru.alepar.tdt.backend.model.UserLogin;
+import ru.alepar.tdt.backend.model.user.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserLogin;
 import ru.alepar.tdt.gwt.client.action.user.AddUser;
 import ru.alepar.tdt.testsupport.rules.LocalGae;
 

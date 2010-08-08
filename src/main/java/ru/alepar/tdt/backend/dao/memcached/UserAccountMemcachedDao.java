@@ -2,7 +2,7 @@ package ru.alepar.tdt.backend.dao.memcached;
 
 import com.googlecode.objectify.Key;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
-import ru.alepar.tdt.backend.model.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserAccount;
 
 import java.util.Map;
 

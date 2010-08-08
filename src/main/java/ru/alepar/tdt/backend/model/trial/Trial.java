@@ -1,4 +1,4 @@
-package ru.alepar.tdt.backend.model;
+package ru.alepar.tdt.backend.model.trial;
 
 import javax.persistence.Id;
 import java.io.Serializable;

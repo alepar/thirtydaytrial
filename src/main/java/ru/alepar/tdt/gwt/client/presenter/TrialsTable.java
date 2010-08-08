@@ -1,7 +1,7 @@
 package ru.alepar.tdt.gwt.client.presenter;
 
 import com.google.gwt.event.shared.HandlerManager;
-import ru.alepar.tdt.backend.model.UserTrial;
+import ru.alepar.tdt.backend.model.user.UserTrial;
 import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
 import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;
 import ru.alepar.tdt.gwt.client.event.UserTrialDeletedEvent;

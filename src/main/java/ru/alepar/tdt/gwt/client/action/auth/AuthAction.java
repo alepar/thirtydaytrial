@@ -1,7 +1,7 @@
 package ru.alepar.tdt.gwt.client.action.auth;
 
 import ru.alepar.tdt.backend.action.core.MapTo;
-import ru.alepar.tdt.backend.model.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserAccount;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
 import ru.alepar.tdt.gwt.client.action.core.TdtResponse;
 

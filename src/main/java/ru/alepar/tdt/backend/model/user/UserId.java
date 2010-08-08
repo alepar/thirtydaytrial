@@ -1,4 +1,4 @@
-package ru.alepar.tdt.backend.model;
+package ru.alepar.tdt.backend.model.user;
 
 import java.io.Serializable;
 
@@ -6,10 +6,10 @@ import java.io.Serializable;
  * User: looser
  * Date: Jul 15, 2010
  */
-public class UserEmail implements Serializable {
+public class UserId implements Serializable {
     public final String value;
 
-    public UserEmail(String value) {
+    public UserId(String value) {
         this.value = value;
     }
 
@@ -18,22 +18,22 @@ public class UserEmail implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserEmail userEmail = (UserEmail) o;
+        UserId userId = (UserId) o;
 
-        if (value != null ? !value.equals(userEmail.value) : userEmail.value != null) return false;
+        if (!value.equals(userId.value)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return value != null ? value.hashCode() : 0;
+        return value.hashCode();
     }
 
     @Override
     public String toString() {
-        return "UserEmail{" +
-                "value='" + value + '\'' +
+        return "UserId{" +
+                "id='" + value + '\'' +
                 '}';
     }
 }
