@@ -13,7 +13,7 @@ import ru.alepar.tdt.gwt.client.callback.GenericCallback;
  */
 
 @MapTo(ru.alepar.tdt.backend.action.trial.DeleteTrialHandler.class)
-public class DeleteTrial implements TdtAction<DeleteTrial.DeleteTrialResponse> {
+public class DeleteTrial implements TdtAction<DeleteTrial.Response> {
 
     private UserTrial userTrial;
 
@@ -29,23 +29,23 @@ public class DeleteTrial implements TdtAction<DeleteTrial.DeleteTrialResponse> {
         return userTrial;
     }
 
-    public static class DeleteTrialResponse implements TdtResponse {
+    public static class Response implements TdtResponse {
         private UserTrial userTrial;
 
         @SuppressWarnings({"UnusedDeclaration"}) //used by gwt
-        public DeleteTrialResponse() {
+        public Response() {
         }
 
-        public DeleteTrialResponse(UserTrial userTrial) {
+        public Response(UserTrial userTrial) {
             this.userTrial = userTrial;
         }
 
     }
 
-    public static abstract class DeletedTrial extends GenericCallback<DeleteTrialResponse> {
+    public static abstract class DeletedTrial extends GenericCallback<Response> {
 
         @Override
-        public void onSuccess(DeleteTrialResponse response) {
+        public void onSuccess(Response response) {
             deletedTrial(response.userTrial);
         }
 

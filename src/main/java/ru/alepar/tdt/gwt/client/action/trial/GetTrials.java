@@ -15,21 +15,21 @@ import java.util.HashSet;
  */
 
 @MapTo(ru.alepar.tdt.backend.action.trial.GetTrialsHandler.class)
-public class GetTrials implements TdtAction<GetTrials.GetTrialsResponse> {
+public class GetTrials implements TdtAction<GetTrials.Response> {
 
     public GetTrials() { //used by serialization
     }
 
-    public static class GetTrialsResponse implements TdtResponse {
+    public static class Response implements TdtResponse {
 
         private HashSet<UserTrial> userTrials;
 
         @SuppressWarnings({"UnusedDeclaration"}) //used by serialization
-        public GetTrialsResponse() {
+        public Response() {
 
         }
 
-        public GetTrialsResponse(HashSet<UserTrial> userTrials) {
+        public Response(HashSet<UserTrial> userTrials) {
             this.userTrials = userTrials;
         }
 
@@ -42,10 +42,10 @@ public class GetTrials implements TdtAction<GetTrials.GetTrialsResponse> {
         }
     }
 
-    public abstract static class GotTrials extends GenericCallback<GetTrialsResponse> {
+    public abstract static class GotTrials extends GenericCallback<Response> {
 
         @Override
-        public void onSuccess(GetTrialsResponse response) {
+        public void onSuccess(Response response) {
             gotTrials(response.getUserTrials());
         }
 

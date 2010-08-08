@@ -28,14 +28,14 @@ public abstract class AuthCheckDisplay extends Composite implements AuthCheck.Di
     protected abstract void appEntryPoint();
 
     @Override
-    public void onSuccessAuth(AuthAction.AuthResponse authResponse) {
-        html.setHTML("<a href=\"" + authResponse.getLogOutUrl() + "\">" + authResponse.getUserAccount().getLogin().value + "</a>");
+    public void onSuccessAuth(AuthAction.Response response) {
+        html.setHTML("<a href=\"" + response.getLogOutUrl() + "\">" + response.getUserAccount().getLogin().value + "</a>");
         appEntryPoint();
     }
 
     @Override
-    public void onNotLoggedIn(AuthAction.AuthResponse authResponse) {
-        Window.Location.replace(authResponse.getLogInUrl());
+    public void onNotLoggedIn(AuthAction.Response response) {
+        Window.Location.replace(response.getLogInUrl());
     }
 
     @Override

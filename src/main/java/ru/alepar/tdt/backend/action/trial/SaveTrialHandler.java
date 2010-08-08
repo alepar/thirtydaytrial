@@ -19,7 +19,7 @@ import static ru.alepar.tdt.backend.security.SecurityLevel.*;
  * Time: 7:05:27 PM
  */
 @Allow(AUTHENTICATED)
-public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialResponse> {
+public class SaveTrialHandler implements ActionHandler<SaveTrial.Response> {
 
     private final DaoSessionFactory sessionFactory;
     private final SaveTrial action;
@@ -32,7 +32,7 @@ public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialRespon
     }
 
     @Override
-    public SaveTrial.SaveTrialResponse execute() {
+    public SaveTrial.Response execute() {
         final DaoSession session = sessionFactory.session();
         session.open();
         try {
@@ -43,7 +43,7 @@ public class SaveTrialHandler implements ActionHandler<SaveTrial.SaveTrialRespon
             action.getUserTrial().setTrialKey(trialKey);
             session.userTrial().insert(action.getUserTrial());
 
-            return new SaveTrial.SaveTrialResponse(action.getUserTrial());
+            return new SaveTrial.Response(action.getUserTrial());
         } finally {
             session.close();
         }

@@ -15,7 +15,7 @@ import ru.alepar.tdt.gwt.client.action.trial.DeleteTrial;
  */
 
 @Allow()
-public class DeleteTrialHandler implements ActionHandler<DeleteTrial.DeleteTrialResponse> {
+public class DeleteTrialHandler implements ActionHandler<DeleteTrial.Response> {
 
     private final DaoSessionFactory sessionFactory;
     private final DeleteTrial action;
@@ -28,12 +28,12 @@ public class DeleteTrialHandler implements ActionHandler<DeleteTrial.DeleteTrial
     }
 
     @Override
-    public DeleteTrial.DeleteTrialResponse execute() {
+    public DeleteTrial.Response execute() {
         final DaoSession session = sessionFactory.session();
         session.open();
         try {
             session.userTrial().delete(action.getUserTrial());
-            return new DeleteTrial.DeleteTrialResponse(action.getUserTrial());
+            return new DeleteTrial.Response(action.getUserTrial());
         } finally {
             session.close();
         }

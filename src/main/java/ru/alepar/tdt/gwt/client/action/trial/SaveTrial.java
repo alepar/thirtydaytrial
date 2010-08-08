@@ -13,7 +13,7 @@ import ru.alepar.tdt.gwt.client.callback.GenericCallback;
  */
 
 @MapTo(ru.alepar.tdt.backend.action.trial.SaveTrialHandler.class)
-public class SaveTrial implements TdtAction<SaveTrial.SaveTrialResponse> {
+public class SaveTrial implements TdtAction<SaveTrial.Response> {
 
     private UserTrial userTrial;
 
@@ -29,14 +29,14 @@ public class SaveTrial implements TdtAction<SaveTrial.SaveTrialResponse> {
         return userTrial;
     }
 
-    public static class SaveTrialResponse implements TdtResponse {
+    public static class Response implements TdtResponse {
         UserTrial userTrial;
 
         @SuppressWarnings({"UnusedDeclaration"}) //used by gwt
-        public SaveTrialResponse() {
+        public Response() {
         }
 
-        public SaveTrialResponse(UserTrial userTrial) {
+        public Response(UserTrial userTrial) {
             this.userTrial = userTrial;
         }
 
@@ -45,10 +45,10 @@ public class SaveTrial implements TdtAction<SaveTrial.SaveTrialResponse> {
         }
     }
 
-    public static abstract class SavedTrial extends GenericCallback<SaveTrialResponse> {
+    public static abstract class SavedTrial extends GenericCallback<Response> {
 
         @Override
-        public void onSuccess(SaveTrialResponse response) {
+        public void onSuccess(Response response) {
             savedTrial(response.getUserTrial());
         }
 

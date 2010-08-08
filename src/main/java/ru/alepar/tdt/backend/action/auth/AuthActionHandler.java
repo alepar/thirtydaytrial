@@ -19,7 +19,7 @@ import static ru.alepar.tdt.backend.security.SecurityLevel.*;
  * Time: 7:04:18 AM
  */
 @Allow(EVERYONE)
-public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse> {
+public class AuthActionHandler implements ActionHandler<AuthAction.Response> {
 
     private final DaoSessionFactory sessionFactory;
     private final AuthInfo authInfo;
@@ -33,7 +33,7 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
     }
 
     @Override
-    public AuthAction.AuthResponse execute() {
+    public AuthAction.Response execute() {
         UserAccount userAccount = null;
         if (authInfo.isLoggedId()) {
             DaoSession session = sessionFactory.session();
@@ -59,7 +59,7 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
             }
             userAccount.setId(new UserId(null)); //google suggests not to disclose user ids to users itself
         }
-        return new AuthAction.AuthResponse(
+        return new AuthAction.Response(
                 authInfo.getLogInUrl(),
                 authInfo.getLogOutUrl(),
                 authInfo.isLoggedId(),

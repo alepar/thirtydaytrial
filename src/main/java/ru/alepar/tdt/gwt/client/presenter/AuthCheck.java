@@ -24,23 +24,23 @@ public class AuthCheck {
     }
 
     public interface Display {
-        void onSuccessAuth(AuthAction.AuthResponse authResponse);
-        void onNotLoggedIn(AuthAction.AuthResponse authResponse);
+        void onSuccessAuth(AuthAction.Response response);
+        void onNotLoggedIn(AuthAction.Response response);
         void onFailure(Throwable throwable);
     }
 
-    private class GotAuth implements AsyncCallback<AuthAction.AuthResponse> {
+    private class GotAuth implements AsyncCallback<AuthAction.Response> {
         @Override
         public void onFailure(Throwable throwable) {
             display.onFailure(throwable);
         }
 
         @Override
-        public void onSuccess(AuthAction.AuthResponse authResponse) {
-            if (authResponse.isLoggedId()) {
-                display.onSuccessAuth(authResponse);
+        public void onSuccess(AuthAction.Response response) {
+            if (response.isLoggedId()) {
+                display.onSuccessAuth(response);
             } else {
-                display.onNotLoggedIn(authResponse);
+                display.onNotLoggedIn(response);
             }
         }
     }
