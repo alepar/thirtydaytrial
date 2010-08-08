@@ -1,11 +1,13 @@
 package ru.alepar.tdt.backend.action.auth;
 
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.NotFoundException;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
 import ru.alepar.tdt.backend.dao.core.DaoSessionFactory;
 import ru.alepar.tdt.backend.model.user.UserAccount;
 import ru.alepar.tdt.backend.model.user.UserId;
+import ru.alepar.tdt.backend.model.user.UserPreferences;
 import ru.alepar.tdt.backend.security.Allow;
 import ru.alepar.tdt.gwt.client.action.auth.AuthAction;
 
@@ -21,12 +23,10 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
 
     private final DaoSessionFactory sessionFactory;
     private final AuthInfo authInfo;
-    private final AuthAction authAction;
 
-    public AuthActionHandler(DaoSessionFactory sessionFactory, AuthInfo authInfo, AuthAction authAction) {
+    public AuthActionHandler(DaoSessionFactory sessionFactory, AuthInfo authInfo, AuthAction thisIsNeededForActionMapper) {
         this.sessionFactory = sessionFactory;
         this.authInfo = authInfo;
-        this.authAction = authAction;
         if (sessionFactory == null || authInfo == null) {
             throw new IllegalArgumentException();
         }
@@ -46,6 +46,13 @@ public class AuthActionHandler implements ActionHandler<AuthAction.AuthResponse>
                         authInfo.getUser().getNickname(),
                         authInfo.getUser().getEmail()
                 );
+                Key<UserAccount> userKey = session.userAccount().insert(userAccount);
+
+                UserPreferences userPreferences = new UserPreferences();
+                userPreferences.setUserKey(userKey);
+                Key<UserPreferences> userPreferencesKey = session.userPreferences().insert(userPreferences);
+
+                userAccount.setUserPreferencesKey(userPreferencesKey);
                 session.userAccount().insert(userAccount);
             } finally {
                 session.close();
