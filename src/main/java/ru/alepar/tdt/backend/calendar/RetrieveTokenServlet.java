@@ -3,7 +3,7 @@ package ru.alepar.tdt.backend.calendar;
 import com.google.gdata.client.http.AuthSubUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.alepar.tdt.gwt.client.action.user.SaveGoogleDataToken;
+import ru.alepar.tdt.gwt.client.action.gcal.SaveGoogleDataToken;
 import ru.alepar.tdt.gwt.server.ActionMapper;
 import ru.alepar.tdt.gwt.server.ActionMapperFactory;
 
@@ -50,6 +50,13 @@ public class RetrieveTokenServlet extends HttpServlet {
         } catch (Exception e) {
             throw new RuntimeException("failed to save sessionToken", e);
         }
+
+        try {
+            response.getOutputStream().println("got token: " + sessionToken);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     
 }

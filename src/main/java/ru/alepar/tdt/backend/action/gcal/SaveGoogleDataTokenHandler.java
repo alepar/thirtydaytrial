@@ -1,4 +1,4 @@
-package ru.alepar.tdt.backend.action.user;
+package ru.alepar.tdt.backend.action.gcal;
 
 import ru.alepar.tdt.backend.action.auth.AuthInfo;
 import ru.alepar.tdt.backend.action.core.ActionHandler;
@@ -8,7 +8,7 @@ import ru.alepar.tdt.backend.model.user.UserAccount;
 import ru.alepar.tdt.backend.model.user.UserPreferences;
 import ru.alepar.tdt.backend.security.Allow;
 import ru.alepar.tdt.gwt.client.action.core.TdtVoidResponse;
-import ru.alepar.tdt.gwt.client.action.user.SaveGoogleDataToken;
+import ru.alepar.tdt.gwt.client.action.gcal.SaveGoogleDataToken;
 
 /**
  * User: alepar

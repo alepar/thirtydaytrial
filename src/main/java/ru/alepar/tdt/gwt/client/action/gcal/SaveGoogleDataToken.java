@@ -1,7 +1,7 @@
-package ru.alepar.tdt.gwt.client.action.user;
+package ru.alepar.tdt.gwt.client.action.gcal;
 
 import ru.alepar.tdt.backend.action.core.MapTo;
-import ru.alepar.tdt.backend.action.user.SaveGoogleDataTokenHandler;
+import ru.alepar.tdt.backend.action.gcal.SaveGoogleDataTokenHandler;
 import ru.alepar.tdt.gwt.client.action.core.TdtAction;
 import ru.alepar.tdt.gwt.client.action.core.TdtVoidResponse;
 
