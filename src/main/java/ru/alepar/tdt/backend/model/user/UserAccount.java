@@ -3,6 +3,7 @@ package ru.alepar.tdt.backend.model.user;
 import com.googlecode.objectify.Key;
 
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 /**
@@ -18,6 +19,7 @@ public class UserAccount implements Serializable {
 
     private String email;
 
+    @Transient
     private UserPreferences userPreferences;
 
     private Key<UserPreferences> userPreferencesKey; 
