@@ -1,5 +1,7 @@
 package ru.alepar.tdt.backend.model.user;
 
+import com.googlecode.objectify.Key;
+
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -8,11 +10,17 @@ import java.io.Serializable;
  * Date: 10.07.2010
  */
 public class UserAccount implements Serializable {
-    @Id String id;
 
-    String login;
+    @Id
+    private String id;
 
-    String email;
+    private String login;
+
+    private String email;
+
+    private UserPreferences userPreferences;
+
+    private Key<UserPreferences> userPreferencesKey; 
 
     @SuppressWarnings({"UnusedDeclaration"}) // used by objectify
     public UserAccount() {
@@ -52,6 +60,22 @@ public class UserAccount implements Serializable {
 
     public void setEmail(UserEmail email) {
         this.email = email.value;
+    }
+
+    public UserPreferences getUserPreferences() {
+        return userPreferences;
+    }
+
+    public void setUserPreferences(UserPreferences userPreferences) {
+        this.userPreferences = userPreferences;
+    }
+
+    public Key<UserPreferences> getUserPreferencesKey() {
+        return userPreferencesKey;
+    }
+
+    public void setUserPreferencesKey(Key<UserPreferences> userPreferencesKey) {
+        this.userPreferencesKey = userPreferencesKey;
     }
 
     @Override

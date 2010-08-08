@@ -2,6 +2,7 @@ package ru.alepar.tdt.backend.dao.core;
 
 import ru.alepar.tdt.backend.dao.TrialDao;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
+import ru.alepar.tdt.backend.dao.UserPreferencesDao;
 import ru.alepar.tdt.backend.dao.UserTrialDao;
 
 /**
@@ -18,4 +19,6 @@ public interface DaoSession {
     UserTrialDao userTrial();
 
     UserAccountDao userAccount();
+
+    UserPreferencesDao userPreferences();
 }

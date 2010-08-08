@@ -4,6 +4,7 @@ import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import ru.alepar.tdt.backend.dao.TrialDao;
 import ru.alepar.tdt.backend.dao.UserAccountDao;
+import ru.alepar.tdt.backend.dao.UserPreferencesDao;
 import ru.alepar.tdt.backend.dao.UserTrialDao;
 import ru.alepar.tdt.backend.dao.core.DaoSession;
 
@@ -45,6 +46,11 @@ public class OfySession implements DaoSession {
     @Override
     public UserAccountDao userAccount() {
         return new UserAccountOfyDao(this);
+    }
+
+    @Override
+    public UserPreferencesDao userPreferences() {
+        return new UserPreferencesOfyDao(this);
     }
 
     Objectify ofy() {

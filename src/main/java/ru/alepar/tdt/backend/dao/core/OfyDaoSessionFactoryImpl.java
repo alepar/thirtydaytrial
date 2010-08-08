@@ -5,6 +5,7 @@ import ru.alepar.tdt.backend.dao.ofy.OfySession;
 import ru.alepar.tdt.backend.model.trial.Trial;
 import ru.alepar.tdt.backend.model.trial.UserTrial;
 import ru.alepar.tdt.backend.model.user.UserAccount;
+import ru.alepar.tdt.backend.model.user.UserPreferences;
 
 /**
  * Package visible cuz it shudn't be used in the code, pls use DaoSessionFactoryImpl instead
@@ -18,6 +19,7 @@ class OfyDaoSessionFactoryImpl implements DaoSessionFactory {
         ObjectifyService.register(Trial.class);
         ObjectifyService.register(UserTrial.class);
         ObjectifyService.register(UserAccount.class);
+        ObjectifyService.register(UserPreferences.class);
     }
 
     @Override
