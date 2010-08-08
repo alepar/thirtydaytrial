@@ -21,7 +21,7 @@ public class UserPreferences implements Serializable {
 
     private boolean googleCalIntegrationEnabled = false;
 
-    private String googleCalSessionToken;
+    private String googleDataSessionToken;
 
     public UserPreferences() {
     }
@@ -42,12 +42,12 @@ public class UserPreferences implements Serializable {
         this.googleCalIntegrationEnabled = googleCalIntegrationEnabled;
     }
 
-    public String getGoogleCalSessionToken() {
-        return googleCalSessionToken;
+    public String getGoogleDataSessionToken() {
+        return googleDataSessionToken;
     }
 
-    public void setGoogleCalSessionToken(String googleCalSessionToken) {
-        this.googleCalSessionToken = googleCalSessionToken;
+    public void setGoogleDataSessionToken(String googleDataSessionToken) {
+        this.googleDataSessionToken = googleDataSessionToken;
     }
 
     public void setUserKey(Key<UserAccount> userKey) {
