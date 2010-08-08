@@ -27,7 +27,6 @@ class OfyDaoSessionFactoryImpl implements DaoSessionFactory {
     }
 
     public static DaoSession sessionInstance() {
-        OfySession baseSession = new OfySession(ObjectifyService.factory());
-        return new MemcachedSession(baseSession);
+        return new OfySession(ObjectifyService.factory());
     }
 }
