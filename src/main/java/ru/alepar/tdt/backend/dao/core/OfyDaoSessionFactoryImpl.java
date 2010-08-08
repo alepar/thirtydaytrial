@@ -1,7 +1,6 @@
 package ru.alepar.tdt.backend.dao.core;
 
 import com.googlecode.objectify.ObjectifyService;
-import ru.alepar.tdt.backend.dao.memcached.MemcachedSession;
 import ru.alepar.tdt.backend.dao.ofy.OfySession;
 import ru.alepar.tdt.backend.model.trial.Trial;
 import ru.alepar.tdt.backend.model.trial.UserTrial;
