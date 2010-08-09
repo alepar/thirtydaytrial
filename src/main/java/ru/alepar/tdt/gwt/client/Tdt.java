@@ -8,10 +8,12 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import ru.alepar.tdt.backend.model.trial.Trial;
 import ru.alepar.tdt.backend.model.trial.UserTrial;
+import ru.alepar.tdt.gwt.client.action.gcal.ScheduleEvent;
 import ru.alepar.tdt.gwt.client.action.trial.GetTrials;
 import ru.alepar.tdt.gwt.client.event.EditUserTrialEvent;
 import ru.alepar.tdt.gwt.client.event.UserTrialChangedEvent;
@@ -55,10 +57,25 @@ public class Tdt implements EntryPoint, ValueChangeHandler<String> {
     public void entryPoint() {
         final TdtServiceAsync service = TdtService.App.getInstance();
 
+        //schedule event sample button
+        final Button sampleButton = new Button("add gcal sample event");
+        sampleButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent clickEvent) {
+                service.execute(new ScheduleEvent(), new ScheduleEvent.Callback() {
+                    @Override
+                    public void ok() {
+                        Window.alert("ok!");
+                    }
+                });
+            }
+        });
+        RootPanel.get("sample_event").add(sampleButton);
+
         //add google cal integration button
         final GoogleDataIntegratorDisplay integratorDisplay = new GoogleDataIntegratorDisplay();
         final GoogleDataIntegrator integrator = new GoogleDataIntegrator(integratorDisplay, service);
-        final Button gcalIntegrateButton = new Button("gcal");
+        final Button gcalIntegrateButton = new Button("integrate with gcal");
         gcalIntegrateButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent clickEvent) {
